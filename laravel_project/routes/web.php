@@ -27,5 +27,28 @@ Route::group(['middleware'=>['admin']],function(){
     });
 });
 
-Route::get('/profile','UserController@profile');
-Route::post('/profile','UserController@update_avatar');
+Route::group(['middleware' => ['auth']],function(){ //checks if you're loged in 
+	Route::get('/profile','UserController@profile');
+	Route::post('/profile','UserController@update_avatar');
+});
+
+
+
+// for testing
+Route::get('test_stuff' , function(){
+
+	echo date_default_timezone_get().'<br>';
+	 date_default_timezone_set('Europe/Bucharest');
+	 echo date_default_timezone_get().'<br>';
+	$mytime = Carbon\Carbon::now();
+	echo $mytime->toDateTimeString('H');
+
+
+	$time_n = date('H:i');
+	echo "<br>" . $time_n;
+
+	var_dump($time_n);
+
+	// play with date and time more 
+});
+

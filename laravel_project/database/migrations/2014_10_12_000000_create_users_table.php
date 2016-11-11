@@ -21,6 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('level')->default(1);
+            $table->integer('battles_won')->default(0);
+            $table->integer('battles_lost')->default(0);
             $table->tinyInteger('admin')->default(0);
         });
     }
