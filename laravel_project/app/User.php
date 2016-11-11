@@ -26,4 +26,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    //relationships
+    public function homeplanet()
+    {
+        return $this->hasOne('App\Homeplanet');
+    }
+
+    public function orbitalbase(){
+        return $this->hasOne('App\Orbitalbase');
+    }
+
+    public function fleet(){
+        return $this->hasOne('App\Fleet');
+    }
+
 }
