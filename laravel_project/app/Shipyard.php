@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shipyard extends Model
 {
-    //
+    // public $cost_gold = 200;
+    // public $cost_metal = 200;
+    // public $cost_energy = 200;
+    // public $level = 1;
 
     //relationships
     public function orbitalbase()

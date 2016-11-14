@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class RegisterStepTwoMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,8 @@ class AdminMiddleware
 
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check() && Auth::user()->admin == 1) {
+        if (Auth::guard($guard)->check() && Auth::user()->step2 == 0) {
+            
             return $next($request);
         }
 

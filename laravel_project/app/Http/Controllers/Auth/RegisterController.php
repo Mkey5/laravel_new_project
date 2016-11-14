@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/register-step-2';
 
     /**
      * Create a new controller instance.
@@ -44,6 +44,9 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
+
+
+     * CUSTOM VALIDATION BY MAREK in Validator.php validateNickname()
      */
     protected function validator(array $data)
     {
@@ -51,6 +54,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'nickname' => 'required|nickname|max:255|unique:users',
         ]);
     }
 
@@ -65,7 +69,8 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => $data['password'],
+            'nickname' => $data['nickname'],
         ]);
     }
 }

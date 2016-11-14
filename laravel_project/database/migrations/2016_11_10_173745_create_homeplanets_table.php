@@ -20,6 +20,8 @@ class CreateHomeplanetsTable extends Migration
             $table->integer('gold')->default(1000);
             $table->integer('metal')->default(1000);
             $table->integer('energy')->default(1000);
+            $table->integer('x');
+            $table->integer('y');
             
             // something else :?
 

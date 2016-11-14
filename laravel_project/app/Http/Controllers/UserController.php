@@ -63,6 +63,8 @@ class UserController extends Controller
 		    };
 
 
+    	}else{
+    		return view('profile',array('user' => Auth::user()));
     	}
 
     }

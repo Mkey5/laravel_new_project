@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','nickname',
     ];
 
     /**
@@ -26,6 +26,23 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    // setter for saving the name with capital first letter
+    public function setNameAttribute($value){
+        $this->attributes['name'] = ucfirst($value);
+    }
+
+    // setter for nickname - no empty spaces
+    public function setNicknameAttribute($value){
+        $this->attributes['nickname'] = str_replace(" ", "_", $value) ;
+    }
+
+    // crypting the password
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
+
 
 
     //relationships

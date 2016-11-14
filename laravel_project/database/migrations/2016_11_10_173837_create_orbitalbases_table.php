@@ -18,9 +18,12 @@ class CreateOrbitalbasesTable extends Migration
             $table->integer('user_id');
             $table->string('name');
            
+        });
+
     }
 
-    /**
+
+     /**
      * Reverse the migrations.
      *
      * @return void

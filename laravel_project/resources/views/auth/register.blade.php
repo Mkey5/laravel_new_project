@@ -24,6 +24,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('nickname') ? ' has-error' : '' }}">
+                            <label for="nickname" class="col-md-4 control-label">Nickname</label>
+
+                            <div class="col-md-6">
+                                <input id="nickname" type="text" class="form-control" name="nickname" value="{{ old('nickname') }}" required autofocus>
+
+                                @if ($errors->has('nickname'))
+                                    <span class="help-block">
+                                        <strong>Nickname already exists!</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
