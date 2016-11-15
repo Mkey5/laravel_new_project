@@ -6,11 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Homeplanet extends Model
 {
-    // public $user_id = null;
-    // public $name;
-    // private $gold = 7000;
-    // public $metal = 1000;
-    // public $energy = 1000;
 
 	// we don't whant timestamps colons in our table
     public $timestamps = false;
@@ -20,13 +15,13 @@ class Homeplanet extends Model
 
     
 
+    public function createCoordinates($galaxy){
+        $this->x = 10;
+        $this->y = 10;
+        $this->galaxy = $galaxy;
 
-
-
-    
-    // public function setGoldAttribute($gold){
-    //     $this->attributes['gold'] = $gold;
-    // }
+        // TODO
+    }
 
 
 

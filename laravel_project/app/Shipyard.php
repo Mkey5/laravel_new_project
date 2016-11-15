@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shipyard extends Model
 {
-    // public $cost_gold = 200;
-    // public $cost_metal = 200;
-    // public $cost_energy = 200;
-    // public $level = 1;
+    // we don't whant timestamps colons in our table
+    public $timestamps = false;
 
     //relationships
     public function orbitalbase()

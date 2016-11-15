@@ -90,6 +90,11 @@ Route::get('/test_2' , function(){
                 echo "Ima gooo";
             }
         }
+
+
+        $user = Auth::user();
+        
+        echo "<br> <br> Homeplanet id : " . $user->homeplanet->id;
 	
 });
 

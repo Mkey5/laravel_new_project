@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Goldmine extends Model
 {
-	// public $income = 10;
-	// public $cost_gold = 100;
-	// public $cost_metal = 100;
-	// public $cost_energy = 100;
-	// public $level = 1;
+	// we don't whant timestamps colons in our table
+    public $timestamps = false;
 
 
 

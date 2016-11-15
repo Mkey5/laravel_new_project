@@ -22,6 +22,7 @@ class CreateHomeplanetsTable extends Migration
             $table->integer('energy')->default(1000);
             $table->integer('x');
             $table->integer('y');
+            $table->string('galaxy');
             
             // something else :?
 

@@ -6,13 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Assaultcarrier extends Model
 {
-    // public $attack = 500;
-    // public $defence = 480;
-    // public $cost_gold = 350;
-    // public $cost_metal = 600;
-    // public $cost_energy = 820;
-    // public $levelneeded = 5;
-    // public $level = 1;
+    // we don't whant timestamps colons in our table
+    public $timestamps = false;
 
     //relationships
     public function shipyard()
