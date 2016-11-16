@@ -30,12 +30,23 @@ Route::group(['middleware'=>['admin']],function(){
 Route::group(['middleware' => ['auth']],function(){ //checks if you're loged in 
 	Route::get('/profile','UserController@profile');
 	Route::post('/profile','UserController@update_avatar');
+	Route::get('/radar' , 'RadarController@radarIndex');
 });
 
 Route::group(['middleware' => ['registersteptwo']],function(){
 	Route::get('/register-step-2','RegistersteptwoController@stepTwoIndex');
 	Route::post('/register-step-2','RegistersteptwoController@createDefaultGameClasses');
 });
+
+
+
+
+// TODO-MAK real 2D load map 
+
+
+
+
+
 
 
 
@@ -57,44 +68,10 @@ Route::get('/test_2' , function(){
 
 
 
-// this is the way to do this , rewrite the migrations and start to create the Controllers
-	// $currentUser = Auth::user();
-	// $homeplanet = new App\Homeplanet;
-	// $homeplanet->name = 'My planet';
-	// $homeplanet->user_id = $currentUser->id;
-	// $homeplanet->gold = 200;
-	// $homeplanet->metal = 500;
-	// $homeplanet->x = 10;
-	// $homeplanet->y = 5;
-	// $homeplanet->save();
 
-	// $orbitalbase = new App\Orbitalbase;
-	// $orbitalbase->name = $currentUser->nickname . "'s Orbital Base";
-	// $orbitalbase->user_id = $currentUser->id;
-	// $orbitalbase->save();
-
-	// $fleet = new App\Fleet;
-	// $fleet->name = $currentUser->nickname . "'s Fleet";
-	// $fleet->user_id = $currentUser->id;
-	// $fleet->save();
-
-
-	// // echo "The gold mada faka --> ".$currentUser->homeplanet->gold."   ".$currentUser->fleet->name." ". $currentUser->orbitalbase->name;
-	// echo "This shit : " . $currentUser->homeplanet->x;
-
-	$value_new = "maka_pepa";
-        $nicknames = \DB::table('users')->select('nickname')->get();
-        foreach ($nicknames as $nickname) {
-        	echo "<br>" . $nickname->nickname;
-            if($nickname->nickname == $value_new){
-                echo "Ima gooo";
-            }
-        }
-
-
-        $user = Auth::user();
+	echo "<br> <br> POST MAX SIZE " . ini_get('post_max_size');
+	echo "<br> <br> Upload MAX SIZE " . ini_get('upload_max_filesize' ."mb");
         
-        echo "<br> <br> Homeplanet id : " . $user->homeplanet->id;
 	
 });
 

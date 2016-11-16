@@ -16,11 +16,25 @@ class Homeplanet extends Model
     
 
     public function createCoordinates($galaxy){
-        $this->x = 10;
-        $this->y = 10;
-        $this->galaxy = $galaxy;
+        $notUnique = true;
+         while ($notUnique) {
+            $x = rand(0,39);
+            $y = rand(0,39);
 
-        // TODO
+            $homeplanetexists = \DB::table('homeplanets')
+            ->where('x',$x)
+            ->where('y',$y)
+            ->first();
+
+            if(is_null($homeplanetexists)){
+                $this->x = $x;
+                $this->y = $y;
+                $this->galaxy = $galaxy;
+                $notUnique = false; //break the while
+            }
+         }
+
+         //TODO-MAK -> check if the "map" if full users = 1600 , / 40 * 40 / maps size 
     }
 
 
