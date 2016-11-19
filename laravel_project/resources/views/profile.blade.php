@@ -7,7 +7,7 @@
         <img src="/uploads/avatars/{{ $user->avatar }}" style="width: 150px; height: 150px; border-radius: 50%; float: left; margin-right: 25px;">
             <h2>{{ $user->name }}'s profile</h2>
             <form enctype="multipart/form-data" action="/profile" method="POST">
-                <label>Update Profile picture</label>
+                <label>Update Profile picture /2mb max/</label>
                 <input type="file" name="avatar">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="submit" value="submit" class="pull-right btn btn-md btn-primary" style="margin-right: 140px;">
@@ -29,10 +29,10 @@
             ?>
         </div>
         <div class="col-md-6">
-            <p>Go to Home Planet ?</p>
-            <p>Go to Orbital Station ?</p>
-            <p>Manage Fleet ?</p>
-            <p>Go to Radar ?</p>
+            <p><a class="btn btn-md btn-primary" href="/homeplanet">Go to Home Planet ?</a></p>
+            <p><a class="btn btn-md btn-warning" href="/orbitalbase">Go to Orbital Base ?</a></p>
+            <p><a class="btn btn-md btn-success" href="/radar">Go to Radar ?</a></p>
+
 
         </div>
     </div>
