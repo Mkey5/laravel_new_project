@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"time",
+				"timeInDB"
+			],
+			[
+				"home",
+				"homeplanet_id"
+			],
+			[
+				"homepla",
+				"homeplanet_id"
+			],
+			[
+				"gold",
+				"goldmines"
+			],
+			[
+				"homepa",
+				"homeplanet"
+			],
+			[
+				"Homeplanet",
+				"HomeplanetController"
+			],
+			[
+				"h",
+				"href	Attr"
+			],
+			[
+				"user",
+				"users"
+			],
+			[
+				"wh",
+				"where"
+			],
+			[
+				"s",
+				"schedule"
+			],
+			[
 				"ener",
 				"energy_level"
 			],
@@ -12,16 +52,8 @@
 				"metalmines_level"
 			],
 			[
-				"gold",
-				"goldmines_level"
-			],
-			[
 				"meta",
 				"metalmines"
-			],
-			[
-				"home",
-				"homeplanet"
 			],
 			[
 				"homepl",
@@ -80,10 +112,6 @@
 				"user_id"
 			],
 			[
-				"user",
-				"user_id"
-			],
-			[
 				"new",
 				"newuser"
 			],
@@ -131,39 +159,31 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 3755,
+				"buffer_size": 4371,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Console/Kernel.php",
+			"file": "resources/views/homeplanet.blade.php",
 			"settings":
 			{
-				"buffer_size": 2328,
+				"buffer_size": 3793,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/HomeplanetController.php",
+			"settings":
+			{
+				"buffer_size": 902,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Console/Commands/UpdateIncome.php",
+			"file": "resources/views/test.blade.php",
 			"settings":
 			{
-				"buffer_size": 1997,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/RadarController.php",
-			"settings":
-			{
-				"buffer_size": 352,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/views/radar.blade.php",
-			"settings":
-			{
-				"buffer_size": 178,
+				"buffer_size": 117,
 				"line_ending": "Windows"
 			}
 		},
@@ -172,32 +192,6 @@
 			"settings":
 			{
 				"buffer_size": 2053,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 5850 files for \"post_max\"\n\nD:\\xampp\\htdocs\\phptest\\laravel_test\\my-first-authentication\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyPostSize.php:\n   27  \n   28      /**\n   29:      * Determine the server 'post_max_size' as bytes.\n   30       *\n   31       * @return int\n   ..\n   33      protected function getPostMaxSize()\n   34      {\n   35:         if (is_numeric($postMaxSize = ini_get('post_max_size'))) {\n   36              return (int) $postMaxSize;\n   37          }\n\n2 matches in 1 file\n",
-			"settings":
-			{
-				"buffer_size": 533,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "resources/views/profile.blade.php",
-			"settings":
-			{
-				"buffer_size": 5774,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/layouts/app.blade.php",
-			"settings":
-			{
-				"buffer_size": 4026,
 				"line_ending": "Unix"
 			}
 		}
@@ -222,7 +216,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 681.0
+		"width": 527.0
 	},
 	"console":
 	{
@@ -248,16 +242,38 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Observers",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/config",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Support",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Support/Facades"
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/auth"
 	],
 	"file_history":
 	[
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/auth/register.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/radar.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/homeplanet.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Console/Scheduling/Schedule.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_115826_create_shipyards_table.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120037_create_goldmines_table.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120108_create_metalmines_table.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120228_create_powerplants_table.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/HomeplanetController.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_21_145250_battlesreports_table.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_21_144933_battles_report_table.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/RadarController.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Observers/WelcomeUserObserver.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/BattlestationController.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Providers/EventServiceProvider.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Support/Facades/Mail.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/profile.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts/app.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/UserController.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateIncome.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Kernel.php",
+		"/C/Users/Marek/AppData/Local/Temp/scp00517/public_html/game/app/Console/Kernel.php",
 		"/C/Users/Marek/AppData/Local/Temp/scp26638/public_html/game/app/Console/Kernel.php",
 		"/C/Users/Marek/AppData/Local/Temp/scp49811/php.ini",
 		"/C/Users/Marek/AppData/Local/Temp/scp15661/public_html/game/.env",
@@ -281,9 +297,7 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Assaultcarrier.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_10_173745_create_homeplanets_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/test.blade.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/UserController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts/mandatory.blade.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts/app.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/welcome.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/config/app.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/mygame.sublime-project",
@@ -293,18 +307,13 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Kernel.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Middleware/AdminMiddleware.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Validation/Validator.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/auth/register.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Validation/Factory.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Support/Facades/Validator.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Contracts/Validation/Validator.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120108_create_metalmines_table.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120037_create_goldmines_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_10_183432_create_fleets_table.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_115826_create_shipyards_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120446_create_destroyers_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120408_create_corvettes_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120344_create_frigates_table.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120228_create_powerplants_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120527_create_assaultcarriers_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/routes/web.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/User.php",
@@ -315,7 +324,6 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_10_173837_create_orbitalbases_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Orbitalbase.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_08_135142_create_customers_table.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/profile.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/Controller.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/HomeController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/public/css/app.css",
@@ -353,6 +361,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"DB::table('homeplanets')",
+			"32",
 			"register_argc_argv=on",
 			"post_max",
 			"md",
@@ -393,7 +403,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -402,15 +412,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3755,
+						"buffer_size": 4371,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1961,
-								3262
+								1218,
+								1218
 							]
 						],
 						"settings":
@@ -419,67 +429,63 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1842.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/Console/Kernel.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2328,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								416,
-								416
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 7.0,
+						"translation.y": 1226.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/Console/Commands/UpdateIncome.php",
+					"buffer": 1,
+					"file": "resources/views/homeplanet.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1997,
+						"buffer_size": 3793,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								299,
-								299
+								3733,
+								3733
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 69.0,
+						"translation.y": 1948.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/HomeplanetController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 902,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								790,
+								790
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -487,52 +493,26 @@
 				},
 				{
 					"buffer": 3,
-					"file": "app/Http/Controllers/RadarController.php",
+					"file": "resources/views/test.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 352,
+						"buffer_size": 117,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5,
-								5
+								63,
+								63
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "resources/views/radar.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 178,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								132,
-								132
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -542,7 +522,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "app/Http/Controllers/UserController.php",
 					"semi_transient": false,
 					"settings":
@@ -554,8 +534,8 @@
 						"selection":
 						[
 							[
-								742,
-								742
+								314,
+								330
 							]
 						],
 						"settings":
@@ -563,120 +543,10 @@
 							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 440.0,
+						"translation.y": 225.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 533,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										244,
-										252
-									],
-									[
-										429,
-										437
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								420,
-								444
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ 	].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "resources/views/profile.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5774,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								923,
-								923
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "resources/views/layouts/app.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4026,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2212,
-								2364
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -715,7 +585,7 @@
 		"cols":
 		[
 			0.0,
-			0.948151693983,
+			0.954867610706,
 			1.0
 		],
 		"rows":
@@ -746,6 +616,22 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"resources\\views\\homeplanet.blade.php"
+			],
+			[
+				"sch",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Console\\Scheduling\\Schedule.php"
+			],
+			[
+				"mail",
+				"vendor\\swiftmailer\\swiftmailer\\lib\\classes\\Swift\\Mailer.php"
+			],
+			[
+				"eventser",
+				"app\\Providers\\EventServiceProvider.php"
+			]
 		],
 		"width": 0.0
 	},

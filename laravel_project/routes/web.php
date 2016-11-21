@@ -32,6 +32,9 @@ Route::group(['middleware' => ['auth']],function(){ //checks if you're loged in
 	Route::post('/profile','UserController@update_avatar');
 	Route::get('/radar' , 'RadarController@radarIndex');
 	Route::get('/battlestation/{user_id}','BattlestationController@battlestationIndex');
+
+	Route::get('homeplanet','HomeplanetController@homeplanetIndex');
+	Route::post('homeplanet' , 'HomeplanetController@homeplanetUpgrade');
 });
 
 Route::group(['middleware' => ['registersteptwo']],function(){
@@ -42,13 +45,29 @@ Route::group(['middleware' => ['registersteptwo']],function(){
 
 
 
-// TODO-MAK real 2D load map 
+// TODO-MAK real 2D load map
+
+// TODO-MAK battles reports many to many relationship 
 
 
 
 
 
+Route::get('/test_3' , function(){
+	$curentUser = Auth::user();
+	$timeInDB = $curentUser->homeplanet->goldmine->upgrating_time;
 
+	date_default_timezone_set('Europe/Bucharest');
+	$timeNow = Carbon\Carbon::now();
+	echo "<br><br>Time saved in DB : " .$timeInDB ." Time now : " .$timeNow;
+
+	if($timeNow > $timeInDB){
+		echo "<br>" .$timeInDB. " is in the past";
+	}else{
+		echo "<br>" .$timeInDB . " is in the furure";
+	}
+
+});
 
 
 // for testing
@@ -60,19 +79,36 @@ Route::get('/test_2' , function(){
 	$mytime = Carbon\Carbon::now();
 	echo $mytime->toDateTimeString('H');
 
+	$curentUser = Auth::user();
+	$curentUser->homeplanet->goldmine->upgrating_time = Carbon\Carbon::now();
+	$curentUser->save();
+
+	$timeInDB = $curentUser->homeplanet->goldmine->upgrating_time;
+	echo "<br><br>Time saved in DB : " .$timeInDB;
+
+
+
+	$curentGoldmine = DB::table('goldmines')->where('homeplanet_id','=',Auth::id());
+	App\Goldmine::where('homeplanet_id','=',Auth::id())->update([
+		// 'upgrating_time' => Carbon\Carbon::now()->addMinutes(60)
+		'upgrating_time' => null
+		]);
+
+
+
 // play with date and time more 
 
-	$time_n = date('H:i');
-	echo "<br>" . $time_n;
+	// $time_n = date('H:i');
+	// echo "<br>" . $time_n;
 
-	var_dump($time_n);
-
-
+	// var_dump($time_n);
 
 
-	echo "<br> <br> POST MAX SIZE " . ini_get('post_max_size');
-	echo "<br> <br> Upload MAX SIZE " . ini_get('upload_max_filesize' ."mb");
-	echo "<br> <br>";
+
+
+	// echo "<br> <br> POST MAX SIZE " . ini_get('post_max_size');
+	// echo "<br> <br> Upload MAX SIZE " . ini_get('upload_max_filesize' ."mb");
+	// echo "<br> <br>";
 
 
 		// $allhomeplanets = DB::table('homeplanets')

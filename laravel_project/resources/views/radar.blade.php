@@ -61,10 +61,11 @@
 			@endforeach
 			
 			
-
+			{{ $allUsers->links() }}
 		</div>
-	</div>
 
+	</div>
+		
 </div>
 
 

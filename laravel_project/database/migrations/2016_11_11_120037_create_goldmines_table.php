@@ -21,6 +21,7 @@ class CreateGoldminesTable extends Migration
             $table->integer('cost_metal')->default(100);
             $table->integer('cost_energy')->default(100);
             $table->integer('level')->default(1);
+            $table->dateTime('upgrating_time')->nullable();
             
             // something else :?
 
