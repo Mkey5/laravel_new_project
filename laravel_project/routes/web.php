@@ -54,18 +54,78 @@ Route::group(['middleware' => ['registersteptwo']],function(){
 
 
 Route::get('/test_3' , function(){
-	$curentUser = Auth::user();
-	$timeInDB = $curentUser->homeplanet->goldmine->upgrating_time;
+	// $curentUser = Auth::user();
+	// $timeInDB = $curentUser->homeplanet->goldmine->upgrating_time;
 
-	date_default_timezone_set('Europe/Bucharest');
-	$timeNow = Carbon\Carbon::now();
-	echo "<br><br>Time saved in DB : " .$timeInDB ." Time now : " .$timeNow;
+	// date_default_timezone_set('Europe/Bucharest');
+	// $timeNow = Carbon\Carbon::now();
+	// echo "<br><br>Time saved in DB : " .$timeInDB ." Time now : " .$timeNow;
 
-	if($timeNow > $timeInDB){
-		echo "<br>" .$timeInDB. " is in the past";
-	}else{
-		echo "<br>" .$timeInDB . " is in the furure";
+	// if($timeNow > $timeInDB){
+	// 	echo "<br>" .$timeInDB. " is in the past";
+	// }else{
+	// 	echo "<br>" .$timeInDB . " is in the furure";
+	// }
+
+
+	if(true){
+		echo "Basi majkata 1";
 	}
+
+	if(true){
+		echo "<br> Basi majkata 2";
+	}
+
+	if(true){
+		echo "<br> Basi majkata 3";
+	}
+
+	
+
+
+
+	// $allPlanetsBuildings = DB::table('homeplanets')
+ //            ->join('goldmines','homeplanets.id','=','goldmines.homeplanet_id')
+ //            ->join('powerplants','homeplanets.id' , '=','powerplants.homeplanet_id')
+ //            ->join('metalmines','homeplanets.id' , '=','metalmines.homeplanet_id')
+ //            ->select(
+ //                'homeplanets.id',
+ //                'goldmines.income as gold_income',
+ //                'goldmines.cost_gold as gold_cost_gold',
+ //                'goldmines.cost_metal as gold_cost_metal',
+ //                'goldmines.cost_energy as gold_cost_energy',
+ //                'goldmines.level as gold_level',
+ //                'goldmines.upgrating_time as gold_upgrating_time',
+
+ //                'metalmines.income as metal_income',
+ //                'metalmines.cost_gold as metal_cost_gold',
+ //                'metalmines.cost_metal as metal_cost_metal',
+ //                'metalmines.cost_energy as metal_cost_energy',
+ //                'metalmines.level as metal_level',
+ //                'metalmines.upgrating_time as metal_upgrating_time',
+
+ //                'powerplants.income as energy_income',
+ //                'powerplants.cost_gold as energy_cost_gold',
+ //                'powerplants.cost_metal as energy_cost_metal',
+ //                'powerplants.cost_energy as energy_cost_energy',
+ //                'powerplants.level as energy_level',
+ //                'powerplants.upgrating_time as energy_upgrating_time'
+ //                )
+ //            ->get();
+
+ //            foreach ($allPlanetsBuildings as $planetBuildings) {
+ //            	$newLevel = $planetBuildings->gold_level + 1;
+ //            	$newIncome = $planetBuildings->gold_income * $newLevel;
+            	
+ //            	App\Goldmine::where('id', '=' , $planetBuildings->id)->update([
+ //            		'income' => $newIncome ,
+ //            		'level' => $newLevel
+ //            		]);
+ //            }
+
+
+
+
 
 });
 

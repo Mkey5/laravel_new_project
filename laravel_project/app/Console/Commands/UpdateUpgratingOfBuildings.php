@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use DB;
 
 class UpdateUpgratingOfBuildings extends Command
 {
@@ -38,7 +39,7 @@ class UpdateUpgratingOfBuildings extends Command
     public function handle()
     {
         
-        $allPlanetsBuildings = Db::table('homeplanets')
+        $allPlanetsBuildings = DB::table('homeplanets')
             ->join('goldmines','homeplanets.id','=','goldmines.homeplanet_id')
             ->join('powerplants','homeplanets.id' , '=','powerplants.homeplanet_id')
             ->join('metalmines','homeplanets.id' , '=','metalmines.homeplanet_id')
@@ -68,32 +69,92 @@ class UpdateUpgratingOfBuildings extends Command
             ->get();
 
             foreach ($allPlanetsBuildings as $planetBuildings) {
-                # code...
+
+                if($planetBuildings->gold_upgrating_time != null){
+                    date_default_timezone_set('Europe/Bucharest');
+                    $timeDB = $planetBuildings->gold_upgrating_time;
+                    $timeNow = \Carbon\Carbon::now();
+
+                    if($timeNow > $timeDB){
+
+                        $newLevel = $planetBuildings->gold_level + 1;
+                        $newIncome = $planetBuildings->gold_income * $newLevel;
+                        $newCostGold = $planetBuildings->gold_cost_gold * $newLevel;
+                        $newCostMetal = $planetBuildings->gold_cost_metal * $newLevel;
+                        $newCostEnergy = $planetBuildings->gold_cost_energy * $newLevel;
+                        
+                        \App\Goldmine::where('id', '=' , $planetBuildings->id)->update([
+                            'income' => $newIncome ,
+                            'level' => $newLevel,
+                            'cost_gold' => $newCostGold,
+                            'cost_metal' => $newCostMetal,
+                            'cost_energy' => $newCostEnergy,
+                            'upgrating_time' => null
+                            ]);
+
+
+                    }
+                }
+
+                if($planetBuildings->metal_upgrating_time != null){
+                    date_default_timezone_set('Europe/Bucharest');
+                    $timeDB = $planetBuildings->metal_upgrating_time;
+                    $timeNow = \Carbon\Carbon::now();
+
+                    if($timeNow > $timeDB){
+
+                        $newLevel = $planetBuildings->metal_level + 1;
+                        $newIncome = $planetBuildings->metal_income * $newLevel;
+                        $newCostGold = $planetBuildings->metal_cost_gold * $newLevel;
+                        $newCostMetal = $planetBuildings->metal_cost_metal * $newLevel;
+                        $newCostEnergy = $planetBuildings->metal_cost_energy * $newLevel;
+                        
+                        \App\Metalmine::where('id', '=' , $planetBuildings->id)->update([
+                            'income' => $newIncome ,
+                            'level' => $newLevel,
+                            'cost_gold' => $newCostGold,
+                            'cost_metal' => $newCostMetal,
+                            'cost_energy' => $newCostEnergy,
+                            'upgrating_time' => null
+                            ]);
+                    }
+
+
             }
 
-         //    foreach ($allhomeplanets as $homeplanet) {
-         //        $homeplanet->gold += ($homeplanet->gold_income) * $homeplanet->goldmines_level;
-         //        $homeplanet->metal += ($homeplanet->metal_income) * $homeplanet->metalmines_level;
-         //        $homeplanet->energy += ($homeplanet->energy_income) * $homeplanet->energy_level;
+            if($planetBuildings->energy_upgrating_time != null){
+                    date_default_timezone_set('Europe/Bucharest');
+                    $timeDB = $planetBuildings->energy_upgrating_time;
+                    $timeNow = \Carbon\Carbon::now();
 
-         //        \App\Homeplanet::where('id',$homeplanet->id)->update([
-         //            'gold' => $homeplanet->gold,
-         //            'metal' => $homeplanet->metal,
-         //            'energy' => $homeplanet->energy
-         //            ]);
-         //    }
+                    if($timeNow > $timeDB){
+
+                        $newLevel = $planetBuildings->energy_level + 1;
+                        $newIncome = $planetBuildings->energy_income * $newLevel;
+                        $newCostGold = $planetBuildings->energy_cost_gold * $newLevel;
+                        $newCostMetal = $planetBuildings->energy_cost_metal * $newLevel;
+                        $newCostEnergy = $planetBuildings->energy_cost_energy * $newLevel;
+                        
+                        \App\Powerplant::where('id', '=' , $planetBuildings->id)->update([
+                            'income' => $newIncome ,
+                            'level' => $newLevel,
+                            'cost_gold' => $newCostGold,
+                            'cost_metal' => $newCostMetal,
+                            'cost_energy' => $newCostEnergy,
+                            'upgrating_time' => null
+                            ]);
+                    }
 
 
-    // this is for the end
-            App\Goldmine::where('homeplanet_id','=',Auth::id())->update([
-                'upgrating_time' => null
-                ]);
-            App\Metalmine::where('homeplanet_id','=',Auth::id())->update([
-                'upgrating_time' => null
-                ]);
-            App\Powerplant::where('homeplanet_id','=',Auth::id())->update([
-                'upgrating_time' => null
-                ]);
+            }
+
+
+
+
+
+        }
+
+        
 
     }
 }

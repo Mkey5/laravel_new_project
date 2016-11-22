@@ -3,6 +3,11 @@
 @section('content')
 	<script src="/js/jquery-3.1.1.min.js"></script>
 	<script src="/js/jquery.countdown.js"></script>
+	<style type="text/css">
+		.disabled:hover{
+			cursor: pointer;
+		}
+	</style>
 
 	<div class="container">
 		<div class="row">
@@ -62,8 +67,10 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('This offer has expired!')
-										    .parent().addClass('disabled');
+										  $(this).html('The building is upgrated!')
+										    .parent().addClass('disabled').on('click', function(event){
+										    	location.reload();
+										    });
 
 										});
 
@@ -135,9 +142,10 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('This offer has expired!')
-										    .parent().addClass('disabled');
-
+										  $(this).html('The building is upgrated!')
+										    .parent().addClass('disabled').on('click', function(event){
+										    	location.reload();
+										    });
 										});
 
 								</script>
@@ -210,13 +218,15 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('This offer has expired!')
-										    .parent().addClass('disabled');
-
+										  $(this).html('The building is upgrated!')
+										    .parent().addClass('disabled').on('click', function(event){
+										    	location.reload();
+										    });
+										  
 										});
 
 								</script>
-
+								
 	                        @else
 	                        	<button type="submit" class="btn btn-primary">Upgrade</button>
 	                        @endif
