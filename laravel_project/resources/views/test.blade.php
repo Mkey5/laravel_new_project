@@ -6,7 +6,7 @@
 
 	<?php   
 
-    var_dump($request);
+    echo $user->goldmine->cost_gold;
 
 	
 

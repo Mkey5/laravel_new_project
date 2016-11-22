@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"cu",
+				"currentEnergyLevel"
+			],
+			[
+				"cure",
+				"currentMetalLevel"
+			],
+			[
 				"time",
 				"timeInDB"
 			],
@@ -159,7 +167,7 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 4371,
+				"buffer_size": 4610,
 				"line_ending": "Unix"
 			}
 		},
@@ -167,7 +175,7 @@
 			"file": "resources/views/homeplanet.blade.php",
 			"settings":
 			{
-				"buffer_size": 3793,
+				"buffer_size": 3802,
 				"line_ending": "Windows"
 			}
 		},
@@ -175,7 +183,7 @@
 			"file": "app/Http/Controllers/HomeplanetController.php",
 			"settings":
 			{
-				"buffer_size": 902,
+				"buffer_size": 2143,
 				"line_ending": "Unix"
 			}
 		},
@@ -403,7 +411,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -412,15 +420,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4371,
+						"buffer_size": 4610,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1218,
-								1218
+								1150,
+								1150
 							]
 						],
 						"settings":
@@ -429,10 +437,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1226.0,
+						"translation.y": 562.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -441,15 +449,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3793,
+						"buffer_size": 3802,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3733,
-								3733
+								978,
+								978
 							]
 						],
 						"settings":
@@ -457,10 +465,10 @@
 							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1948.0,
+						"translation.y": 176.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -469,15 +477,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 902,
+						"buffer_size": 2143,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								790,
-								790
+								2031,
+								2031
 							]
 						],
 						"settings":
@@ -485,10 +493,10 @@
 							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 1043.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{

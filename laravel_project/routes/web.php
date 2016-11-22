@@ -88,8 +88,16 @@ Route::get('/test_2' , function(){
 
 
 
-	$curentGoldmine = DB::table('goldmines')->where('homeplanet_id','=',Auth::id());
+	
 	App\Goldmine::where('homeplanet_id','=',Auth::id())->update([
+		// 'upgrating_time' => Carbon\Carbon::now()->addMinutes(60)
+		'upgrating_time' => null
+		]);
+	App\Metalmine::where('homeplanet_id','=',Auth::id())->update([
+		// 'upgrating_time' => Carbon\Carbon::now()->addMinutes(60)
+		'upgrating_time' => null
+		]);
+	App\Powerplant::where('homeplanet_id','=',Auth::id())->update([
 		// 'upgrating_time' => Carbon\Carbon::now()->addMinutes(60)
 		'upgrating_time' => null
 		]);

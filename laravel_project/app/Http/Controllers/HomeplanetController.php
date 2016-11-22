@@ -8,30 +8,110 @@ use Auth;
 class HomeplanetController extends Controller
 {
     public function homeplanetIndex(){
+
     	return view('homeplanet',array(
     		'user' => Auth::user()
     		));
     }
 
+
+
     public function homeplanetUpgrade(Request $request){
+    	date_default_timezone_set('Europe/Bucharest');
+    	$currentUser = Auth::user();
+
     	if($request->input('gold_upgrating')){
-    		// TODO-MAK add timer . . .
+    		$currentGoldLevel = $currentUser->homeplanet->goldmine->level; // mine level
+    		$timeToUpgrade = 60 * $currentGoldLevel;	// time to upgrade
 
-    		return view('homeplanet',array(
-    		'user' => Auth::user()
-    		));
+    		
+    		if( ($currentUser->homeplanet->gold >= $currentUser->homeplanet->goldmine->cost_gold) &&
+    			($currentUser->homeplanet->metal >= $currentUser->homeplanet->goldmine->cost_metal) &&
+    			($currentUser->homeplanet->energy >= $currentUser->homeplanet->goldmine->cost_energy)){ // check if user has enough money to upgrade
+
+    			\App\Goldmine::where('homeplanet_id','=',Auth::id())->update([
+				 'upgrating_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
+				]);	// updating 'upgrating_time' to DB
+
+    			$currentUser->homeplanet->gold -= $currentUser->homeplanet->goldmine->cost_gold;
+    			$currentUser->homeplanet->metal -= $currentUser->homeplanet->goldmine->cost_metal;
+    			$currentUser->homeplanet->energy -= $currentUser->homeplanet->goldmine->cost_energy;
+    			$currentUser->homeplanet->save();
+
+    		}else{
+
+    			return view('homeplanet',array(
+		    		'user' => Auth::user(),
+		    		'error_gold' => "You haven't got enough resources!" // TODO-MAK return the error in the blade
+		    		));
+    		}
+
+			
+
+
+				//TODO-MAK return time to the JS timer
+
+			return redirect()->back(); //redirects and refreshes	
+    		
     	}else if($request->input('metal_upgrating')){
-    		// TODO-MAK add timer . . . 
+    		$currentMetalLevel = $currentUser->homeplanet->metalmine->level; // mine level
+    		$timeToUpgrade = 60 * $currentMetalLevel;	// time to upgrade
 
-    		return view('homeplanet',array(
-    		'user' => Auth::user()
-    		));
+			
+
+			if( ($currentUser->homeplanet->gold >= $currentUser->homeplanet->metalmine->cost_gold) &&
+    			($currentUser->homeplanet->metal >= $currentUser->homeplanet->metalmine->cost_metal) &&
+    			($currentUser->homeplanet->energy >= $currentUser->homeplanet->metalmine->cost_energy)){ // check if user has enough money to upgrade
+
+    			\App\Metalmine::where('homeplanet_id','=',Auth::id())->update([
+				 'upgrating_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
+				]);	// updating 'upgrating_time' to DB
+
+    			$currentUser->homeplanet->gold -= $currentUser->homeplanet->metalmine->cost_gold;
+    			$currentUser->homeplanet->metal -= $currentUser->homeplanet->metalmine->cost_metal;
+    			$currentUser->homeplanet->energy -= $currentUser->homeplanet->metalmine->cost_energy;
+    			$currentUser->homeplanet->save();
+
+    		}else{
+
+    			return view('homeplanet',array(
+		    		'user' => Auth::user(),
+		    		'error_metal' => "You haven't got enough resources!" // TODO-MAK return the error in the blade
+		    		));
+    		}
+
+    		return redirect()->back(); //redirects and refreshes	
+
     	}else if($request->input('energy_upgrating')){
-    		// TODO-MAK add timer . . .
+    		$currentEnergyLevel = $currentUser->homeplanet->powerplant->level; // mine level
+    		$timeToUpgrade = 60 * $currentEnergyLevel;	// time to upgrade
 
-    		return view('homeplanet',array(
-    		'user' => Auth::user()
-    		)); 
+			
+			if( ($currentUser->homeplanet->gold >= $currentUser->homeplanet->powerplant->cost_gold) &&
+    			($currentUser->homeplanet->metal >= $currentUser->homeplanet->powerplant->cost_metal) &&
+    			($currentUser->homeplanet->energy >= $currentUser->homeplanet->powerplant->cost_energy)){ // check if user has enough money to upgrade
+
+    			\App\Powerplant::where('homeplanet_id','=',Auth::id())->update([
+				 'upgrating_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
+				]);	// updating 'upgrating_time' to DB
+
+    			$currentUser->homeplanet->gold -= $currentUser->homeplanet->powerplant->cost_gold;
+    			$currentUser->homeplanet->metal -= $currentUser->homeplanet->powerplant->cost_metal;
+    			$currentUser->homeplanet->energy -= $currentUser->homeplanet->powerplant->cost_energy;
+    			$currentUser->homeplanet->save();
+
+    		}else{
+
+    			return view('homeplanet',array(
+		    		'user' => Auth::user(),
+		    		'error_energy' => "You haven't got enough resources!" // TODO-MAK return the error in the blade
+		    		));
+    		}
+
+
+
+    		return redirect()->back(); //redirects and refreshes	
+
     	}else{
     		return view('homeplanet',array(
     		'user' => Auth::user()
