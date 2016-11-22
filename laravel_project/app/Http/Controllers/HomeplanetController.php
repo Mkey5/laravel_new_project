@@ -40,16 +40,9 @@ class HomeplanetController extends Controller
 
     		}else{
 
-    			return view('homeplanet',array(
-		    		'user' => Auth::user(),
-		    		'error_gold' => "You haven't got enough resources!" // TODO-MAK return the error in the blade
-		    		));
+    			return redirect()->back(); //redirects and refreshes
     		}
 
-			
-
-
-				//TODO-MAK return time to the JS timer
 
 			return redirect()->back(); //redirects and refreshes	
     		
@@ -74,10 +67,7 @@ class HomeplanetController extends Controller
 
     		}else{
 
-    			return view('homeplanet',array(
-		    		'user' => Auth::user(),
-		    		'error_metal' => "You haven't got enough resources!" // TODO-MAK return the error in the blade
-		    		));
+    			return redirect()->back(); //redirects and refreshes
     		}
 
     		return redirect()->back(); //redirects and refreshes	
@@ -102,10 +92,7 @@ class HomeplanetController extends Controller
 
     		}else{
 
-    			return view('homeplanet',array(
-		    		'user' => Auth::user(),
-		    		'error_energy' => "You haven't got enough resources!" // TODO-MAK return the error in the blade
-		    		));
+    			return redirect()->back(); //redirects and refreshes
     		}
 
 
