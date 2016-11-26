@@ -12,18 +12,35 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <style type="text/css">
+
+        #coverAll{
+            position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #F1F1F1; z-index:9999;
+        }
+
+    </style>
+    <!-- <link href="/css/app.css" rel="stylesheet"> -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    
+    <!-- <script type="text/javascript" href="/js/bootstrap.min.js"></script> -->
+    <script src="/js/jquery-3.1.1.min.js"></script>
 
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
+
+        $(window).bind("load", function () {
+                    $("#coverAll").hide();
+              });
     </script>
 </head>
 <body>
+<div id="coverAll"><img src="/images/tits.gif" style="display: block; margin: 0 auto;"></div>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -63,14 +80,34 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ url('/profile') }}">
-                                            <i class="fa fa-btn fa-user"></i>Profile
+                                            <i class="glyphicon glyphicon-user"></i>&nbsp;Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/home">
+                                            <i class="glyphicon glyphicon-home"></i>&nbsp;Home
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/homeplanet">
+                                            <i class="glyphicon glyphicon-globe"></i>&nbsp;Home Planet
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/orbitalbase">
+                                            <i class="glyphicon glyphicon-map-marker"></i>&nbsp;Orbital Base
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/radar">
+                                            <i class="glyphicon glyphicon-search"></i>&nbsp;Radar
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            <i class="fa fa-btn fa-sign-out"></i>Logout
+                                            <i class="glyphicon glyphicon-off"></i>&nbsp;Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -88,10 +125,7 @@
 
         @yield('content')
     </div>
-
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-    
-    
 </body>
 </html>

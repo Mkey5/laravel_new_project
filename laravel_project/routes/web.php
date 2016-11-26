@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth']],function(){ //checks if you're loged in
 
 	Route::get('homeplanet','HomeplanetController@homeplanetIndex');
 	Route::post('homeplanet' , 'HomeplanetController@homeplanetUpgrade');
+
+	Route::get('orbitalbase','OrbitalbaseController@orbitalbaseIndex');
 });
 
 Route::group(['middleware' => ['registersteptwo']],function(){

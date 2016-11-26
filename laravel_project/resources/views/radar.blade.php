@@ -3,8 +3,19 @@
 @section('content')
 <style type="text/css">
 
+	html{
+		height: 100%;
+		width: 100%;
+	}
+	body{
+		height: 100%;
+		width: 100%;
+		background: url('/images/radar_bg.jpg') no-repeat scroll center center / cover;
+		background-attachment: fixed;
+	}
 </style>
 <div class="container">
+	
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 		<?php $evenNum = 2; ?>

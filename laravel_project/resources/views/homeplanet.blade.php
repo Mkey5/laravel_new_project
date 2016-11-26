@@ -11,22 +11,32 @@
 
 	<div class="container">
 		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<img src="/images/homeplanet_big.png" style="height:300px; width: 300px; border-radius: 50%;">
+			</div>
+		</div>
+		<br>
+		<div class="row">
 			<div class="col-md-4">
 				<div class="row">
-					<div class="col-md-12">
-						<!-- <img src=""> -->
-						Gold Mine
+					<div class="col-md-4">
+						<img src="/images/gold.jpg" style=" width: 100px; height: 100px; border-radius: 10%">
+						
+					</div>
+					<div class="col-md-8">
+						<h3>Gold Mine</h3>
 					</div>
 				</div>
+				<br>
 				<div class="row">
 					<div class="col-md-12">
-						<p>Gold income per 2 minutes: {{ $user->homeplanet->goldmine->income }}</p>
-						<p>Goldmine level: {{ $user->homeplanet->goldmine->level }}</p>
+						<p>Gold income per 2 minutes: <b>{{ $user->homeplanet->goldmine->income }}</b></p>
+						<p>Goldmine level: <b>{{ $user->homeplanet->goldmine->level }}</b></p>
 						
 						<h3>Upgrade costs:</h3>
-						<p>Gold : {{ $user->homeplanet->goldmine->cost_gold }}</p>
-						<p>Metal : {{ $user->homeplanet->goldmine->cost_metal }}</p>
-						<p>Energy : {{ $user->homeplanet->goldmine->cost_energy }}</p>
+						<p>Gold : <b>{{ $user->homeplanet->goldmine->cost_gold }}</b></p>
+						<p>Metal : <b>{{ $user->homeplanet->goldmine->cost_metal }}</b></p>
+						<p>Energy : <b>{{ $user->homeplanet->goldmine->cost_energy }}</b></p>
 						<form class="form-horizontal" role="form" method="POST" action="{{ url('/homeplanet') }}">
 							{{ csrf_field() }}
 							<input id="gold_upgrating" type="hidden" class="" name="gold_upgrating" value="gold_upgrating">
@@ -88,20 +98,24 @@
 			</div>
 			<div class="col-md-4">
 				<div class="row">
-					<div class="col-md-12">
-						<!-- <img src=""> -->
-						Metal Mine
+					<div class="col-md-4">
+						<img src="/images/metal.jpg" style=" width: 100px; height: 100px; border-radius: 10%">
+						
+					</div>
+					<div class="col-md-8">
+						<h3>Metal Mine</h3>
 					</div>
 				</div>
+				<br>
 				<div class="row">
 					<div class="col-md-12">
-						<p>Metal income per 2 minutes: {{ $user->homeplanet->metalmine->income }}</p>
-						<p>Metalmine level: {{ $user->homeplanet->metalmine->level }}</p>
+						<p>Metal income per 2 minutes: <b>{{ $user->homeplanet->metalmine->income }}</b></p>
+						<p>Metalmine level: <b>{{ $user->homeplanet->metalmine->level }}</b></p>
 						
 						<h3>Upgrade costs:</h3>
-						<p>Gold : {{ $user->homeplanet->metalmine->cost_gold }}</p>
-						<p>Metal : {{ $user->homeplanet->metalmine->cost_metal }}</p>
-						<p>Energy : {{ $user->homeplanet->metalmine->cost_energy }}</p>
+						<p>Gold : <b>{{ $user->homeplanet->metalmine->cost_gold }}</b></p>
+						<p>Metal : <b>{{ $user->homeplanet->metalmine->cost_metal }}</b></p>
+						<p>Energy : <b>{{ $user->homeplanet->metalmine->cost_energy }}</b></p>
 						<form class="form-horizontal" role="form" method="POST" action="{{ url('/homeplanet') }}">
 							{{ csrf_field() }}
 							<input id="metal_upgrating" type="hidden" class="" name="metal_upgrating" value="metal_upgrating">
@@ -161,20 +175,24 @@
 			</div>
 			<div class="col-md-4">
 				<div class="row">
-					<div class="col-md-12">
-						<!-- <img src=""> -->
-						Power Plant
+					<div class="col-md-4">
+						<img src="/images/energy.jpg" style=" width: 100px; height: 100px; border-radius: 10%">
+						
+					</div>
+					<div class="col-md-8">
+						<h3>Power Plant</h3>
 					</div>
 				</div>
+				<br>
 				<div class="row">
 					<div class="col-md-12">
-						<p>Energy income per 2 minutes: {{ $user->homeplanet->powerplant->income }}</p>
-						<p>Power Plant level: {{ $user->homeplanet->powerplant->level }}</p>
+						<p>Energy income per 2 minutes: <b>{{ $user->homeplanet->powerplant->income }}</b></p>
+						<p>Power Plant level: <b>{{ $user->homeplanet->powerplant->level }}</b></p>
 						
 						<h3>Upgrade costs:</h3>
-						<p>Gold : {{ $user->homeplanet->powerplant->cost_gold }}</p>
-						<p>Metal : {{ $user->homeplanet->powerplant->cost_metal }}</p>
-						<p>Energy : {{ $user->homeplanet->powerplant->cost_energy }}</p>
+						<p>Gold : <b>{{ $user->homeplanet->powerplant->cost_gold }}</b></p>
+						<p>Metal : <b>{{ $user->homeplanet->powerplant->cost_metal }}</b></p>
+						<p>Energy : <b>{{ $user->homeplanet->powerplant->cost_energy }}</b></p>
 						<form class="form-horizontal" role="form" method="POST" action="{{ url('/homeplanet') }}">
 							{{ csrf_field() }}
 							<input id="energy_upgrating" type="hidden" class="" name="energy_upgrating" value="energy_upgrating">
@@ -237,7 +255,8 @@
 				
 			</div>
 		</div>
-		
+		<br>
+		<br>
 	</div>
 
 
