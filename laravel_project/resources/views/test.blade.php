@@ -6,9 +6,9 @@
 
 	<?php   
 
-    echo $user->goldmine->cost_gold;
+    // echo $user->goldmine->cost_gold;
 
-	
+	echo 'Yes '.$test;
 
 
 

@@ -15,52 +15,52 @@
 				<img src="/images/orbitalbase_big.jpg" style="height:300px; width: 300px; border-radius: 50%;">
 			</div>
 		</div>
+		<br>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-12">
-						<!-- <img src=""> -->
-						Shipyard
+						<h2 >Shipyard</h2>
+						<img src="/images/shipyard.jpg" style="border-radius: 20px">
 					</div>
 				</div>
 				<div class="row">
-					<!-- <div class="col-md-12">
-						<p>Gold income per 2 minutes: {{ $user->homeplanet->goldmine->income }}</p>
-						<p>Goldmine level: {{ $user->homeplanet->goldmine->level }}</p>
+					<div class="col-md-12">
+						<h3>Shipyard level: <b>{{ $user->orbitalbase->shipyard->level }}</b></h3>
 						
 						<h3>Upgrade costs:</h3>
-						<p>Gold : {{ $user->homeplanet->goldmine->cost_gold }}</p>
-						<p>Metal : {{ $user->homeplanet->goldmine->cost_metal }}</p>
-						<p>Energy : {{ $user->homeplanet->goldmine->cost_energy }}</p>
-						<form class="form-horizontal" role="form" method="POST" action="{{ url('/homeplanet') }}">
+						<p>Gold : <b>{{ $user->orbitalbase->shipyard->cost_gold }}</b></p>
+						<p>Metal : <b>{{ $user->orbitalbase->shipyard->cost_metal }}</b></p>
+						<p>Energy : <b>{{ $user->orbitalbase->shipyard->cost_energy }}</b></p>
+						<form class="form-horizontal" role="form" method="POST" action="{{ url('/orbitalbase') }}">
 							{{ csrf_field() }}
-							<input id="gold_upgrating" type="hidden" class="" name="gold_upgrating" value="gold_upgrating">
+							<input id="shipyard_upgrating" type="hidden" class="" name="shipyard_upgrating" value="shipyard_upgrating">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							@if(($user->homeplanet->gold < $user->homeplanet->goldmine->cost_gold) &&
-    							($user->homeplanet->metal < $user->homeplanet->goldmine->cost_metal) &&
-    							($user->homeplanet->energy < $user->homeplanet->goldmine->cost_energy))
+							@if(($user->homeplanet->gold < $user->orbitalbase->shipyard->cost_gold) &&
+    							($user->homeplanet->metal < $user->orbitalbase->shipyard->cost_metal) &&
+    							($user->homeplanet->energy < $user->orbitalbase->shipyard->cost_energy))
 
-    							<div class="alert alert-danger">
+    							<div class="alert alert-danger" style="text-align: center;">
   									You haven't got enough resources to upgrade
 								</div>
-							@elseif ($user->homeplanet->goldmine->upgrating_time != null)
+							@elseif ($user->orbitalbase->shipyard->upgrating_time != null)
 	                            <?php 
 
-	                            	$time_gold = $user->homeplanet->goldmine->upgrating_time;
-	                            	$year_gold = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_gold)->format('Y');
-	                            	$month_gold = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_gold)->format('m');
-	                            	$day_gold = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_gold)->format('d');
-	                            	$hour_gold = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_gold)->format('H');
-	                            	$minute_gold = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_gold)->format('i');
-	                            	$second_gold = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_gold)->format('s');
+	                            	$time_shipyard = $user->orbitalbase->shipyard->upgrating_time;
+	                            	$year_shipyard = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_shipyard)->format('Y');
+	                            	$month_shipyard = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_shipyard)->format('m');
+	                            	$day_shipyard = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_shipyard)->format('d');
+	                            	$hour_shipyard = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_shipyard)->format('H');
+	                            	$minute_shipyard = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_shipyard)->format('i');
+	                            	$second_shipyard = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_shipyard)->format('s');
 
 	                             ?>
 	                             <div class="countdown">
-								  <span id="clock_gold"></span>
+								  <span id="clock_shipyard"></span>
 								</div>
 								<script type="text/javascript">
 
-									$('#clock_gold').countdown('{{ $year_gold }}/{{ $month_gold }}/{{ $day_gold }} {{ $hour_gold }}:{{ $minute_gold }}:{{ $second_gold }}')
+									$('#clock_shipyard').countdown('{{ $year_shipyard }}/{{ $month_shipyard }}/{{ $day_shipyard }} {{ $hour_shipyard }}:{{ $minute_shipyard }}:{{ $second_shipyard }}')
 										.on('update.countdown', function(event) {
 										  var format = '%H:%M:%S';
 										  if(event.offset.totalDays > 0) {
@@ -88,7 +88,7 @@
 						</form>
 
 					</div>
-				</div> -->
+				</div>
 				
 			</div>
 
@@ -96,7 +96,8 @@
 
 		</div>
 	</div>
-
+	<br>
+	<br>
 
 
 

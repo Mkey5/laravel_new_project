@@ -13,4 +13,26 @@ class OrbitalbaseController extends Controller
     		'user' => Auth::user()
     		));
     }
+
+    public function orbitalbaseUpgradeOrCreate(Request $request){
+
+    	if($request->input('shipyard_upgrating')){
+    		return $this->UpgradeShipyard($request);
+    	}elseif ($request->input('shipyard_create')) {
+    		return $this->CreateShips($request);
+    	}
+
+    }
+
+    public function UpgradeShipyard(Request $request){
+    	
+    	return view('test',array('test' => 'Upgrade Shipyard'));
+
+    }
+
+ 	public function CreateShips($request){
+
+ 	}
+
+
 }
