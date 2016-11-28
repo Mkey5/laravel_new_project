@@ -17,6 +17,10 @@ class CreateOrbitalbasesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('name');
+            $table->integer('frigates')->default(0);
+            $table->integer('corvettes')->default(0);
+            $table->integer('destroyers')->default(0);
+            $table->integer('assaultcarriers')->default(0);
            
         });
 

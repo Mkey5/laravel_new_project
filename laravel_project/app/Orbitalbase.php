@@ -23,4 +23,20 @@ class Orbitalbase extends Model
     public function shipyard(){
     	return $this->hasOne('App\Shipyard');
     }
+
+    public function frigate(){
+        return $this->hasMany('App\Frigate');
+    }
+
+    public function corvette(){
+        return $this->hasMany('App\Corvette');
+    }
+
+    public function destroyer(){
+        return $this->hasMany('App\Destroyer');
+    }
+
+    public function assaultcarrier(){
+        return $this->hasMany('App\Assaultcarrier');
+    }
 }

@@ -15,13 +15,9 @@ class CreateFrigatesTable extends Migration
     {
         Schema::create('frigates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('shipyard_id');
+            $table->integer('orbitalbase_id');
             $table->integer('attack')->default(30);
             $table->integer('defence')->default(20);
-            $table->integer('cost_gold')->default(20);
-            $table->integer('cost_metal')->default(30);
-            $table->integer('cost_energy')->default(50);
-            $table->integer('levelneeded')->default(1);
             $table->integer('level')->default(1);
             
             // something else :?

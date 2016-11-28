@@ -38,12 +38,12 @@
 						<p>Metal : <b>{{ $user->homeplanet->goldmine->cost_metal }}</b></p>
 						<p>Energy : <b>{{ $user->homeplanet->goldmine->cost_energy }}</b></p>
 						<form class="form-horizontal" role="form" method="POST" action="{{ url('/homeplanet') }}">
-							{{ csrf_field() }}
+							
 							<input id="gold_upgrating" type="hidden" class="" name="gold_upgrating" value="gold_upgrating">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							@if(($user->homeplanet->gold < $user->homeplanet->goldmine->cost_gold) &&
-    							($user->homeplanet->metal < $user->homeplanet->goldmine->cost_metal) &&
-    							($user->homeplanet->energy < $user->homeplanet->goldmine->cost_energy))
+							@if((($user->homeplanet->gold < $user->homeplanet->goldmine->cost_gold) ||
+    							($user->homeplanet->metal < $user->homeplanet->goldmine->cost_metal) ||
+    							($user->homeplanet->energy < $user->homeplanet->goldmine->cost_energy)) && ($user->homeplanet->goldmine->upgrating_time == null))
 
     							<div class="alert alert-danger">
   									You haven't got enough resources to upgrade
@@ -117,12 +117,13 @@
 						<p>Metal : <b>{{ $user->homeplanet->metalmine->cost_metal }}</b></p>
 						<p>Energy : <b>{{ $user->homeplanet->metalmine->cost_energy }}</b></p>
 						<form class="form-horizontal" role="form" method="POST" action="{{ url('/homeplanet') }}">
-							{{ csrf_field() }}
+							
 							<input id="metal_upgrating" type="hidden" class="" name="metal_upgrating" value="metal_upgrating">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							@if(($user->homeplanet->gold < $user->homeplanet->metalmine->cost_gold) &&
-    							($user->homeplanet->metal < $user->homeplanet->metalmine->cost_metal) &&
-    							($user->homeplanet->energy < $user->homeplanet->metalmine->cost_energy))
+							@if((($user->homeplanet->gold < $user->homeplanet->metalmine->cost_gold) ||
+    							($user->homeplanet->metal < $user->homeplanet->metalmine->cost_metal) ||
+    							($user->homeplanet->energy < $user->homeplanet->metalmine->cost_energy)) &&
+    							($user->homeplanet->metalmine->upgrating_time == null))
 
     							<div class="alert alert-danger">
   									You haven't got enough resources to upgrade
@@ -194,12 +195,13 @@
 						<p>Metal : <b>{{ $user->homeplanet->powerplant->cost_metal }}</b></p>
 						<p>Energy : <b>{{ $user->homeplanet->powerplant->cost_energy }}</b></p>
 						<form class="form-horizontal" role="form" method="POST" action="{{ url('/homeplanet') }}">
-							{{ csrf_field() }}
+							
 							<input id="energy_upgrating" type="hidden" class="" name="energy_upgrating" value="energy_upgrating">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							@if(($user->homeplanet->gold < $user->homeplanet->powerplant->cost_gold) &&
-    							($user->homeplanet->metal < $user->homeplanet->powerplant->cost_metal) &&
-    							($user->homeplanet->energy < $user->homeplanet->powerplant->cost_energy))
+							@if((($user->homeplanet->gold < $user->homeplanet->powerplant->cost_gold) ||
+    							($user->homeplanet->metal < $user->homeplanet->powerplant->cost_metal) ||
+    							($user->homeplanet->energy < $user->homeplanet->powerplant->cost_energy)) &&
+    							($user->homeplanet->powerplant->upgrating_time == null))
 
     							<div class="alert alert-danger">
   									You haven't got enough resources to upgrade

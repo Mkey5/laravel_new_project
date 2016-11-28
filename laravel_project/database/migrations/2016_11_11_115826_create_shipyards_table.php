@@ -21,6 +21,10 @@ class CreateShipyardsTable extends Migration
             $table->integer('cost_energy')->default(200);
             $table->integer('level')->default(1);
             $table->dateTime('upgrating_time')->nullable();
+            $table->dateTime('frigate_time')->nullable();
+            $table->dateTime('corvette_time')->nullable();
+            $table->dateTime('destroyer_time')->nullable();
+            $table->dateTime('assaultcarier_time')->nullable();
             
             
             

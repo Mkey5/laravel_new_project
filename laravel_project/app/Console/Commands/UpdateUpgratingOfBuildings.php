@@ -38,7 +38,8 @@ class UpdateUpgratingOfBuildings extends Command
      */
     public function handle()
     {
-        
+        // Home Planet Buildings
+
         $allPlanetsBuildings = DB::table('homeplanets')
             ->join('goldmines','homeplanets.id','=','goldmines.homeplanet_id')
             ->join('powerplants','homeplanets.id' , '=','powerplants.homeplanet_id')
@@ -145,16 +146,40 @@ class UpdateUpgratingOfBuildings extends Command
                             ]);
                     }
 
-
             }
-
-
-
 
 
         }
 
-        
+        // Orbital Base Buildings
+
+        $allShipyards = DB::table('shipyards')->get();
+
+        foreach ($allShipyards as $shipyard) {
+            if($shipyard->upgrating_time != null){
+                date_default_timezone_set('Europe/Bucharest');
+                $timeDB = $shipyard->upgrating_time;
+                $timeNow = \Carbon\Carbon::now();
+
+                if($timeNow > $timeDB){
+                    $newLevel = $shipyard->level + 1;
+                    $newCostGold = $shipyard->cost_gold * $newLevel;
+                    $newCostMetal = $shipyard->cost_metal * $newLevel;
+                    $newCostEnergy = $shipyard->cost_energy * $newLevel;
+
+                    \App\Shipyard::where('id' , '=' , $shipyard->id)->update([
+                        'level' => $newLevel ,
+                        'cost_gold' => $newCostGold ,
+                        'cost_metal' => $newCostMetal ,
+                        'cost_energy' => $newCostEnergy ,
+                        'upgrating_time' => null
+
+                        ]);
+                }
+            }
+        }
+
+
 
     }
 }

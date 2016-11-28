@@ -15,19 +15,5 @@ class Shipyard extends Model
         return $this->belongsTo('App\Orbitalbase');
     }
 
-    public function frigate(){
-    	return $this->hasMany('App\Frigate');
-    }
-
-    public function corvette(){
-    	return $this->hasMany('App\Corvette');
-    }
-
-    public function destroyer(){
-    	return $this->hasMany('App\Destroyer');
-    }
-
-    public function assaultcarrier(){
-    	return $this->hasMany('App\Assaultcarrier');
-    }
+    
 }

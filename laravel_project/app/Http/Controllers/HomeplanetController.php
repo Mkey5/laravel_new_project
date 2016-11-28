@@ -22,7 +22,7 @@ class HomeplanetController extends Controller
 
     	if($request->input('gold_upgrating')){
     		$currentGoldLevel = $currentUser->homeplanet->goldmine->level; // mine level
-    		$timeToUpgrade = 1 * $currentGoldLevel;	// time to upgrade
+    		$timeToUpgrade = 60 * $currentGoldLevel;	// time to upgrade
 
     		
     		if( ($currentUser->homeplanet->gold >= $currentUser->homeplanet->goldmine->cost_gold) &&
