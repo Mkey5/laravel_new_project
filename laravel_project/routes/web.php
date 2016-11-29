@@ -105,7 +105,9 @@ Route::get('/test_2' , function(){
 				 'upgrating_time' => null
 				]);
 
-
+	App\Shipyard::where('orbitalbase_id','=',Auth::id())->update([
+				 'frigate_time' => null
+				]);	
 
 
 // play with date and time more 
