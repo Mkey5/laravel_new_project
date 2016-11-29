@@ -10,7 +10,11 @@
                 <label>Update Profile picture /2mb max/</label>
                 <input type="file" name="avatar">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <br>
                 <input type="submit" value="submit" class="pull-right btn btn-md btn-primary" style="margin-right: 140px;">
+                <br>
+                <br>
+                <br>
             </form>
             
 
@@ -28,6 +32,7 @@
                 
             ?>
         </div>
+        
         <div class="col-md-6">
             <p><a class="btn btn-md btn-primary" href="/homeplanet">Go to Home Planet ?</a></p>
             <p><a class="btn btn-md btn-warning" href="/orbitalbase">Go to Orbital Base ?</a></p>

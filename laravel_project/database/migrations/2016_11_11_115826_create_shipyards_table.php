@@ -24,7 +24,7 @@ class CreateShipyardsTable extends Migration
             $table->dateTime('frigate_time')->nullable();
             $table->dateTime('corvette_time')->nullable();
             $table->dateTime('destroyer_time')->nullable();
-            $table->dateTime('assaultcarier_time')->nullable();
+            $table->dateTime('assaultcarrier_time')->nullable();
             
             
             

@@ -14,6 +14,7 @@ class Assaultcarrier extends Model
     public static $cost_energy = 820;
     public static $levelneeded = 5;
 
+
     public static $attack_def = 500;
     public static $defence_def = 480;
 

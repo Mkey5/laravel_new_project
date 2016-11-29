@@ -19,6 +19,7 @@ class CreateCorvettesTable extends Migration
             $table->integer('attack')->default(50);
             $table->integer('defence')->default(50);
             $table->integer('level')->default(1);
+            $table->string('state')->default('docked');
             
             // something else :?
 

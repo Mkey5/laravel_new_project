@@ -10,13 +10,437 @@
 	</style>
 
 	<div class="container">
-		
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Home Planet:</th>
+                        <th>Gold</th>
+                        <th>Metal</th>
+                        <th>Energy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="position: relative;">
+                            <img src="/images/homeplanet.png" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                        </td>
+                        <td>
+                            <img src="/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->gold }}</b>
+                        </td>
+                        <td>
+                            <img src="/images/metal.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->metal }}</b>
+                        </td>
+                        <td>
+                            <img src="/images/energy.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->energy }}</b>
+                        </td>
+                       
+                    </tr>
+                </tbody>
+            </table>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<h2 >Docks :</h2>
+			<!-- for alerts when the user tries to build more than he could afford to pay -->
+			@if(isset($errorBuild))
+				<div class="alert alert-warning alert-dismissable fade in" style="text-align: center;">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <strong>Warning!</strong> {{ $errorBuild }}
+			  </div>
+			@endif
+			<div class="col-md-12">
+				<table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Docked ships:</th>
+                        <th>Frigates</th>
+                        <th>Corvettes</th>
+                        <th>Destroyers</th>
+                        <th>Assault Carriers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="position: relative;">
+                            <img src="/images/orbitalbase.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                        </td>
+                        <td><b>{{ $user->orbitalbase->frigates }}</b></td>
+                        <td><b>{{ $user->orbitalbase->corvettes }}</b></td>
+                        <td><b>{{ $user->orbitalbase->destroyers }}</b></td>
+                        <td><b>{{ $user->orbitalbase->assaultcarriers }}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-9">
+						<img src="/images/frigate.jpg" class="img-responsive" style="border-radius: 10px">
+						<h3>Frigate</h3>
+					</div>
+					<div class="col-md-3">
+						<p>Level Needed: <b>{{ $ships['frigate']['levelneeded'] }}</b></p>
+						<p>Attack: <b>{{ $ships['frigate']['attack'] }}</b></p>
+						<p>Defence: <b>{{ $ships['frigate']['defence'] }}</b></p>
+						<p>Gold: <b>{{ $ships['frigate']['cost_gold'] }}</b></p>
+						<p>Metal: <b>{{ $ships['frigate']['cost_metal'] }}</b></p>
+						<p>Energy: <b>{{ $ships['frigate']['cost_energy'] }}</b></p>
+						
+
+						<form class="form-horizontal" role="form" method="POST" action="{{ url('/orbitalbase') }}">
+							
+							<input id="create_frigate" type="hidden" class="" name="create_frigate" value="create_frigate">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input class="form-control" name="number_ships" title="max 5 ships" value="" type="number" min="0"  max="5" style="width: 70px;">
+							<br>
+							@if($ships['frigate']['levelneeded'] > $user->orbitalbase->shipyard->level)
+								<div class="alert alert-danger" style="text-align: center;">
+  									Level {{ $ships['frigate']['levelneeded'] }} Shipyard needed
+								</div>
+							@elseif((($user->homeplanet->gold < $ships['frigate']['cost_gold']) ||
+    							($user->homeplanet->metal < $ships['frigate']['cost_metal'] ) ||
+    							($user->homeplanet->energy < $ships['frigate']['cost_energy'] )) && ($user->orbitalbase->shipyard->frigate_time == null))
+
+    							<div class="alert alert-danger" style="text-align: center;">
+  									Not enough resources
+								</div>
+							@elseif ($user->orbitalbase->shipyard->frigate_time != null)
+	                            <?php 
+
+	                            	$time_frigate = $user->orbitalbase->shipyard->frigate_time;
+	                            	$year_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('Y');
+	                            	$month_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('m');
+	                            	$day_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('d');
+	                            	$hour_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('H');
+	                            	$minute_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('i');
+	                            	$second_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('s');
+
+	                             ?>
+	                             <div class="countdown">
+								  <span id="clock_frigate"></span>
+								</div>
+								<script type="text/javascript">
+
+									$('#clock_frigate').countdown('{{ $year_frigate }}/{{ $month_frigate }}/{{ $day_frigate }} {{ $hour_frigate }}:{{ $minute_frigate }}:{{ $second_frigate }}')
+										.on('update.countdown', function(event) {
+										  var format = '%H:%M:%S';
+										  if(event.offset.totalDays > 0) {
+										    format = '%-d day%!d ' + format;
+										  }
+										  if(event.offset.weeks > 0) {
+										    format = '%-w week%!w ' + format;
+										  }
+										  $(this).html(event.strftime(format));
+										})
+										.on('finish.countdown', function(event) {
+										  $(this).html('The ships are ready!')
+										    .parent().addClass('disabled').on('click', function(event){
+										    	location.reload();
+										    });
+
+										});
+
+								</script>
+
+
+	                        @else
+	                        	<br>
+	                        	<button type="submit" class="btn btn-primary" style="width: 70px;">Build</button>
+	                        @endif
+						</form>
+
+					</div>
+				</div>
+				<br>
+
+			</div>
+			
+
+
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-9">
+						<img src="/images/corvette.jpg" class="img-responsive" style="border-radius: 10px">
+						<h3>Corvette</h3>
+					</div>
+					<div class="col-md-3">
+						<p>Level Needed: <b>{{ $ships['corvette']['levelneeded'] }}</b></p>
+						<p>Attack: <b>{{ $ships['corvette']['attack'] }}</b></p>
+						<p>Defence: <b>{{ $ships['corvette']['defence'] }}</b></p>
+						<p>Gold: <b>{{ $ships['corvette']['cost_gold'] }}</b></p>
+						<p>Metal: <b>{{ $ships['corvette']['cost_metal'] }}</b></p>
+						<p>Energy: <b>{{ $ships['corvette']['cost_energy'] }}</b></p>
+						
+
+						<form class="form-horizontal" role="form" method="POST" action="{{ url('/orbitalbase') }}">
+							
+							<input id="create_corvette" type="hidden" class="" name="create_corvette" value="create_corvette">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input class="form-control" name="number_ships" title="max 5 ships" value="" type="number" min="0"  max="5" style="width: 70px;">
+							<br>
+							@if($ships['corvette']['levelneeded'] > $user->orbitalbase->shipyard->level)
+								<div class="alert alert-danger" style="text-align: center;">
+  									Level {{ $ships['corvette']['levelneeded'] }} Shipyard needed
+								</div>
+							@elseif((($user->homeplanet->gold < $ships['corvette']['cost_gold']) ||
+    							($user->homeplanet->metal < $ships['corvette']['cost_metal'] ) ||
+    							($user->homeplanet->energy < $ships['corvette']['cost_energy'] )) && ($user->orbitalbase->shipyard->corvette_time == null))
+
+    							<div class="alert alert-danger" style="text-align: center;">
+  									Not enough resources
+								</div>
+							@elseif ($user->orbitalbase->shipyard->corvette_time != null)
+	                            <?php 
+
+	                            	$time_corvette = $user->orbitalbase->shipyard->corvette_time;
+	                            	$year_corvette = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_corvette)->format('Y');
+	                            	$month_corvette = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_corvette)->format('m');
+	                            	$day_corvette = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_corvette)->format('d');
+	                            	$hour_corvette = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_corvette)->format('H');
+	                            	$minute_corvette = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_corvette)->format('i');
+	                            	$second_corvette = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_corvette)->format('s');
+
+	                             ?>
+	                             <div class="countdown">
+								  <span id="clock_corvette"></span>
+								</div>
+								<script type="text/javascript">
+
+									$('#clock_corvette').countdown('{{ $year_corvette }}/{{ $month_corvette }}/{{ $day_corvette }} {{ $hour_corvette }}:{{ $minute_corvette }}:{{ $second_corvette }}')
+										.on('update.countdown', function(event) {
+										  var format = '%H:%M:%S';
+										  if(event.offset.totalDays > 0) {
+										    format = '%-d day%!d ' + format;
+										  }
+										  if(event.offset.weeks > 0) {
+										    format = '%-w week%!w ' + format;
+										  }
+										  $(this).html(event.strftime(format));
+										})
+										.on('finish.countdown', function(event) {
+										  $(this).html('The ships are ready!')
+										    .parent().addClass('disabled').on('click', function(event){
+										    	location.reload();
+										    });
+
+										});
+
+								</script>
+
+
+	                        @else
+	                        	<br>
+	                        	<button type="submit" class="btn btn-primary" style="width: 70px;">Build</button>
+	                        @endif
+						</form>
+
+					</div>
+				</div>
+				<br>
+
+			</div>
+
+			
+		</div>
+		<br>
+
+
+
+
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-9">
+						<img src="/images/destroyer.jpg" class="img-responsive" style="border-radius: 10px">
+						<h3>Destroyer</h3>
+					</div>
+					<div class="col-md-3">
+						<p>Level Needed: <b>{{ $ships['destroyer']['levelneeded'] }}</b></p>
+						<p>Attack: <b>{{ $ships['destroyer']['attack'] }}</b></p>
+						<p>Defence: <b>{{ $ships['destroyer']['defence'] }}</b></p>
+						<p>Gold: <b>{{ $ships['destroyer']['cost_gold'] }}</b></p>
+						<p>Metal: <b>{{ $ships['destroyer']['cost_metal'] }}</b></p>
+						<p>Energy: <b>{{ $ships['destroyer']['cost_energy'] }}</b></p>
+						
+
+						<form class="form-horizontal" role="form" method="POST" action="{{ url('/orbitalbase') }}">
+							
+							<input id="create_destroyer" type="hidden" class="" name="create_destroyer" value="create_destroyer">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input class="form-control" name="number_ships" title="max 5 ships" value="" type="number" min="0"  max="5" style="width: 70px;">
+							<br>
+							@if($ships['destroyer']['levelneeded'] > $user->orbitalbase->shipyard->level)
+								<div class="alert alert-danger" style="text-align: center;">
+  									Level {{ $ships['destroyer']['levelneeded'] }} Shipyard needed
+								</div>
+							@elseif((($user->homeplanet->gold < $ships['destroyer']['cost_gold']) ||
+    							($user->homeplanet->metal < $ships['destroyer']['cost_metal'] ) ||
+    							($user->homeplanet->energy < $ships['destroyer']['cost_energy'] )) && ($user->orbitalbase->shipyard->destroyer_time == null))
+
+    							<div class="alert alert-danger" style="text-align: center;">
+  									Not enough resources
+								</div>
+							@elseif ($user->orbitalbase->shipyard->destroyer_time != null)
+	                            <?php 
+
+	                            	$time_destroyer = $user->orbitalbase->shipyard->destroyer_time;
+	                            	$year_destroyer = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_destroyer)->format('Y');
+	                            	$month_destroyer = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_destroyer)->format('m');
+	                            	$day_destroyer = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_destroyer)->format('d');
+	                            	$hour_destroyer = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_destroyer)->format('H');
+	                            	$minute_destroyer = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_destroyer)->format('i');
+	                            	$second_destroyer = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_destroyer)->format('s');
+
+	                             ?>
+	                             <div class="countdown">
+								  <span id="clock_destroyer"></span>
+								</div>
+								<script type="text/javascript">
+
+									$('#clock_destroyer').countdown('{{ $year_destroyer }}/{{ $month_destroyer }}/{{ $day_destroyer }} {{ $hour_destroyer }}:{{ $minute_destroyer }}:{{ $second_destroyer }}')
+										.on('update.countdown', function(event) {
+										  var format = '%H:%M:%S';
+										  if(event.offset.totalDays > 0) {
+										    format = '%-d day%!d ' + format;
+										  }
+										  if(event.offset.weeks > 0) {
+										    format = '%-w week%!w ' + format;
+										  }
+										  $(this).html(event.strftime(format));
+										})
+										.on('finish.countdown', function(event) {
+										  $(this).html('The ships are ready!')
+										    .parent().addClass('disabled').on('click', function(event){
+										    	location.reload();
+										    });
+
+										});
+
+								</script>
+
+
+	                        @else
+	                        	<br>
+	                        	<button type="submit" class="btn btn-primary" style="width: 70px;">Build</button>
+	                        @endif
+						</form>
+
+					</div>
+				</div>
+				<br>
+
+			</div>
+			
+
+
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-9">
+						<img src="/images/assaultcarrier.jpg" class="img-responsive" style="border-radius: 10px">
+						<h3>Assault Carrier</h3>
+					</div>
+					<div class="col-md-3">
+						<p>Level Needed: <b>{{ $ships['assaultcarrier']['levelneeded'] }}</b></p>
+						<p>Attack: <b>{{ $ships['assaultcarrier']['attack'] }}</b></p>
+						<p>Defence: <b>{{ $ships['assaultcarrier']['defence'] }}</b></p>
+						<p>Gold: <b>{{ $ships['assaultcarrier']['cost_gold'] }}</b></p>
+						<p>Metal: <b>{{ $ships['assaultcarrier']['cost_metal'] }}</b></p>
+						<p>Energy: <b>{{ $ships['assaultcarrier']['cost_energy'] }}</b></p>
+						
+
+						<form class="form-horizontal" role="form" method="POST" action="{{ url('/orbitalbase') }}">
+							
+							<input id="create_assaultcarrier" type="hidden" class="" name="create_assaultcarrier" value="create_assaultcarrier">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input class="form-control" name="number_ships" title="max 5 ships" value="" type="number" min="0"  max="5" style="width: 70px;">
+							<br>
+							@if($ships['assaultcarrier']['levelneeded'] > $user->orbitalbase->shipyard->level)
+								<div class="alert alert-danger" style="text-align: center;">
+  									Level {{ $ships['assaultcarrier']['levelneeded'] }} Shipyard needed
+								</div>
+							@elseif((($user->homeplanet->gold < $ships['assaultcarrier']['cost_gold']) ||
+    							($user->homeplanet->metal < $ships['assaultcarrier']['cost_metal'] ) ||
+    							($user->homeplanet->energy < $ships['assaultcarrier']['cost_energy'] )) && ($user->orbitalbase->shipyard->assaultcarrier_time == null))
+
+    							<div class="alert alert-danger" style="text-align: center;">
+  									Not enough resources
+								</div>
+							@elseif ($user->orbitalbase->shipyard->assaultcarrier_time != null)
+	                            <?php 
+
+	                            	$time_assaultcarrier = $user->orbitalbase->shipyard->assaultcarrier_time;
+	                            	$year_assaultcarrier = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_assaultcarrier)->format('Y');
+	                            	$month_assaultcarrier = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_assaultcarrier)->format('m');
+	                            	$day_assaultcarrier = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_assaultcarrier)->format('d');
+	                            	$hour_assaultcarrier = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_assaultcarrier)->format('H');
+	                            	$minute_assaultcarrier = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_assaultcarrier)->format('i');
+	                            	$second_assaultcarrier = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_assaultcarrier)->format('s');
+
+	                             ?>
+	                             <div class="countdown">
+								  <span id="clock_assaultcarrier"></span>
+								</div>
+								<script type="text/javascript">
+
+									$('#clock_assaultcarrier').countdown('{{ $year_assaultcarrier }}/{{ $month_assaultcarrier }}/{{ $day_assaultcarrier }} {{ $hour_assaultcarrier }}:{{ $minute_assaultcarrier }}:{{ $second_assaultcarrier }}')
+										.on('update.countdown', function(event) {
+										  var format = '%H:%M:%S';
+										  if(event.offset.totalDays > 0) {
+										    format = '%-d day%!d ' + format;
+										  }
+										  if(event.offset.weeks > 0) {
+										    format = '%-w week%!w ' + format;
+										  }
+										  $(this).html(event.strftime(format));
+										})
+										.on('finish.countdown', function(event) {
+										  $(this).html('The ships are ready!')
+										    .parent().addClass('disabled').on('click', function(event){
+										    	location.reload();
+										    });
+
+										});
+
+								</script>
+
+
+	                        @else
+	                        	<br>
+	                        	<button type="submit" class="btn btn-primary" style="width: 70px;">Build</button>
+	                        @endif
+						</form>
+
+					</div>
+				</div>
+				<br>
+
+			</div>
+			
+		</div>
+		<br>
+
+
+
+
+
+
+
+
+
+
 		<div class="row">
 			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-12">
 						<h2 >Shipyard :</h2>
-						<img src="/images/shipyard.jpg" style="border-radius: 20px">
+						<img src="/images/shipyard.jpg" class="img-responsive" style="border-radius: 20px">
 					</div>
 				</div>
 				<div class="row">
@@ -33,7 +457,7 @@
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							@if((($user->homeplanet->gold < $user->orbitalbase->shipyard->cost_gold) ||
     							($user->homeplanet->metal < $user->orbitalbase->shipyard->cost_metal) ||
-    							($user->homeplanet->energy < $user->orbitalbase->shipyard->cost_energy)) && ($user->orbitalbase->shipyard->frigate_time == null))
+    							($user->homeplanet->energy < $user->orbitalbase->shipyard->cost_energy)) && ($user->orbitalbase->shipyard->upgrating_time == null))
 
     							<div class="alert alert-danger" style="text-align: center;">
   									You haven't got enough resources to upgrade
@@ -89,98 +513,13 @@
 			
 		</div>
 		<br>
-		<div class="row">
-			<div class="col-md-6">
-				<h2 >Docks :</h2>
-				<div class="row">
-					<div class="col-md-9">
-						<img src="/images/frigate.jpg" style="border-radius: 10px">
-					</div>
-					<div class="col-md-3">
-						<p>Level Needed: <b>{{ $ships['frigate']['levelneeded'] }}</b></p>
-						<p>Attack: <b>{{ $ships['frigate']['attack'] }}</b></p>
-						<p>Defence: <b>{{ $ships['frigate']['defence'] }}</b></p>
-						<p>Gold: <b>{{ $ships['frigate']['cost_gold'] }}</b></p>
-						<p>Metal: <b>{{ $ships['frigate']['cost_metal'] }}</b></p>
-						<p>Energy: <b>{{ $ships['frigate']['cost_energy'] }}</b></p>
-						
-
-						<form class="form-horizontal" role="form" method="POST" action="{{ url('/orbitalbase') }}">
-							
-							<input id="create_frigate" type="hidden" class="" name="create_frigate" value="create_frigate">
-							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							<input class="form-control" name="number_ships" value="" type="number" min="0"  max="5" style="width: 70px;">
-							<br>
-							@if($ships['frigate']['levelneeded'] > $user->orbitalbase->shipyard->level)
-								<div class="alert alert-danger" style="text-align: center;">
-  									Level {{ $ships['frigate']['levelneeded'] }} Shipyard needed
-								</div>
-							@elseif((($user->homeplanet->gold < $ships['frigate']['cost_gold']) ||
-    							($user->homeplanet->metal < $ships['frigate']['cost_metal'] ) ||
-    							($user->homeplanet->energy < $ships['frigate']['cost_energy'] )) && ($user->orbitalbase->shipyard->frigate_time == null))
-
-    							<div class="alert alert-danger" style="text-align: center;">
-  									Not enough resources
-								</div>
-							@elseif ($user->orbitalbase->shipyard->frigate_time != null)
-	                            <?php 
-
-	                            	$time_frigate = $user->orbitalbase->shipyard->frigate_time;
-	                            	$year_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('Y');
-	                            	$month_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('m');
-	                            	$day_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('d');
-	                            	$hour_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('H');
-	                            	$minute_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('i');
-	                            	$second_frigate = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_frigate)->format('s');
-
-	                             ?>
-	                             <div class="countdown">
-								  <span id="clock_frigate"></span>
-								</div>
-								<script type="text/javascript">
-
-									$('#clock_frigate').countdown('{{ $year_frigate }}/{{ $month_frigate }}/{{ $day_frigate }} {{ $hour_frigate }}:{{ $minute_frigate }}:{{ $second_frigate }}')
-										.on('update.countdown', function(event) {
-										  var format = '%H:%M:%S';
-										  if(event.offset.totalDays > 0) {
-										    format = '%-d day%!d ' + format;
-										  }
-										  if(event.offset.weeks > 0) {
-										    format = '%-w week%!w ' + format;
-										  }
-										  $(this).html(event.strftime(format));
-										})
-										.on('finish.countdown', function(event) {
-										  $(this).html('The building is upgrated!')
-										    .parent().addClass('disabled').on('click', function(event){
-										    	location.reload();
-										    });
-
-										});
-
-								</script>
 
 
-	                        @else
-	                        	<br>
-	                        	<button type="submit" class="btn btn-primary" style="width: 70px;">Build</button>
-	                        @endif
-						</form>
+	</div>
+	<br>
+	<br>
 
-					</div>
-				</div>
-				<br>
-
-			</div>
-			<!-- for alerts when the user tries to build more than he could afford to pay -->
-			@if(isset($errorBuild))
-				<div class="alert alert-warning alert-dismissable fade in" style="text-align: right;">
-			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			    <strong>Warning!</strong> {{ $errorBuild }}
-			  </div>
-			@endif
-
-			<script type="text/javascript">
+	<script type="text/javascript">
 				
 
 				$(function(){
@@ -207,13 +546,7 @@
 					});
 				});
 
-			</script>
-		</div>
-	</div>
-	<br>
-	<br>
-
-
+	</script>
 
 
 @endsection

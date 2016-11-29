@@ -19,6 +19,7 @@ class CreateAssaultcarriersTable extends Migration
             $table->integer('attack')->default(500);
             $table->integer('defence')->default(480);
             $table->integer('level')->default(1);
+            $table->string('state')->default('docked');
             
             // something else :?
 

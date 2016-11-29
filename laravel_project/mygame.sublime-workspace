@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"every",
+				"everyMinute"
+			],
+			[
+				"numbe",
+				"numberOfShips"
+			],
+			[
+				"friga",
+				"frigateEnergy"
+			],
+			[
+				"numb",
+				"numberOfShips"
+			],
+			[
+				"num",
+				"numberOfShips"
+			],
+			[
+				"cur",
+				"currentValue"
+			],
+			[
+				"to",
+				"toCheck"
+			],
+			[
 				"var",
 				"var_dump"
 			],
@@ -207,31 +235,15 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 4605,
+				"buffer_size": 4705,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Frigate.php",
+			"file": "resources/views/profile.blade.php",
 			"settings":
 			{
-				"buffer_size": 518,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/OrbitalbaseController.php",
-			"settings":
-			{
-				"buffer_size": 3305,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/views/orbitalbase.blade.php",
-			"settings":
-			{
-				"buffer_size": 7657,
+				"buffer_size": 6008,
 				"line_ending": "Windows"
 			}
 		}
@@ -284,23 +296,28 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Observers",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts"
 	],
 	"file_history":
 	[
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_115826_create_shipyards_table.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/homeplanet.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateBuildingShips.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/orbitalbase.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/OrbitalbaseController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Corvette.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Destroyer.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Assaultcarrier.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Frigate.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_115826_create_shipyards_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120344_create_frigates_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120408_create_corvettes_table.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120527_create_assaultcarriers_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120446_create_destroyers_table.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/homeplanet.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120527_create_assaultcarriers_table.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Kernel.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/profile.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/RegistersteptwoController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_10_173837_create_orbitalbases_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Orbitalbase.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Shipyard.php",
@@ -313,7 +330,6 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120108_create_metalmines_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120228_create_powerplants_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/UserController.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Kernel.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateIncome.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/auth/register.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Console/Scheduling/Schedule.php",
@@ -325,7 +341,6 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Providers/EventServiceProvider.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Support/Facades/Mail.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/profile.blade.php",
 		"/C/Users/Marek/AppData/Local/Temp/scp00517/public_html/game/app/Console/Kernel.php",
 		"/C/Users/Marek/AppData/Local/Temp/scp26638/public_html/game/app/Console/Kernel.php",
 		"/C/Users/Marek/AppData/Local/Temp/scp49811/php.ini",
@@ -336,7 +351,6 @@
 		"/C/Users/Marek/AppData/Local/Temp/scp34269/php.ini",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/intervention/image/src/Intervention/Image/Size.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/fzaninotto/faker/src/Faker/Provider/Image.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/RegistersteptwoController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/registersteptwo.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Homeplanet.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Fleet.php",
@@ -402,6 +416,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"col-md-4",
+			"<img",
+			"frigate",
+			"destroyer",
+			"corvette",
+			"assaultcarrier",
 			"{{ csrf_field() }}",
 			"border",
 			"img",
@@ -450,7 +470,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -459,15 +479,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4605,
+						"buffer_size": 4705,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1801,
-								1801
+								2361,
+								2361
 							]
 						],
 						"settings":
@@ -476,27 +496,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1318.0,
+						"translation.y": 2054.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/Frigate.php",
+					"file": "resources/views/profile.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 518,
+						"buffer_size": 6008,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								380,
-								391
+								612,
+								612
 							]
 						],
 						"settings":
@@ -506,63 +526,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/Http/Controllers/OrbitalbaseController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3305,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								578,
-								584
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 442.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "resources/views/orbitalbase.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7657,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4758,
-								4758
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 3296.0,
+						"translation.y": 166.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

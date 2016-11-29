@@ -11,8 +11,40 @@
 
 	<div class="container">
 		<div class="row">
+			<div class="col-md-12">
+				<table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Home Planet:</th>
+                        <th>Gold</th>
+                        <th>Metal</th>
+                        <th>Energy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="position: relative;">
+                            <img src="/images/homeplanet.png" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                        </td>
+                        <td>
+                            <img src="/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->gold }}</b>
+                        </td>
+                        <td>
+                            <img src="/images/metal.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->metal }}</b>
+                        </td>
+                        <td>
+                            <img src="/images/energy.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->energy }}</b>
+                        </td>
+                       
+                    </tr>
+                </tbody>
+            </table>
+			</div>
+		</div>
+		<br>
+		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<img src="/images/homeplanet_big.png" style="height:300px; width: 300px; border-radius: 50%;">
+				<img src="/images/homeplanet_big.png" class="img-responsive" style="height:300px; width: 300px; border-radius: 50%;">
 			</div>
 		</div>
 		<br>
@@ -90,12 +122,16 @@
 	                        @else
 	                        	<button type="submit" class="btn btn-primary">Upgrade</button>
 	                        @endif
+	                        <br>
+							<br>
+							<br>
 						</form>
 
 					</div>
 				</div>
 				
 			</div>
+
 			<div class="col-md-4">
 				<div class="row">
 					<div class="col-md-4">
@@ -168,12 +204,16 @@
 	                        @else
 	                        	<button type="submit" class="btn btn-primary">Upgrade</button>
 	                        @endif
+	                        <br>
+							<br>
+							<br>
 						</form>
 
 					</div>
 				</div>
 				
 			</div>
+		
 			<div class="col-md-4">
 				<div class="row">
 					<div class="col-md-4">
@@ -250,12 +290,16 @@
 	                        @else
 	                        	<button type="submit" class="btn btn-primary">Upgrade</button>
 	                        @endif
+	                        <br>
+							<br>
+							<br>
 						</form>
 
 					</div>
 				</div>
 				
 			</div>
+
 		</div>
 		<br>
 		<br>

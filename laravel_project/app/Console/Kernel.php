@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         // Commands\UpdateIncome::class
         \App\Console\Commands\UpdateIncome::class,
         \App\Console\Commands\UpdateUpgratingOfBuildings::class,
+        \App\Console\Commands\UpdateBuildingShips::class,
     ];
 
     /**
@@ -30,6 +31,7 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         // $schedule->command('update:income')->everyMinute();
         $schedule->command('check:upgrating')->everyMinute();
+        $schedule->command('check:ships')->everyMinute();
         $schedule->command('update:income')->cron('*/2 * * * * *'); // every two minutes
 
     }

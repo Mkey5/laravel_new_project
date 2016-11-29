@@ -19,6 +19,7 @@ class CreateFrigatesTable extends Migration
             $table->integer('attack')->default(30);
             $table->integer('defence')->default(20);
             $table->integer('level')->default(1);
+            $table->string('state')->default('docked');
             
             // something else :?
 
