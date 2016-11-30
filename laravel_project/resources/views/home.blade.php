@@ -57,7 +57,7 @@
                 <div class="panel-heading">More about the game</div>
 
                 <div class="panel-body">
-                    <p>As you can see , at the upper right corner of the window there is a drop-down menu with your name on it. This menu will be visable from all layers of the game. There you will find path to your <b>Profile</b> , <b>Home</b> , <b>Home Planet</b> , <b>Orbital Base</b> , <b>Radar</b> and of course a <b>Logout</b> button. </p>
+                    <p>As you can see , at the upper right corner of the window there is a drop-down menu with your name on it. This menu will be visable from all layers of the game. There you will find path to your <b>Home</b> , <b>Planet</b> , <b>Orbital Base</b> , <b>Radar</b> , <b>Profile</b> and of course a <b>Logout</b> button. </p>
                 </div>
             </div>
         </div>

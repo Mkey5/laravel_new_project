@@ -79,18 +79,13 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/profile') }}">
-                                            <i class="glyphicon glyphicon-user"></i>&nbsp;Profile
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="/home">
                                             <i class="glyphicon glyphicon-home"></i>&nbsp;Home
                                         </a>
                                     </li>
                                     <li>
                                         <a href="/homeplanet">
-                                            <i class="glyphicon glyphicon-globe"></i>&nbsp;Home Planet
+                                            <i class="glyphicon glyphicon-globe"></i>&nbsp;Planet
                                         </a>
                                     </li>
                                     <li>
@@ -101,6 +96,11 @@
                                     <li>
                                         <a href="/radar">
                                             <i class="glyphicon glyphicon-search"></i>&nbsp;Radar
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/profile') }}">
+                                            <i class="glyphicon glyphicon-user"></i>&nbsp;Profile
                                         </a>
                                     </li>
                                     <li>
