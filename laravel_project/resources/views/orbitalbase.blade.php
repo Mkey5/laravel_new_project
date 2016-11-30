@@ -3,13 +3,42 @@
 @section('content')
 	<script src="/js/jquery-3.1.1.min.js"></script>
 	<script src="/js/jquery.countdown.js"></script>
+	
 	<style type="text/css">
-		.disabled:hover{
+		
+		html{
+	        height: 100%;
+	        width: 100%;
+	    }
+	    body{
+	        height: 100%;
+	        width: 100%;
+	        background: url('/images/orbitalbase_back.jpg') no-repeat scroll center center / cover;
+	        background-attachment: fixed;
+	        color: white;
+	    }
+	    table{
+	    	color: gray;
+	    }
+
+	    .transp-back{
+			background-color: rgba(120, 120, 120, 0.4);
+		}
+
+    	.disabled:hover{
 			cursor: pointer;
 		}
-	</style>
 
-	<div class="container">
+		h2{
+			margin-left: 10px;
+		}
+
+		th{
+			color: white;
+		}
+	</style>
+	
+	<div class="container transp-back">
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table table-striped">

@@ -4,12 +4,31 @@
 	<script src="/js/jquery-3.1.1.min.js"></script>
 	<script src="/js/jquery.countdown.js"></script>
 	<style type="text/css">
+		html{
+	        height: 100%;
+	        width: 100%;
+	    }
+	    body{
+	        height: 100%;
+	        width: 100%;
+	        background: url('/images/homeplanet.jpg') no-repeat scroll center center / cover;
+	        background-attachment: fixed;
+	    }
+
 		.disabled:hover{
 			cursor: pointer;
 		}
+
+		.transp-back{
+			background-color: rgba(242, 242, 242, 0.4);
+		}
+		.back{
+			background-color: rgba(242, 242, 242, 0.9);
+			padding-top: 10px;
+		}
 	</style>
 
-	<div class="container">
+	<div class="container transp-back">
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table table-striped">
@@ -48,7 +67,7 @@
 			</div>
 		</div>
 		<br>
-		<div class="row">
+		<div class="row back">
 			<div class="col-md-4">
 				<div class="row">
 					<div class="col-md-4">
