@@ -23,6 +23,7 @@ class CreateFleetsTable extends Migration
             $table->integer('assault_carrier')->default(0);
             $table->integer('attack')->default(0);
             $table->integer('defence')->default(0);
+            $table->string('state')->default('orbiting');
             
             
             // something else :?

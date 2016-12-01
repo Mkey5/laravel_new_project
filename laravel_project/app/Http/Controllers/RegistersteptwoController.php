@@ -148,7 +148,7 @@ class RegistersteptwoController extends Controller
     			$currentUser->step2 = 1;
     			$currentUser->save();
 
-    			return view('profile' , array(
+    			return view('home' , array(
     				'user' => $currentUser
     				));
 

@@ -59,4 +59,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Fleet');
     }
 
+     public function battles()
+    {
+        return $this->belongsToMany('App\Battle' , 'battle_user');
+    }
+
 }
