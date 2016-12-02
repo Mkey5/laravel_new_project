@@ -18,8 +18,11 @@ class BattleMiddleware
     public function handle($request, Closure $next, $guard = null)
     {   
         $currentUser = Auth::user();
-        $battleInProgress = $currentUser->battles->where('battle_time','!=' ,null)->first() ? true : false;
-
+        
+        $battleInProgress = $currentUser->battles
+        ->where('battle_time','!=' ,null)
+        ->where('attacker', '=' , $currentUser->id)
+        ->first() ? true : false;
 
         if (Auth::guard($guard)->check() && $battleInProgress == true && $currentUser->fleet->state == 'ready') {
             return $next($request);

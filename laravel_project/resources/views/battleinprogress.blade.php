@@ -11,7 +11,7 @@
 	    body{
 	        height: 100%;
 	        width: 100%;
-	        /*background: url('/images/battlestation.jpg') no-repeat scroll center center / cover;*/
+	        background: url('/images/battle.jpg') no-repeat scroll center center / cover;
 	        background-attachment: fixed;
 	    }
 
@@ -19,32 +19,68 @@
 			cursor: pointer;
 		}
 
-		.transp-back{
-			background-color: rgba(242, 242, 242, 0.4);
-		}
-		.back{
-			background-color: rgba(242, 242, 242, 0.9);
-			padding-top: 5px;
-			height: 100%;
-		}
-		.battlestation{
-			background-color: rgba(140, 140, 140, 0.9);
-		}
+		
 
-		th{
-			color: white;
+		.countdown{
+			background-color: rgba(150, 150, 150, 0.7);
+			text-align: center;
+			border-radius: 10px;
 		}
-
-
-
-		.planet{
-			margin-top: 10px;
+		#clock{
+			font-size: 40px;
+			font-weight: bold;
+			color: red;
+			text-shadow: 1px 1px black;
 		}
-
+		img{
+			display: block;
+			margin: 0 auto;
+		}
+		
 	</style>
 
 	<div class="container">
-		Battle in Progress
+		
+		<div class="row">
+				<div class="col-md-4 col-md-offset-4 borders">
+				<div class="countdown">
+					<span id="clock"></span>
+				</div>
+					<script type="text/javascript">
+
+						$('#clock').countdown('{{ $year }}/{{ $month }}/{{ $day }} {{$hour }}:{{ $minute }}:{{ $second }}')
+						.on('update.countdown', function(event) {
+								var format = '%H:%M:%S';
+								if(event.offset.totalDays > 0) {
+										format = '%-d day%!d ' + format;
+								}
+								if(event.offset.weeks > 0) {
+										format = '%-w week%!w ' + format;
+								}
+								$(this).html(event.strftime(format));
+						})
+						.on('finish.countdown', function(event) {
+								$(this).html('The Battle is over !')
+										.parent().addClass('disabled').on('click', function(event){
+											location.reload();
+										});
+						});
+				</script>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<img src="/images/fleetleave.gif" class="img-responsive" style=" border-radius: 10px">
+			</div>
+			
+			<div class="col-md-6">
+				<img src="/images/fleetbattle.gif" class="img-responsive" style=" border-radius: 10px">
+			</div>
+		</div>
+
+
+
 	</div>
 
 	@endsection

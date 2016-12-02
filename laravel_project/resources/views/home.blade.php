@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
+<script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/jquery.countdown.js"></script>
 <style type="text/css">
 
     html{
@@ -23,10 +24,45 @@
     .panel-warning .panel-heading{
         /*background-image: linear-gradient(to bottom,#FEC724 0,#FC9E21 100%) !important;*/
     }
+    .countdown{
+        text-align: center;
+    }
 
 </style>
 
 <div class="container">
+    @if($battleInProgress == true)
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 borders">
+                <div class="countdown alert alert-danger">
+                    <p>You're under attack !</p>
+                    <p>Time until enemy fleet arrives:</p> 
+                    <p><span id="clock"></span></p>
+                </div>
+
+                    <script type="text/javascript">
+
+                        $('#clock').countdown('{{ $year }}/{{ $month }}/{{ $day }} {{$hour }}:{{ $minute }}:{{ $second }}')
+                        .on('update.countdown', function(event) {
+                                var format = '%H:%M:%S';
+                                if(event.offset.totalDays > 0) {
+                                        format = '%-d day%!d ' + format;
+                                }
+                                if(event.offset.weeks > 0) {
+                                        format = '%-w week%!w ' + format;
+                                }
+                                $(this).html(event.strftime(format));
+                        })
+                        .on('finish.countdown', function(event) {
+                                $(this).html('The Battle is over !')
+                                        .parent().addClass('disabled').on('click', function(event){
+                                            location.reload();
+                                        });
+                        });
+                </script>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">

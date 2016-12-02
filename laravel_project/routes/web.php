@@ -61,12 +61,17 @@ Route::group(['middleware' => ['registersteptwo']],function(){
 
 
 Route::get('/test_3' , function(){
-	$currentUser = Auth::user();
 	
-	$battleInProgress = $currentUser->battles->where('battle_time','!=' ,null)->first();
-	echo $battleInProgress->battle_time;
+	
+	$currentUser = Auth::user();
+        date_default_timezone_set('Europe/Bucharest');
 
+        $battleInProgress = $currentUser->battles
+        ->where('battle_time','!=' ,null)
+        ->where('defender', '=' , $currentUser->id)
+        ->first() ? true : false;
 
+        var_dump($battleInProgress);
 
 });
 

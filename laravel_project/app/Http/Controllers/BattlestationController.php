@@ -18,7 +18,10 @@ class BattlestationController extends Controller
     	$currentUser = Auth::user();
     	$defender = User::where('id','=', $user_id)->first();
 
-    	$battleInProgress = $currentUser->battles->where('battle_time','!=' ,null)->first() ? true : false;
+    	$battleInProgress = $currentUser->battles
+    	->where('battle_time','!=' ,null)
+    	->where('attacker', '=' , $currentUser->id)
+    	->first() ? true : false;
 
     	$timeToTravel = $this->calculateTravelTime($currentUser , $defender);
 
