@@ -31,13 +31,17 @@ Route::group(['middleware' => ['auth']],function(){ //checks if you're loged in
 	Route::get('/profile','UserController@profile');
 	Route::post('/profile','UserController@update_avatar');
 	Route::get('/radar' , 'RadarController@radarIndex');
+
 	Route::get('/battlestation/{user_id}','BattlestationController@battlestationIndex');
+	Route::post('/battlestation/{user_id}','BattlestationController@battlestationHandling');
 
 	Route::get('homeplanet','HomeplanetController@homeplanetIndex');
 	Route::post('homeplanet' , 'HomeplanetController@homeplanetUpgrade');
 
 	Route::get('orbitalbase','OrbitalbaseController@orbitalbaseIndex');
 	Route::post('orbitalbase','OrbitalbaseController@orbitalbaseUpgradeOrCreate');
+
+	Route::get('battleinprogress','BattleInProgressController@index');
 });
 
 Route::group(['middleware' => ['registersteptwo']],function(){
@@ -57,11 +61,10 @@ Route::group(['middleware' => ['registersteptwo']],function(){
 
 
 Route::get('/test_3' , function(){
-	$curentUser = Auth::user();
+	$currentUser = Auth::user();
 	
-	\App\Frigate::$cost_gold_def += 10;
-
-	echo "cost gold " . \App\Frigate::$cost_gold_def;
+	$battleInProgress = $currentUser->battles->where('battle_time','!=' ,null)->first();
+	echo $battleInProgress->battle_time;
 
 
 
