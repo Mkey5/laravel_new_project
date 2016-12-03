@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"defe",
+				"defence"
+			],
+			[
+				"all",
+				"allBattlesInProgress"
+			],
+			[
+				"at",
+				"attacker"
+			],
+			[
+				"att",
+				"attackInProgress"
+			],
+			[
 				"ma",
 				"margin"
 			],
@@ -26,10 +42,6 @@
 			[
 				"mar",
 				"margin-top"
-			],
-			[
-				"defe",
-				"defender"
 			],
 			[
 				"de",
@@ -102,10 +114,6 @@
 			[
 				"new",
 				"newCostMetal"
-			],
-			[
-				"all",
-				"allShipyards"
 			],
 			[
 				"current",
@@ -287,24 +295,24 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 5049,
+				"buffer_size": 5587,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "resources/views/battlestation.blade.php",
+			"file": "app/Console/Commands/UpdateBattlelog.php",
 			"settings":
 			{
-				"buffer_size": 7174,
-				"line_ending": "Windows"
+				"buffer_size": 6603,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "resources/views/orbitalbase.blade.php",
+			"file": "app/Http/Controllers/BattlestationController.php",
 			"settings":
 			{
-				"buffer_size": 23982,
-				"line_ending": "Windows"
+				"buffer_size": 4750,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -358,21 +366,27 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/auth",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts"
 	],
 	"file_history":
 	[
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/BattleInProgressController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/home.blade.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/BattlestationController.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/battleinprogress.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/HomeController.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/battleinprogress.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/BattlestationController.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateBuildingShips.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateUpgratingOfBuildings.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_12_01_134516_create_battles_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/battlestation.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/radar.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/auth/login.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/auth/register.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/BattleInProgressController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Middleware/BattleMiddleware.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Kernel.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/User.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Battle.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_12_01_134516_create_battles_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2014_10_12_000000_create_users_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/RegistersteptwoController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_12_01_134549_create_battle_user_table.php",
@@ -382,7 +396,6 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/homeplanet.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/profile.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts/app.blade.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateBuildingShips.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/OrbitalbaseController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Corvette.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Destroyer.php",
@@ -397,15 +410,12 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Orbitalbase.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Shipyard.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/HomeplanetController.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateUpgratingOfBuildings.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/test.blade.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/radar.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120037_create_goldmines_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120108_create_metalmines_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120228_create_powerplants_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/UserController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateIncome.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/auth/register.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Console/Scheduling/Schedule.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_21_145250_battlesreports_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_21_144933_battles_report_table.php",
@@ -483,6 +493,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"defenceInProgress",
 			"_gold",
 			"0",
 			"frigate",
@@ -549,15 +560,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5049,
+						"buffer_size": 5587,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2197,
-								2197
+								2101,
+								2101
 							]
 						],
 						"settings":
@@ -566,7 +577,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1173.0,
+						"translation.y": 1581.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -574,28 +585,29 @@
 				},
 				{
 					"buffer": 1,
-					"file": "resources/views/battlestation.blade.php",
+					"file": "app/Console/Commands/UpdateBattlelog.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7174,
+						"buffer_size": 6603,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7142,
-								7142
+								5565,
+								5565
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5375.0,
+						"translation.y": 809.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -603,28 +615,27 @@
 				},
 				{
 					"buffer": 2,
-					"file": "resources/views/orbitalbase.blade.php",
+					"file": "app/Http/Controllers/BattlestationController.php",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 23982,
+						"buffer_size": 4750,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								23245,
-								23956
+								2255,
+								2736
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 15633.0,
+						"translation.y": 1564.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,

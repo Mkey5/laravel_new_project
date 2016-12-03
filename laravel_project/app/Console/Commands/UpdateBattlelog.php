@@ -43,6 +43,9 @@ class UpdateBattlelog extends Command
             ->where('return_time','!=',null)
             ->get();
            
+        public function updateFleetHomeBattleTable($percentShipLost , $percentResources , $battle){
+            //TODO
+        }
 
         foreach ($allBattlesInProgress as $battle) {
 
@@ -61,7 +64,7 @@ class UpdateBattlelog extends Command
             // updating and calculating battle 
             if($battle->battle_time != null){
                 date_default_timezone_set('Europe/Bucharest');
-                $timeDB = $planetBuildings->gold_upgrating_time;
+                $timeDB = $battle->battle_time;
                 $timeNow = \Carbon\Carbon::now();
 
                 if($timeNow > $timeDB){
@@ -86,17 +89,84 @@ class UpdateBattlelog extends Command
                         $defender_defence += $defender->defence;
                     }
 
-                    //check if attacker won
-                    if($attaker->){
 
+                    
+                    //Calc left ships in fleet and/or defender orbiting/fleet ships
+                    //update gold , metal ,energy to battle table
+                    //battle table - update $battle->battle_time == null
+
+                    //check if attacker won
+                    if($attaker->attack > $defender->defence){
+                        //won
+                        $battleScore = $attacker->attack - $defender->defence;
+                        
+
+                        if($battleScore >= 300){
+                            //total victory
+
+
+                            // \App\Homeplanet::where('user_id','=',$attacker->id)->update([
+                            //          'frigate' => $FleetFrigates,
+                            //          'corvette' => $FleetCorvettes,
+                            //          'destroyer' => $FleetDestroyers,
+                            //          'assault_carrier' => $FleetAssault_carriers,
+                            //          'attack' => $FleetAttack,
+                            //          'defence' => $FleetDefence ,
+                            //          'state' => 'ready'
+                            //         ]);
+
+                            // \App\Battle::where('id' , '=' , $battle->id)->update([]);
+
+                            // \App\Fleet::where('user_id','=',$attacker->id)->update([
+                            //          'frigate' => $FleetFrigates,
+                            //          'corvette' => $FleetCorvettes,
+                            //          'destroyer' => $FleetDestroyers,
+                            //          'assault_carrier' => $FleetAssault_carriers,
+                            //          'attack' => $FleetAttack,
+                            //          'defence' => $FleetDefence ,
+                            //          'state' => 'ready'
+                            //         ]);
+
+                            // \App\Orbitalbase::where('user_id','=',$currentUser->id)->update([
+                            //          'frigates' => 0 ,
+                            //          'corvettes' => 0 ,
+                            //          'destroyers' => 0 ,
+                            //          'assaultcarriers' => 0
+                            //         ]);
+
+
+                        }elseif($battleScore >= 200){
+
+                        }elseif($battleScore >= 100){
+
+                        }elseif($battleScore >= 50){
+
+                        }else{
+                            
+                        }
+
+                        echo round(9.5, 0, PHP_ROUND_HALF_DOWN); // 9
+                        $x = rand(0,39)
+                    }elseif($attaker->attack < $defender->defence){
+                        //lost
+                    }elseif ($attaker->attack == $defender->defence) {
+                        //==
                     }
 
                 }
             }
 
-            // if attacker won - updating and calculating battle
+            // if attacker won - updating and calculating battle 
             if($battle->battle_time == null && $battle->return_time != null ){
+                date_default_timezone_set('Europe/Bucharest');
+                $timeDB = $battle->return_time;
+                $timeNow = \Carbon\Carbon::now();
 
+                if($timeNow > $timeDB){
+                    //update gold , metal ,energy to attacker homeplanet
+                    //left ships from fleet - update to orbitalbase , state == orbiting
+                    //battle table - update $battle->return_time == null
+                }
             }
 
             
