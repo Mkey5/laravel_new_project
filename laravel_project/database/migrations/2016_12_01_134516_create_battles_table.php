@@ -24,6 +24,7 @@ class CreateBattlesTable extends Migration
             $table->integer('energy')->nullable();
             $table->text('battle_log')->nullable();
             $table->dateTime('battle_time')->nullable();
+            $table->dateTime('return_time')->nullable();
             
             // something else :?
 

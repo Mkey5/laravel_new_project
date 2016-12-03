@@ -63,15 +63,30 @@ Route::group(['middleware' => ['registersteptwo']],function(){
 Route::get('/test_3' , function(){
 	
 	
-	$currentUser = Auth::user();
-        date_default_timezone_set('Europe/Bucharest');
+	$allBattlesInProgress = DB::table('battles')
+            ->where('return_time','!=',null)
+            ->get();
+           
 
-        $battleInProgress = $currentUser->battles
-        ->where('battle_time','!=' ,null)
-        ->where('defender', '=' , $currentUser->id)
-        ->first() ? true : false;
+        foreach ($allBattlesInProgress as $battle) {
+        	var_dump($battle);
+            $attacker = DB::table('users')
+            	->where('users.id','=',$battle->attacker)
+                ->join('orbitalbases','users.id' , '=' , 'orbitalbases.user_id')
+                ->join('fleets' , 'users.id' , '=' , 'fleets.user_id')
+                ->first();
 
-        var_dump($battleInProgress);
+               
+
+            $defender = DB::table('users')
+            	->where('users.id','=',$battle->defender)
+                ->join('orbitalbases','users.id' , '=' , 'orbitalbases.user_id')
+                ->join('fleets' , 'users.id' , '=' , 'fleets.user_id')
+                ->first();
+             
+                var_dump($attacker);
+
+        }
 
 });
 

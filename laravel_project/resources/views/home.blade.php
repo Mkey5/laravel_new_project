@@ -31,6 +31,7 @@
 </style>
 
 <div class="container">
+@if(isset($defenceInProgress))
     @if($defenceInProgress == true)
         <div class="row">
                 <div class="col-md-4 col-md-offset-4 borders">
@@ -38,7 +39,7 @@
                     <p>You're under attack !</p>
                     <p><b>{{ $attacker_nick }}</b> sent his/hers fleet !</p>
                     <p>Time until enemy fleet arrives:</p> 
-                    <p><span id="clock"></span></p>
+                    <p><b><span id="clock"></span></b></p>
                 </div>
 
                     <script type="text/javascript">
@@ -64,14 +65,16 @@
             </div>
         </div>
     @endif
+@endif
 
+@if(isset($attackInProgress))
     @if($attackInProgress == true)
         <div class="row">
                 <div class="col-md-4 col-md-offset-4 borders">
                 <div class="countdown alert alert-info">
                     <p>Your Fleet is on the way !</p>
                     <p>Time until attack:</p> 
-                    <p><span id="clock_attack"></span></p>
+                    <p><b><span id="clock_attack"></span></b></p>
                 </div>
 
                     <script type="text/javascript">
@@ -98,6 +101,40 @@
         </div>
     @endif
 
+    @if($attackInProgress == false &&  isset($year_return))
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 borders">
+                <div class="countdown alert alert-success">
+                    <p>Your Fleet was <b>Victorious</b> !</p>
+                    <p>After <b>{{ $user->fleet->name }}</b> returns , you can check the Battle Log for more details. You will find it in your Profile section. It will be visable after your first battle.</p>
+                    <p>Time to return:</p> 
+                    <p><b><span id="clock_return"></span></b></p>
+                </div>
+
+                    <script type="text/javascript">
+
+                        $('#clock_return').countdown('{{ $year_return }}/{{ $month_return }}/{{ $day_return }} {{$hour_return }}:{{ $minute_return }}:{{ $second_return }}')
+                        .on('update.countdown', function(event) {
+                                var format = '%H:%M:%S';
+                                if(event.offset.totalDays > 0) {
+                                        format = '%-d day%!d ' + format;
+                                }
+                                if(event.offset.weeks > 0) {
+                                        format = '%-w week%!w ' + format;
+                                }
+                                $(this).html(event.strftime(format));
+                        })
+                        .on('finish.countdown', function(event) {
+                                $(this).html('The Battle is over !')
+                                        .parent().addClass('disabled').on('click', function(event){
+                                            location.reload();
+                                        });
+                        });
+                </script>
+            </div>
+        </div>
+    @endif    
+@endif
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">

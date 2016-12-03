@@ -75,6 +75,14 @@ class HomeController extends Controller
             $second_attack = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_attack)->format('s');
 
 
+            $time_return = $battle->return_time;
+            $year_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('Y');
+            $month_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('m');
+            $day_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('d');
+            $hour_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('H');
+            $minute_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('i');
+            $second_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('s');
+
 
             return view('home',array(
                 'user' => $currentUser ,
@@ -92,7 +100,13 @@ class HomeController extends Controller
                 'hour_attack' => $hour_attack,
                 'minute_attack' => $minute_attack,
                 'second_attack' => $second_attack,
-                'attacker_nick' => $attacker_nick
+                'attacker_nick' => $attacker_nick,
+                'year_return' => $year_return,
+                'month_return' => $month_return,
+                'day_return' => $day_return,
+                'hour_return' => $hour_return,
+                'minute_return' => $minute_return,
+                'second_return' => $second_return
                 ));
 
 
@@ -143,6 +157,14 @@ class HomeController extends Controller
             $minute_attack = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_attack)->format('i');
             $second_attack = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_attack)->format('s');
 
+            $time_return = $battle->return_time;
+            $year_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('Y');
+            $month_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('m');
+            $day_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('d');
+            $hour_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('H');
+            $minute_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('i');
+            $second_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('s');
+
 
 
             return view('home',array(
@@ -154,7 +176,13 @@ class HomeController extends Controller
                 'day_attack' => $day_attack,
                 'hour_attack' => $hour_attack,
                 'minute_attack' => $minute_attack,
-                'second_attack' => $second_attack
+                'second_attack' => $second_attack,
+                'year_return' => $year_return,
+                'month_return' => $month_return,
+                'day_return' => $day_return,
+                'hour_return' => $hour_return,
+                'minute_return' => $minute_return,
+                'second_return' => $second_return
                 ));
         }
 
