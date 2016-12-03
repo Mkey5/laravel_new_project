@@ -37,15 +37,19 @@ class BattlestationController extends Controller
 
 	public function battlestationHandling(Request $request){
 		if($request->input('prepare_fleet')){
-		   return $this->battlestationPrepareFleet($request);
+		   return $this->battlestationPrepareFleet();
 		}elseif ($request->input('abort')) {
-			return $this->battlestationAbort($request);
+			return $this->battlestationAbort();
 		}elseif ($request->input('attack')){
-			return $this->battlestationAttack($request); //this may not work 
+			return $this->battlestationAttack($request); 
 		}
 	}
 
-	public function battlestationPrepareFleet(Request $request){
+	public function battlestationPrepareFleet(){
+		session_start();
+		$_SESSION["fleet"] = false;
+		$_SESSION["radar"] = false;
+
 		$currentUser = Auth::user();
 		$dockedFrigates = $currentUser->orbitalbase->frigates ;
 		$dockedCorvettes = $currentUser->orbitalbase->corvettes;
@@ -92,7 +96,7 @@ class BattlestationController extends Controller
 	}
 
 
-	public function battlestationAbort(Request $request){
+	public function battlestationAbort(){
 
 		$currentUser = Auth::user();
 		$dockedFrigates = $currentUser->fleet->frigate ;

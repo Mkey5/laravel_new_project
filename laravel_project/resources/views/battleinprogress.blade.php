@@ -19,6 +19,11 @@
 			cursor: pointer;
 		}
 
+		h1{
+			text-align: center;
+			color: white;
+			text-shadow: 1px 2px black;
+		}
 		
 
 		.countdown{
@@ -78,7 +83,9 @@
 				<img src="/images/fleetbattle.gif" class="img-responsive" style=" border-radius: 10px">
 			</div>
 		</div>
-
+		<div class="row">
+			<h1>Attack in Progress!</h1>
+		</div>
 
 
 	</div>

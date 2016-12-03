@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+	// Start the session
+	session_start();
+	$_SESSION["radar"] = true;
+	$_SESSION["fleet"] = true;
+?>
 <style type="text/css">
 
 	html{

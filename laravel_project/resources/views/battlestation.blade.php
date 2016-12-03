@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+		
 	<style type="text/css">
 		html{
 	        height: 100%;
@@ -159,7 +160,7 @@
 					</div>
 					<div class="col-md-3">
 						@if($user->fleet->state == 'ready')
-						<form class="form-horizontal" role="form" method="POST" action="{{ url('/battlestation') }}/{{ $defender->id }}">
+						<form class="form-horizontal" role="form" id="abort_form" method="POST" action="{{ url('/battlestation') }}/{{ $defender->id }}">
 							
 							<input id="abort" type="hidden" class="" name="abort" value="abort">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -198,12 +199,17 @@
 		<br>
 	</div>
 
-<script type="text/javascript">
-			$(function(){
-					
-					
-				});
+	<!-- this is for updating the page , when the user comes again from radar -->
+	<?php 
+		session_start();
+	?>
+
+	<script type="text/javascript">
+		if({{ $_SESSION["fleet"] }} == 1 && {{ $_SESSION["radar"] }} == 1){
+			     $("#abort_form").submit();
+		}
+	</script>
+	
 
 
-</script>
 @endsection
