@@ -303,15 +303,15 @@
 			"file": "app/Console/Commands/UpdateBattlelog.php",
 			"settings":
 			{
-				"buffer_size": 6603,
+				"buffer_size": 6625,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Http/Controllers/BattlestationController.php",
+			"file": "app/Console/Kernel.php",
 			"settings":
 			{
-				"buffer_size": 4750,
+				"buffer_size": 1411,
 				"line_ending": "Unix"
 			}
 		}
@@ -367,15 +367,20 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/auth",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts"
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/tests"
 	],
 	"file_history":
 	[
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateBuildingShips.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts/mandatory.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/home.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/RadarController.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Support/Facades/Auth.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Broadcasting/Broadcasters/LogBroadcaster.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/HomeController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/battleinprogress.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/BattlestationController.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateBuildingShips.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateUpgratingOfBuildings.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_12_01_134516_create_battles_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/battlestation.blade.php",
@@ -419,7 +424,6 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Console/Scheduling/Schedule.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_21_145250_battlesreports_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_21_144933_battles_report_table.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/RadarController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Observers/WelcomeUserObserver.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Providers/EventServiceProvider.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php",
@@ -441,7 +445,6 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Metalmine.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Goldmine.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_10_173745_create_homeplanets_table.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts/mandatory.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/welcome.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/config/app.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/mygame.sublime-project",
@@ -454,8 +457,6 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Contracts/Validation/Validator.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/routes/web.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Support/Facades/Auth.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Broadcasting/Broadcasters/LogBroadcaster.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Broadcasting/BroadcastManager.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_08_135142_create_customers_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/Controller.php",
@@ -567,8 +568,8 @@
 						"selection":
 						[
 							[
-								2101,
-								2101
+								464,
+								464
 							]
 						],
 						"settings":
@@ -577,7 +578,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1581.0,
+						"translation.y": 201.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -589,15 +590,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6603,
+						"buffer_size": 6625,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5565,
-								5565
+								828,
+								828
 							]
 						],
 						"settings":
@@ -607,7 +608,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 809.0,
+						"translation.y": 3012.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -615,27 +616,29 @@
 				},
 				{
 					"buffer": 2,
-					"file": "app/Http/Controllers/BattlestationController.php",
-					"semi_transient": true,
+					"file": "app/Console/Kernel.php",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4750,
+						"buffer_size": 1411,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2255,
-								2736
+								1411,
+								1411
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1564.0,
+						"translation.y": 599.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,

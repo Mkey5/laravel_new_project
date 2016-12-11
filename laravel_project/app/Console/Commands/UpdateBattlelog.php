@@ -43,12 +43,12 @@ class UpdateBattlelog extends Command
             ->where('return_time','!=',null)
             ->get();
            
-        public function updateFleetHomeBattleTable($percentShipLost , $percentResources , $battle){
-            //TODO
-        }
+        // public function updateFleetHomeBattleTable($percentShipLost , $percentResources , $battle){
+        //     //TODO
+        // }
 
         foreach ($allBattlesInProgress as $battle) {
-
+            
             $attacker = DB::table('users')
                 ->where('users.id','=',$battle->attacker)
                 ->join('orbitalbases','users.id' , '=' , 'orbitalbases.user_id')
@@ -146,7 +146,7 @@ class UpdateBattlelog extends Command
                         }
 
                         echo round(9.5, 0, PHP_ROUND_HALF_DOWN); // 9
-                        $x = rand(0,39)
+                        $x = rand(0,39);
                     }elseif($attaker->attack < $defender->defence){
                         //lost
                     }elseif ($attaker->attack == $defender->defence) {
@@ -169,7 +169,7 @@ class UpdateBattlelog extends Command
                 }
             }
 
-            
-        }
+        }    
+        
     }
 }

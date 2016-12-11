@@ -2,7 +2,12 @@
 
 @section('content')
 <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/jquery.countdown.js"></script>
+<script src="/js/jquery.countdown.js"></script>
+@if(!isset($user->homeplanet->name)) 
+    <script type="text/javascript">
+        document.getElementById('logout-form').submit();
+    </script>
+@endif
 <style type="text/css">
 
     html{
