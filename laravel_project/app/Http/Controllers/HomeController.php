@@ -37,9 +37,15 @@ class HomeController extends Controller
         ->where('attacker', '=' , $currentUser->id)
         ->first() ? true : false;
 
+        $returnInProgress = $currentUser->battles
+        ->where('return_time','!=' ,null)
+        ->where('battle_time','=' ,null)
+        ->where('attacker', '=' , $currentUser->id)
+        ->first() ? true : false;
 
 
-        if($defenceInProgress == true && $attackInProgress == true){
+        if($defenceInProgress == true && $attackInProgress == true || 
+            $defenceInProgress == true && $returnInProgress == true){
 
             $battle = $currentUser->battles
             ->where('battle_time','!=' ,null)
@@ -59,6 +65,43 @@ class HomeController extends Controller
             $second = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time)->format('s');
 
 
+            if($defenceInProgress == true && $returnInProgress == true){
+                $battle_attack = $currentUser->battles
+                ->where('winner' , '=' , $currentUser->id)
+                ->where('battle_time','=' ,null)
+                ->where('return_time','!=' ,null)
+                ->where('attacker', '=' , $currentUser->id)
+                ->first();
+
+
+                $time_return = $battle->return_time;
+                $year_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('Y');
+                $month_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('m');
+                $day_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('d');
+                $hour_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('H');
+                $minute_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('i');
+                $second_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('s');
+
+
+                return view('home',array(
+                    'user' => $currentUser ,
+                    'defenceInProgress' => $defenceInProgress,
+                    'attackInProgress' => $attackInProgress,
+                    'year' => $year,
+                    'month' => $month,
+                    'day' => $day,
+                    'hour' => $hour,
+                    'minute' => $minute,
+                    'second' => $second,
+                    'attacker_nick' => $attacker_nick,
+                    'year_return' => $year_return,
+                    'month_return' => $month_return,
+                    'day_return' => $day_return,
+                    'hour_return' => $hour_return,
+                    'minute_return' => $minute_return,
+                    'second_return' => $second_return
+                    ));                
+            }
 
             $battle_attack = $currentUser->battles
             ->where('battle_time','!=' ,null)
@@ -110,6 +153,9 @@ class HomeController extends Controller
                 ));
 
 
+        // }elseif ($defenceInProgress == true && $returnInProgress == true) {
+
+
         }elseif ($defenceInProgress == true) {
             $battle = $currentUser->battles
             ->where('battle_time','!=' ,null)
@@ -142,13 +188,43 @@ class HomeController extends Controller
                 'attacker_nick' => $attacker_nick
                 ));
 
-        }elseif($attackInProgress == true){
+        }elseif($attackInProgress == true || $returnInProgress == true){
             $battle = $currentUser->battles
             ->where('battle_time','!=' ,null)
             ->where('attacker', '=' , $currentUser->id)
             ->first();
 
-            
+           if($returnInProgress == true){
+                $battle = $currentUser->battles
+                ->where('battle_time','=' ,null)
+                ->where('return_time','!=' ,null)
+                ->where('attacker', '=' , $currentUser->id)
+                ->first();
+
+                $time_return = $battle->return_time;
+                $year_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('Y');
+                $month_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('m');
+                $day_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('d');
+                $hour_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('H');
+                $minute_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('i');
+                $second_return = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_return)->format('s');
+
+
+
+                return view('home',array(
+                    'user' => $currentUser ,
+                    'defenceInProgress' => $defenceInProgress,
+                    'attackInProgress' => $attackInProgress,
+                    'year_return' => $year_return,
+                    'month_return' => $month_return,
+                    'day_return' => $day_return,
+                    'hour_return' => $hour_return,
+                    'minute_return' => $minute_return,
+                    'second_return' => $second_return
+                    ));
+
+            }
+
             $time_attack = $battle->battle_time;
             $year_attack = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_attack)->format('Y');
             $month_attack = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $time_attack)->format('m');
@@ -184,9 +260,8 @@ class HomeController extends Controller
                 'minute_return' => $minute_return,
                 'second_return' => $second_return
                 ));
+
         }
-
-
 
             return view('home',array(
             'user' => $currentUser ,

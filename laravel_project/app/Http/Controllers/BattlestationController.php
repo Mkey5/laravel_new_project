@@ -144,7 +144,7 @@ class BattlestationController extends Controller
 	    // $battle->battle_time = \Carbon\Carbon::now()->addMinutes($timeToTravel+3); 
 	    // $battle->return_time = \Carbon\Carbon::now()->addMinutes($timeToTravel * 2);
 	    $battle->battle_time = \Carbon\Carbon::now()->addMinutes(1); 
-	    $battle->return_time = \Carbon\Carbon::now()->addMinutes(3);
+	    $battle->return_time = \Carbon\Carbon::now()->addMinutes(10);
 		$battle->save();
 
 		$battle->users()->sync([$currentUser->id , $defender->id ],false); // takes the id of the user to sync in the pivot table

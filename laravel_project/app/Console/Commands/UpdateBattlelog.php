@@ -141,6 +141,7 @@ class UpdateBattlelog extends Command
             'gold' => $goldWon ,
             'metal' => $metalWon ,
             'energy' => $energyWon ,
+            'battle_log' => $percent ,
             'battle_time' => null
             ]);
 
@@ -265,15 +266,6 @@ class UpdateBattlelog extends Command
                                  'state' => "orbiting"
                                 ]);
 
-                        \App\Battle::where('id' , '=' , $battle->id)->update([
-                            'winner' => $defender->id,
-                            'loser' => $attacker->id,
-                            'gold' => 0 ,
-                            'metal' => 0 ,
-                            'energy' => 0 ,
-                            'battle_time' => null,
-                            'return_time' => null
-                            ]);
 
                         $defender_frigates = $defender->frigates;
                         $defender_corvettes = $defender->corvettes;
@@ -324,6 +316,18 @@ class UpdateBattlelog extends Command
                             $percentDefenderShips = 0.8;
 
                         }
+
+
+                        \App\Battle::where('id' , '=' , $battle->id)->update([
+                            'winner' => $defender->id,
+                            'loser' => $attacker->id,
+                            'gold' => 0 ,
+                            'metal' => 0 ,
+                            'energy' => 0 ,
+                            'battle_log' => $percentDefenderShips ,
+                            'battle_time' => null,
+                            'return_time' => null
+                            ]);
 
 
                         $defender_frigates_left = $this->calcShips($defender_frigates ,$percentDefenderShips , "F");  
@@ -400,6 +404,7 @@ class UpdateBattlelog extends Command
                             'gold' => 0 ,
                             'metal' => 0 ,
                             'energy' => 0 ,
+                            'battle_log' => 1 ,// 100% ships destroyed
                             'battle_time' => null,
                             'return_time' => null
                             ]);
