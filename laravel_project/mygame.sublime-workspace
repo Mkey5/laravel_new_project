@@ -303,7 +303,7 @@
 			"file": "app/Console/Commands/UpdateBattlelog.php",
 			"settings":
 			{
-				"buffer_size": 6625,
+				"buffer_size": 6720,
 				"line_ending": "Unix"
 			}
 		},
@@ -372,6 +372,8 @@
 	],
 	"file_history":
 	[
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/profile.blade.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts/app.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateBuildingShips.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts/mandatory.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/home.blade.php",
@@ -399,8 +401,6 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_115826_create_shipyards_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/orbitalbase.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/homeplanet.blade.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/profile.blade.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts/app.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/OrbitalbaseController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Corvette.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Destroyer.php",
@@ -590,15 +590,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6625,
+						"buffer_size": 6720,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								828,
-								828
+								703,
+								703
 							]
 						],
 						"settings":
@@ -608,7 +608,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3012.0,
+						"translation.y": 644.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

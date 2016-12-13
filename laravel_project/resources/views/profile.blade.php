@@ -34,9 +34,9 @@
         </div>
         
         <div class="col-md-6">
-            <p><a class="btn btn-md btn-primary" href="/homeplanet">Go to Home Planet ?</a></p>
-            <p><a class="btn btn-md btn-warning" href="/orbitalbase">Go to Orbital Base ?</a></p>
-            <p><a class="btn btn-md btn-success" href="/radar">Go to Radar ?</a></p>
+            <p><a class="btn btn-md btn-primary" href="/homeplanet">Go to Home Planet &nbsp;<i class="glyphicon glyphicon-globe"></i></a></p>
+            <p><a class="btn btn-md btn-warning" href="/orbitalbase">Go to Orbital Base &nbsp;<i class="glyphicon glyphicon-map-marker"></i></a></p>
+            <p><a class="btn btn-md btn-success" href="/radar">Go to Radar &nbsp;<i class="glyphicon glyphicon-search"></i></a></p>
 
 
         </div>

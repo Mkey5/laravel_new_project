@@ -61,33 +61,15 @@ Route::group(['middleware' => ['registersteptwo']],function(){
 
 
 Route::get('/test_3' , function(){
-	
-	
-	$allBattlesInProgress = DB::table('battles')
-            ->where('return_time','!=',null)
-            ->get();
-           
+	$ships = 1;
+	$percent = 0.30;
+	echo ($percent * 100)."% <br>";
+	$calc = $ships * $percent;
+	echo $calc."<br>";
 
-        foreach ($allBattlesInProgress as $battle) {
-        	var_dump($battle);
-            $attacker = DB::table('users')
-            	->where('users.id','=',$battle->attacker)
-                ->join('orbitalbases','users.id' , '=' , 'orbitalbases.user_id')
-                ->join('fleets' , 'users.id' , '=' , 'fleets.user_id')
-                ->first();
+	$lostShips = round(($ships * $percent), 0, PHP_ROUND_HALF_DOWN);
 
-               
-
-            $defender = DB::table('users')
-            	->where('users.id','=',$battle->defender)
-                ->join('orbitalbases','users.id' , '=' , 'orbitalbases.user_id')
-                ->join('fleets' , 'users.id' , '=' , 'fleets.user_id')
-                ->first();
-             
-                var_dump($attacker);
-
-        }
-
+	 echo "ships ".$ships." - "." lost ".$lostShips." = ".($ships - $lostShips);
 });
 
 
