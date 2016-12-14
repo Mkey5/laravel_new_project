@@ -61,11 +61,38 @@ Route::group(['middleware' => ['registersteptwo']],function(){
 
 
 Route::get('/test_3' , function(){
-	echo "<select class=\"form-control\" name=\"corvettes\" id=\"corvettes\" required autofocus>
-		   <option selected disabled>- corvettes -</option>
-		   <option value=\"0\">0</option>
-		    <option value=\"1\">1</option>              
-	</select>";
+	$allUsers = DB::table('users')
+                ->join('goldmines','users.id','=','goldmines.homeplanet_id')
+                ->join('powerplants','users.id' , '=','powerplants.homeplanet_id')
+                ->join('metalmines','users.id' , '=','metalmines.homeplanet_id')
+                ->join('shipyards','users.id', '=' , 'shipyards.orbitalbase_id')
+                ->select('users.id','users.level as user_level','goldmines.level as goldmine_level','metalmines.level as metalmine_level','powerplants.level as energy_level')
+                ->get();
+
+
+
+            foreach ($allUsers as $user) {
+                $check = true;
+                $user_level = $user->user_level;
+                $goldmine_level = $user->goldmine_level;
+                $metalmine_level = $user->metalmine_level;
+                $energy_level = $user->energy_level;
+
+                while ($check) {
+	            	if(goldmine_level > $user_level && $metalmine_level > $user_level && $energy_level > $user_level){
+	            		$user_level++;
+	            	}else{
+	            		$check = false;
+	            	}
+	            }
+
+	            \App\User::where('id',$user->id)->update([
+                    'level' => $user_level
+                    ]);
+
+            }
+
+            
 });
 
 

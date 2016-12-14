@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use DB;
 
 class UpdateLevelUser extends Command
 {
@@ -37,25 +38,36 @@ class UpdateLevelUser extends Command
      */
     public function handle()
     {
-         // $allhomeplanets = DB::table('users')
-         //        ->join('goldmines','homeplanets.id','=','goldmines.homeplanet_id')
-         //        ->join('powerplants','homeplanets.id' , '=','powerplants.homeplanet_id')
-         //        ->join('metalmines','homeplanets.id' , '=','metalmines.homeplanet_id')
-         //        ->select('homeplanets.id','homeplanets.gold','homeplanets.metal','homeplanets.energy','goldmines.income as gold_income','metalmines.income as metal_income','powerplants.income as energy_income','goldmines.level as goldmines_level','metalmines.level as metalmines_level','powerplants.level as energy_level')
-         //        ->get();
+         $allUsers = DB::table('users')
+                ->join('goldmines','users.id','=','goldmines.homeplanet_id')
+                ->join('powerplants','users.id' , '=','powerplants.homeplanet_id')
+                ->join('metalmines','users.id' , '=','metalmines.homeplanet_id')
+                ->join('shipyards','users.id', '=' , 'shipyards.orbitalbase_id')
+                ->select('users.id','users.level as user_level','goldmines.level as goldmine_level','metalmines.level as metalmine_level','powerplants.level as energy_level')
+                ->get();
 
 
-         //    foreach ($allhomeplanets as $homeplanet) {
-         //        $homeplanet->gold += ($homeplanet->gold_income) * $homeplanet->goldmines_level;
-         //        $homeplanet->metal += ($homeplanet->metal_income) * $homeplanet->metalmines_level;
-         //        $homeplanet->energy += ($homeplanet->energy_income) * $homeplanet->energy_level;
 
-         //        \App\Homeplanet::where('id',$homeplanet->id)->update([
-         //            'gold' => $homeplanet->gold,
-         //            'metal' => $homeplanet->metal,
-         //            'energy' => $homeplanet->energy
-         //            ]);
-         //    }
+            foreach ($allUsers as $user) {
+                $check = true;
+                $user_level = $user->user_level;
+                $goldmine_level = $user->goldmine_level;
+                $metalmine_level = $user->metalmine_level;
+                $energy_level = $user->energy_level;
+
+                while ($check) { 
+                    if($goldmine_level > $user_level && $metalmine_level > $user_level && $energy_level > $user_level){
+                        $user_level++;
+                    }else{
+                        $check = false;
+                    }
+                }
+
+                \App\User::where('id',$user->id)->update([
+                    'level' => $user_level
+                    ]);
+
+            }
 
     }
 }

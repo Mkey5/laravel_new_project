@@ -18,6 +18,52 @@
             position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #F1F1F1; z-index:9999;
         }
 
+
+        /*/-------------- POPUP -------------------/*/
+            #popWindow{
+                position:fixed;
+                right: 10px;
+                bottom: 10px;
+                max-width: 300px;
+                padding: 16px;
+                background:url('/images/pop-up.jpg');
+                font-size: 14px;
+                border:1px solid rgb(129, 129, 129);
+                box-shadow:1px 1px 5px rgb(129, 129, 129);
+                opacity:0;
+                color: white;
+                line-height: 1;
+                z-index: 99999999;
+            }
+
+            #popWindow p{
+                cursor: pointer;
+                text-shadow: 1px 2px black;
+                background: rgba(30,30,30,0.6);
+                padding: 10px;
+                line-height: 16px;
+            }
+
+            #popWindow b{
+                
+                font-size: 16px;
+                color: white;
+            }
+
+            #popWindow i{
+                font-size: 16px;
+                color: white;
+
+            }
+
+            #popWindow span{
+                font-size: 16px;
+                color: white;
+              
+            }
+            /*/-------------- END POPUP -------------------/*/
+
+
     </style>
     <!-- <link href="/css/app.css" rel="stylesheet"> -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +80,8 @@
 
         $(window).bind("load", function () {
                     $("#coverAll").hide();
-              });
+                });
+
     </script>
 </head>
 <body>
@@ -125,7 +172,28 @@
 
         @yield('content')
     </div>
+    <!-- OUR POPUP -->
+    <div id="popWindow"></div>
+
+
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="/js/popup.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#popWindow').click(function(){
+                this.style.opacity = 0;
+            });
+
+            var w = window.innerWidth
+                || document.documentElement.clientWidth
+                || document.body.clientWidth;
+            if(w < 800){
+                $('#popWindow').css("display","none");
+            }
+        });
+
+
+    </script>
 </body>
 </html>
