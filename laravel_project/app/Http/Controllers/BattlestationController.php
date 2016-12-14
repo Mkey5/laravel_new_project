@@ -31,13 +31,12 @@ class BattlestationController extends Controller
     			'defender_time_range' => $timeToTravel ,
     			'battleInProgress' => $battleInProgress 
     		));
-		
 	}
 
 
 	public function battlestationHandling(Request $request){
 		if($request->input('prepare_fleet')){
-		   return $this->battlestationPrepareFleet();
+		   return $this->battlestationPrepareFleet($request);
 		}elseif ($request->input('abort')) {
 			return $this->battlestationAbort();
 		}elseif ($request->input('attack')){
@@ -45,53 +44,61 @@ class BattlestationController extends Controller
 		}
 	}
 
-	public function battlestationPrepareFleet(){
+	public function battlestationPrepareFleet(Request $request){
 		session_start();
 		$_SESSION["fleet"] = false;
 		$_SESSION["radar"] = false;
 
 		$currentUser = Auth::user();
+
+		$frigatesToSend = $request->input('frigates') ? $request->input('frigates') : 0;
+		$corvettesToSend = $request->input('corvettes') ? $request->input('corvettes') : 0;
+		$destroyersToSend = $request->input('destroyers') ? $request->input('destroyers') : 0;
+		$assaultcarriersToSend = $request->input('assaultcarriers') ? $request->input('assaultcarriers') : 0;
+
 		$dockedFrigates = $currentUser->orbitalbase->frigates ;
 		$dockedCorvettes = $currentUser->orbitalbase->corvettes;
 		$dockedDestroyers = $currentUser->orbitalbase->destroyers;
 		$dockedAssaultcarriers = $currentUser->orbitalbase->assaultcarriers;
 
-		$FleetFrigates = $dockedFrigates;
-		$FleetCorvettes = $dockedCorvettes;
-		$FleetDestroyers = $dockedDestroyers;
-		$FleetAssault_carriers = $dockedAssaultcarriers;
-		$FleetAttack = ($dockedFrigates * Frigate::$attack_def) +
-										($dockedCorvettes * Corvette::$attack_def) +
-											($dockedDestroyers * Destroyer::$attack_def) +
-												($dockedAssaultcarriers * Assaultcarrier::$attack_def);
+		$dockedLeftFrigates = $dockedFrigates - $frigatesToSend;
+		$dockedLeftCorvettes = $dockedCorvettes - $corvettesToSend;
+		$dockedLeftDestroyers = $dockedDestroyers - $destroyersToSend;
+		$dockedLeftAssault_carriers = $dockedAssaultcarriers - $assaultcarriersToSend;
 
-		$FleetDefence = ($dockedFrigates * Frigate::$defence_def) +
-										($dockedCorvettes * Corvette::$defence_def) +
-											($dockedDestroyers * Destroyer::$defence_def) +
-												($dockedAssaultcarriers * Assaultcarrier::$defence_def); 	
+		$FleetAttack = ($frigatesToSend * Frigate::$attack_def) +
+										($corvettesToSend * Corvette::$attack_def) +
+											($destroyersToSend * Destroyer::$attack_def) +
+												($assaultcarriersToSend * Assaultcarrier::$attack_def);
+
+		$FleetDefence = ($frigatesToSend * Frigate::$defence_def) +
+										($corvettesToSend * Corvette::$defence_def) +
+											($destroyersToSend * Destroyer::$defence_def) +
+												($assaultcarriersToSend * Assaultcarrier::$defence_def); 	
 		
 
 		Fleet::where('user_id','=',$currentUser->id)->update([
-				 'frigate' => $FleetFrigates,
-				 'corvette' => $FleetCorvettes,
-				 'destroyer' => $FleetDestroyers,
-				 'assault_carrier' => $FleetAssault_carriers,
+				 'frigate' => $frigatesToSend,
+				 'corvette' => $corvettesToSend,
+				 'destroyer' => $destroyersToSend,
+				 'assault_carrier' => $assaultcarriersToSend,
 				 'attack' => $FleetAttack,
 				 'defence' => $FleetDefence ,
 				 'state' => 'ready'
 				]);
 
 		Orbitalbase::where('user_id','=',$currentUser->id)->update([
-				 'frigates' => 0 ,
-				 'corvettes' => 0 ,
-				 'destroyers' => 0 ,
-				 'assaultcarriers' => 0
+				 'frigates' => $dockedLeftFrigates ,
+				 'corvettes' => $dockedLeftCorvettes ,
+				 'destroyers' => $dockedLeftDestroyers ,
+				 'assaultcarriers' => $dockedLeftAssault_carriers
 				]);
 
 
+		// var_dump(session('test'))
+  		// return back()->with('test', $frigatesToSend); returning data with session 
 
-    	return back()->withInput();
-
+		return back();
 
 	}
 
@@ -99,18 +106,28 @@ class BattlestationController extends Controller
 	public function battlestationAbort(){
 
 		$currentUser = Auth::user();
-		$dockedFrigates = $currentUser->fleet->frigate ;
-		$dockedCorvettes = $currentUser->fleet->corvette;
-		$dockedDestroyers = $currentUser->fleet->destroyer;
-		$dockedAssaultcarriers = $currentUser->fleet->assault_carrier;
+		$dockedFrigates = $currentUser->orbitalbase->frigates;
+		$dockedCorvettes = $currentUser->orbitalbase->corvettes;
+		$dockedDestroyers = $currentUser->orbitalbase->destroyers;
+		$dockedAssaultcarriers = $currentUser->orbitalbase->assaultcarriers;
+
+		$fleetFrigates = $currentUser->fleet->frigate;
+		$fleetCorvettes = $currentUser->fleet->corvette;
+		$fleetDestroyers = $currentUser->fleet->destroyer;
+		$fleetAssaultcarriers = $currentUser->fleet->assault_carrier;
+
+		$frigatesAll = $dockedFrigates + $fleetFrigates;
+		$corvettesAll = $dockedCorvettes + $fleetCorvettes;
+		$destroyersAll = $dockedDestroyers + $fleetDestroyers;
+		$assaultcarriersAll = $dockedAssaultcarriers + $fleetAssaultcarriers;
 
 		
 
 		Orbitalbase::where('user_id','=',$currentUser->id)->update([
-				 'frigates' => $dockedFrigates ,
-				 'corvettes' => $dockedCorvettes ,
-				 'destroyers' => $dockedDestroyers ,
-				 'assaultcarriers' => $dockedAssaultcarriers
+				 'frigates' => $frigatesAll ,
+				 'corvettes' => $corvettesAll ,
+				 'destroyers' => $destroyersAll ,
+				 'assaultcarriers' => $assaultcarriersAll
 				]);
 
 		Fleet::where('user_id','=',$currentUser->id)->update([
@@ -141,10 +158,8 @@ class BattlestationController extends Controller
 	    $battle = new \App\Battle;
 	    $battle->attacker = $currentUser->id;
 	    $battle->defender = $defender->id;
-	    // $battle->battle_time = \Carbon\Carbon::now()->addMinutes($timeToTravel+3); 
-	    // $battle->return_time = \Carbon\Carbon::now()->addMinutes($timeToTravel * 2);
-	    $battle->battle_time = \Carbon\Carbon::now()->addMinutes(1); 
-	    $battle->return_time = \Carbon\Carbon::now()->addMinutes(10);
+	    $battle->battle_time = \Carbon\Carbon::now()->addMinutes($timeToTravel+3); 
+	    $battle->return_time = \Carbon\Carbon::now()->addMinutes($timeToTravel * 2);
 		$battle->save();
 
 		$battle->users()->sync([$currentUser->id , $defender->id ],false); // takes the id of the user to sync in the pivot table

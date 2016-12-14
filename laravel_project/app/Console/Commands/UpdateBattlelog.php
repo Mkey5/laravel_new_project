@@ -141,7 +141,7 @@ class UpdateBattlelog extends Command
             'gold' => $goldWon ,
             'metal' => $metalWon ,
             'energy' => $energyWon ,
-            'battle_log' => $percent ,
+            'ships_losses' => $percent ,
             'battle_time' => null
             ]);
 
@@ -324,7 +324,7 @@ class UpdateBattlelog extends Command
                             'gold' => 0 ,
                             'metal' => 0 ,
                             'energy' => 0 ,
-                            'battle_log' => $percentDefenderShips ,
+                            'ships_losses' => $percentDefenderShips ,
                             'battle_time' => null,
                             'return_time' => null
                             ]);
@@ -404,7 +404,7 @@ class UpdateBattlelog extends Command
                             'gold' => 0 ,
                             'metal' => 0 ,
                             'energy' => 0 ,
-                            'battle_log' => 1 ,// 100% ships destroyed
+                            'ships_losses' => 1 ,// 100% ships destroyed
                             'battle_time' => null,
                             'return_time' => null
                             ]);

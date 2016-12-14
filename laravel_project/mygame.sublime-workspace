@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"col",
+				"color"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"battle",
+				"battle_log"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"def",
+				"defender"
+			],
+			[
+				"sh",
+				"shipType"
+			],
+			[
+				"los",
+				"lostShips"
+			],
+			[
 				"defe",
 				"defence"
 			],
@@ -38,10 +66,6 @@
 			[
 				"ba",
 				"battleInProgress"
-			],
-			[
-				"mar",
-				"margin-top"
 			],
 			[
 				"de",
@@ -295,23 +319,23 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 5587,
+				"buffer_size": 5000,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Console/Commands/UpdateBattlelog.php",
+			"file": "app/Http/Controllers/HomeController.php",
 			"settings":
 			{
-				"buffer_size": 6720,
+				"buffer_size": 12338,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/Console/Kernel.php",
+			"file": "resources/views/home.blade.php",
 			"settings":
 			{
-				"buffer_size": 1411,
+				"buffer_size": 18485,
 				"line_ending": "Unix"
 			}
 		}
@@ -372,6 +396,10 @@
 	],
 	"file_history":
 	[
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateBattlelog.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/BattlestationController.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Kernel.php",
+		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_12_01_134516_create_battles_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/profile.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/layouts/app.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateBuildingShips.php",
@@ -382,9 +410,7 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/vendor/laravel/framework/src/Illuminate/Broadcasting/Broadcasters/LogBroadcaster.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/HomeController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/battleinprogress.blade.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Http/Controllers/BattlestationController.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Commands/UpdateUpgratingOfBuildings.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_12_01_134516_create_battles_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/battlestation.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/radar.blade.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/resources/views/auth/login.blade.php",
@@ -410,7 +436,6 @@
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120408_create_corvettes_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120446_create_destroyers_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_11_120527_create_assaultcarriers_table.php",
-		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Console/Kernel.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/database/migrations/2016_11_10_173837_create_orbitalbases_table.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Orbitalbase.php",
 		"/D/xampp/htdocs/phptest/laravel_test/my-first-authentication/app/Shipyard.php",
@@ -494,6 +519,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"1",
+			"DB",
+			"App\\Battle",
+			"$year_return",
+			"attackInProgress",
+			"$gold",
+			"attaker",
+			"percentResources",
 			"defenceInProgress",
 			"_gold",
 			"0",
@@ -552,7 +585,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -561,15 +594,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5587,
+						"buffer_size": 5000,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								464,
-								464
+								1924,
+								1924
 							]
 						],
 						"settings":
@@ -578,7 +611,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 201.0,
+						"translation.y": 1334.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -586,19 +619,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/Console/Commands/UpdateBattlelog.php",
+					"file": "app/Http/Controllers/HomeController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6720,
+						"buffer_size": 12338,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								703,
-								703
+								354,
+								354
 							]
 						],
 						"settings":
@@ -608,27 +641,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 644.0,
+						"translation.y": 1319.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/Console/Kernel.php",
+					"file": "resources/views/home.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1411,
+						"buffer_size": 18485,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1411,
-								1411
+								8460,
+								8460
 							]
 						],
 						"settings":
@@ -638,10 +671,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 599.0,
+						"translation.y": 8664.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -822,7 +855,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 454.0,
+	"side_bar_width": 428.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

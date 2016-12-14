@@ -42,7 +42,7 @@
         text-align: center;
     }
 
-    .battle_log{
+    .ships_losses{
         display: none;
     }
 
@@ -141,7 +141,7 @@
             </div>
         </div>
     @endif
-    <?php //var_dump($year_return); ?>
+
     @if($attackInProgress == false &&  isset($year_return))
         <div class="row">
                 <div class="col-md-4 col-md-offset-4 borders">
@@ -177,7 +177,7 @@
     @endif    
 @endif
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-info">
                 <div class="panel-heading">Dashboard</div>
 
@@ -189,7 +189,7 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-warning">
                 <div class="panel-heading">Warning</div>
 
@@ -201,9 +201,9 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-primary">
-                <div class="panel-heading">More about the game</div>
+                <div class="panel-heading">More about the game management</div>
 
                 <div class="panel-body">
                     <p>As you can see , at the upper right corner of the window there is a drop-down menu with your name on it. This menu will be visable from all layers of the game. There you will find path to your <b>Home</b> , <b>Planet</b> , <b>Orbital Base</b> , <b>Radar</b> , <b>Profile</b> and of course a <b>Logout</b> button. </p>
@@ -214,11 +214,11 @@
     <br>
     @if($is = $user->battles->first())
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading center"><h2>Battle Logs</h2> <button id="display_log" class="btn btn-warning float">Display log</button></div>
 
-                    <div class="panel-body battle_log">
+                    <div class="panel-body ships_losses">
                         <h3>Last 5 Wins</h3>
                         <?php 
                             $battles = DB::table('battles')
@@ -256,6 +256,7 @@
                                             <th>Gold /earned/</th>
                                             <th>Metal /earned/</th>
                                             <th>Energy /earned/</th>
+                                            <th>Time of Attack</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -274,7 +275,7 @@
                                             </td>
                                             <td>
                                                 <img src="/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
-                                                <p><b>{{ $battle->battle_log * 100 }}% - lost</b></p>
+                                                <p><b>{{ $battle->ships_losses * 100 }}% - lost</b></p>
                                             </td>
                                             <td>
                                                 <img src="/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
@@ -292,6 +293,9 @@
                                             <td>
                                                 <img src="/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $battle->energy }}</p>
+                                            </td>
+                                            <td>
+                                                {{ $battle->created_at }}
                                             </td>
                                            
                                         </tr>
@@ -337,6 +341,7 @@
                                             <th>Gold /earned/</th>
                                             <th>Metal /earned/</th>
                                             <th>Energy /earned/</th>
+                                            <th>Time of Attack</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -355,7 +360,7 @@
                                             </td>
                                             <td>
                                                 <img src="/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
-                                                <p><b>{{ $battle->battle_log * 100 }}% - lost</b></p>
+                                                <p><b>{{ $battle->ships_losses * 100 }}% - lost</b></p>
                                             </td>
                                             <td>
                                                 <img src="/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
@@ -374,6 +379,9 @@
                                                 <img src="/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $battle->energy }}</p>
                                             </td>
+                                            <td>
+                                                {{ $battle->created_at }}
+                                            </td>
                                            
                                         </tr>
                                     </tbody>
@@ -391,7 +399,7 @@
     
     $(function(){
         $("#display_log").click(function(){
-            $('.battle_log').toggle(1000);
+            $('.ships_losses').toggle(1000);
         });
        
     });

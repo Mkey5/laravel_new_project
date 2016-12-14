@@ -34,7 +34,11 @@
 			color: white;
 		}
 
-
+		select{
+			width: 120px !important;
+			display: inline-block !important;
+			margin-bottom: 10px !important;
+		}
 
 		.planet{
 			margin-top: 10px;
@@ -116,6 +120,8 @@
 						<form class="form-horizontal" role="form" method="POST" action="{{ url('/battlestation') }}/{{ $defender->id }}">
 							
 							<input id="prepare_fleet" type="hidden" class="" name="prepare_fleet" value="prepare_fleet">
+
+						    
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							@if($user->fleet->state == 'ready')
     							<table class="table table-striped">
@@ -151,6 +157,36 @@
   									You haven't got any ship for your fleet
 								</div>
 	                        @else
+
+	                        	<select class="form-control" name="frigates" id="frigates" required autofocus>
+		                            <option selected disabled>- frigates -</option>
+		                            <option value="0">0</option>
+		                            @for ($i = 1; $i <= $user->orbitalbase->frigates; $i++)
+									    <option value="{{ $i }}">{{ $i }}</option>
+									@endfor
+		                        </select>
+		                        <select class="form-control" name="corvettes" id="corvettes" required autofocus>
+		                            <option selected disabled>- corvettes -</option>
+		                            <option value="0">0</option>
+		                            @for ($i = 1; $i <= $user->orbitalbase->corvettes; $i++)
+									    <option value="{{ $i }}">{{ $i }}</option>
+									@endfor
+		                        </select>
+		                        <select class="form-control" name="destroyers" id="destroyers" required autofocus>
+		                            <option selected disabled>- destroyers -</option>
+		                            <option value="0">0</option>
+		                            @for ($i = 1; $i <= $user->orbitalbase->destroyers; $i++)
+									    <option value="{{ $i }}">{{ $i }}</option>
+									@endfor
+		                        </select>
+		                        <select class="form-control" name="assaultcarriers" id="assaultcarriers" required autofocus>
+		                            <option selected disabled>- carriers -</option>
+		                            <option value="0">0</option>
+		                            @for ($i = 1; $i <= $user->orbitalbase->assaultcarriers; $i++)
+									    <option value="{{ $i }}">{{ $i }}</option>
+									@endfor
+		                        </select>
+
 	                        	<button type="submit" class="btn btn-warning">Prepare Fleet &nbsp;<i class="glyphicon glyphicon-record"></i></button>
 	                        	<br>
 	                        @endif
@@ -174,7 +210,7 @@
 						@endif
 					</div>
 					<div class="col-md-3">
-						@if($user->fleet->state == 'ready')
+						@if($user->fleet->state == 'ready' && $user->fleet->attack != 0)
 						<form class="form-horizontal" role="form" method="POST" action="{{ url('/battlestation') }}/{{ $defender->id }}">
 							
 							<input id="attack" type="hidden" class="" name="attack" value="attack">

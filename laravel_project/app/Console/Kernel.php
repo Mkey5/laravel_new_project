@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\UpdateUpgratingOfBuildings::class,
         \App\Console\Commands\UpdateBuildingShips::class,
         \App\Console\Commands\UpdateBattlelog::class,
+        \App\Console\Commands\UpdateLevelUser::class,
     ];
 
     /**
@@ -28,12 +29,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
-        // $schedule->command('update:income')->everyMinute();
+        
         $schedule->command('check:upgrating')->everyMinute();
         $schedule->command('check:ships')->everyMinute();
         $schedule->command('check:battlelog')->everyMinute();
+        $schedule->command('check:userlevel')->hourly();
         $schedule->command('update:income')->cron('*/2 * * * * *'); // every two minutes
 
     }

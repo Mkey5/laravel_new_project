@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Battle extends Model
 {
-    public $timestamps = false;
+    
 	//relationships
     public function users()
     {

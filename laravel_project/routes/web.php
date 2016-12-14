@@ -61,15 +61,11 @@ Route::group(['middleware' => ['registersteptwo']],function(){
 
 
 Route::get('/test_3' , function(){
-	$ships = 1;
-	$percent = 0.30;
-	echo ($percent * 100)."% <br>";
-	$calc = $ships * $percent;
-	echo $calc."<br>";
-
-	$lostShips = round(($ships * $percent), 0, PHP_ROUND_HALF_DOWN);
-
-	 echo "ships ".$ships." - "." lost ".$lostShips." = ".($ships - $lostShips);
+	echo "<select class=\"form-control\" name=\"corvettes\" id=\"corvettes\" required autofocus>
+		   <option selected disabled>- corvettes -</option>
+		   <option value=\"0\">0</option>
+		    <option value=\"1\">1</option>              
+	</select>";
 });
 
 

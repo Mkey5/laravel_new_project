@@ -36,6 +36,12 @@
 		th{
 			color: white;
 		}
+
+		td{
+			color: black;
+			font-weight: bold;
+			font-size: 15px;
+		}
 	</style>
 	
 	<div class="container transp-back">
@@ -72,7 +78,7 @@
 		</div>
 		<br>
 		<div class="row">
-			<h2 >Docks :</h2>
+			
 			<!-- for alerts when the user tries to build more than he could afford to pay -->
 			@if(isset($errorBuild))
 				<div class="alert alert-warning alert-dismissable fade in" style="text-align: center;">
@@ -81,6 +87,7 @@
 			  </div>
 			@endif
 			<div class="col-md-12">
+				<h3 >Docks :</h3>
 				<table class="table table-striped">
                 <thead>
                     <tr>
@@ -93,13 +100,41 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="position: relative;">
+                        <td style="position: relative; width: 130px;">
                             <img src="/images/orbitalbase.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
                         </td>
                         <td><b>{{ $user->orbitalbase->frigates }}</b></td>
                         <td><b>{{ $user->orbitalbase->corvettes }}</b></td>
                         <td><b>{{ $user->orbitalbase->destroyers }}</b></td>
                         <td><b>{{ $user->orbitalbase->assaultcarriers }}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-12">
+				<h3 >Fleet :</h3>
+				<table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Fleet Status:</th>
+                        <th>Frigates</th>
+                        <th>Corvettes</th>
+                        <th>Destroyers</th>
+                        <th>Assault Carriers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="position: relative; width: 130px;">
+                            <img src="/images/fleet.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                        </td>
+                        <td>{{ $user->fleet->frigate }}</td>
+                        <td>{{ $user->fleet->corvette }}</td>
+                        <td>{{ $user->fleet->destroyer }}</td>
+                        <td>{{ $user->fleet->assault_carrier }}</td>
                     </tr>
                 </tbody>
             </table>

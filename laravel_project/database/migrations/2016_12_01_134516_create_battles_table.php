@@ -22,9 +22,10 @@ class CreateBattlesTable extends Migration
             $table->integer('gold')->nullable();
             $table->integer('metal')->nullable();
             $table->integer('energy')->nullable();
-            $table->text('battle_log')->nullable();
+            $table->double('ships_losses')->nullable();
             $table->dateTime('battle_time')->nullable();
             $table->dateTime('return_time')->nullable();
+            $table->timestamps();
             
             // something else :?
 
