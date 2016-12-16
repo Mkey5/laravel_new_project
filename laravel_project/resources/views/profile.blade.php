@@ -6,7 +6,7 @@
         <div class="col-md-6">
         <img src="/uploads/avatars/{{ $user->avatar }}" style="width: 150px; height: 150px; border-radius: 50%; float: left; margin-right: 25px;">
             <h2>{{ $user->name }}'s profile</h2>
-            <form enctype="multipart/form-data" action="/profile" method="POST">
+            <form enctype="multipart/form-data" action="{{ url('/profile') }}" method="POST">
                 <label>Update Profile picture /2mb max/</label>
                 <input type="file" name="avatar">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -34,9 +34,9 @@
         </div>
         
         <div class="col-md-6">
-            <p><a class="btn btn-md btn-primary" href="/homeplanet">Go to Home Planet &nbsp;<i class="glyphicon glyphicon-globe"></i></a></p>
-            <p><a class="btn btn-md btn-warning" href="/orbitalbase">Go to Orbital Base &nbsp;<i class="glyphicon glyphicon-map-marker"></i></a></p>
-            <p><a class="btn btn-md btn-success" href="/radar">Go to Radar &nbsp;<i class="glyphicon glyphicon-search"></i></a></p>
+            <p><a class="btn btn-md btn-primary" href="{{ url('/homeplanet') }}">Go to Home Planet &nbsp;<i class="glyphicon glyphicon-globe"></i></a></p>
+            <p><a class="btn btn-md btn-warning" href="{{ url('/orbitalbase') }}">Go to Orbital Base &nbsp;<i class="glyphicon glyphicon-map-marker"></i></a></p>
+            <p><a class="btn btn-md btn-success" href="{{ url('/radar') }}">Go to Radar &nbsp;<i class="glyphicon glyphicon-search"></i></a></p>
 
 
         </div>

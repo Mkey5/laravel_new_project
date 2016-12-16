@@ -169,12 +169,12 @@
 								</div>
 							@elseif((($user->homeplanet->gold < $ships['frigate']['cost_gold']) ||
     							($user->homeplanet->metal < $ships['frigate']['cost_metal'] ) ||
-    							($user->homeplanet->energy < $ships['frigate']['cost_energy'] )) && ($user->orbitalbase->shipyard->frigate_time == null))
+    							($user->homeplanet->energy < $ships['frigate']['cost_energy'] )) && ($user->orbitalbase->shipyard->frigate_time == '0001-01-01 00:00:00'))
 
     							<div class="alert alert-danger" style="text-align: center;">
   									Not enough resources
 								</div>
-							@elseif ($user->orbitalbase->shipyard->frigate_time != null)
+							@elseif ($user->orbitalbase->shipyard->frigate_time != '0001-01-01 00:00:00')
 	                            <?php 
 
 	                            	$time_frigate = $user->orbitalbase->shipyard->frigate_time;
@@ -254,12 +254,12 @@
 								</div>
 							@elseif((($user->homeplanet->gold < $ships['corvette']['cost_gold']) ||
     							($user->homeplanet->metal < $ships['corvette']['cost_metal'] ) ||
-    							($user->homeplanet->energy < $ships['corvette']['cost_energy'] )) && ($user->orbitalbase->shipyard->corvette_time == null))
+    							($user->homeplanet->energy < $ships['corvette']['cost_energy'] )) && ($user->orbitalbase->shipyard->corvette_time == '0001-01-01 00:00:00'))
 
     							<div class="alert alert-danger" style="text-align: center;">
   									Not enough resources
 								</div>
-							@elseif ($user->orbitalbase->shipyard->corvette_time != null)
+							@elseif ($user->orbitalbase->shipyard->corvette_time != '0001-01-01 00:00:00')
 	                            <?php 
 
 	                            	$time_corvette = $user->orbitalbase->shipyard->corvette_time;
@@ -346,12 +346,12 @@
 								</div>
 							@elseif((($user->homeplanet->gold < $ships['destroyer']['cost_gold']) ||
     							($user->homeplanet->metal < $ships['destroyer']['cost_metal'] ) ||
-    							($user->homeplanet->energy < $ships['destroyer']['cost_energy'] )) && ($user->orbitalbase->shipyard->destroyer_time == null))
+    							($user->homeplanet->energy < $ships['destroyer']['cost_energy'] )) && ($user->orbitalbase->shipyard->destroyer_time == '0001-01-01 00:00:00'))
 
     							<div class="alert alert-danger" style="text-align: center;">
   									Not enough resources
 								</div>
-							@elseif ($user->orbitalbase->shipyard->destroyer_time != null)
+							@elseif ($user->orbitalbase->shipyard->destroyer_time != '0001-01-01 00:00:00')
 	                            <?php 
 
 	                            	$time_destroyer = $user->orbitalbase->shipyard->destroyer_time;
@@ -431,12 +431,12 @@
 								</div>
 							@elseif((($user->homeplanet->gold < $ships['assaultcarrier']['cost_gold']) ||
     							($user->homeplanet->metal < $ships['assaultcarrier']['cost_metal'] ) ||
-    							($user->homeplanet->energy < $ships['assaultcarrier']['cost_energy'] )) && ($user->orbitalbase->shipyard->assaultcarrier_time == null))
+    							($user->homeplanet->energy < $ships['assaultcarrier']['cost_energy'] )) && ($user->orbitalbase->shipyard->assaultcarrier_time == '0001-01-01 00:00:00'))
 
     							<div class="alert alert-danger" style="text-align: center;">
   									Not enough resources
 								</div>
-							@elseif ($user->orbitalbase->shipyard->assaultcarrier_time != null)
+							@elseif ($user->orbitalbase->shipyard->assaultcarrier_time != '0001-01-01 00:00:00')
 	                            <?php 
 
 	                            	$time_assaultcarrier = $user->orbitalbase->shipyard->assaultcarrier_time;
@@ -521,12 +521,12 @@
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							@if((($user->homeplanet->gold < $user->orbitalbase->shipyard->cost_gold) ||
     							($user->homeplanet->metal < $user->orbitalbase->shipyard->cost_metal) ||
-    							($user->homeplanet->energy < $user->orbitalbase->shipyard->cost_energy)) && ($user->orbitalbase->shipyard->upgrating_time == null))
+    							($user->homeplanet->energy < $user->orbitalbase->shipyard->cost_energy)) && ($user->orbitalbase->shipyard->upgrating_time == '0001-01-01 00:00:00'))
 
     							<div class="alert alert-danger" style="text-align: center;">
   									You haven't got enough resources to upgrade
 								</div>
-							@elseif ($user->orbitalbase->shipyard->upgrating_time != null)
+							@elseif ($user->orbitalbase->shipyard->upgrating_time != '0001-01-01 00:00:00')
 	                            <?php 
 
 	                            	$time_shipyard = $user->orbitalbase->shipyard->upgrating_time;

@@ -18,7 +18,6 @@ class RadarController extends Controller
     				->select('users.id' , 'users.name' , 'users.nickname' , 'users.avatar' , 'users.level',
     					'users.battles_won' , 'users.battles_lost', 'homeplanets.name as homeplanet_name' ,
     					'homeplanets.x' , 'homeplanets.y' , 'homeplanets.galaxy')
-    				// ->get()
     				->paginate(5)
     		));
     }

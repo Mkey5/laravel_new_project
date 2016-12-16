@@ -94,12 +94,12 @@
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							@if((($user->homeplanet->gold < $user->homeplanet->goldmine->cost_gold) ||
     							($user->homeplanet->metal < $user->homeplanet->goldmine->cost_metal) ||
-    							($user->homeplanet->energy < $user->homeplanet->goldmine->cost_energy)) && ($user->homeplanet->goldmine->upgrating_time == null))
+    							($user->homeplanet->energy < $user->homeplanet->goldmine->cost_energy)) && ($user->homeplanet->goldmine->upgrating_time == '0001-01-01 00:00:00'))
 
     							<div class="alert alert-danger">
   									You haven't got enough resources to upgrade
 								</div>
-							@elseif ($user->homeplanet->goldmine->upgrating_time != null)
+							@elseif ($user->homeplanet->goldmine->upgrating_time != '0001-01-01 00:00:00')
 	                            <?php 
 
 	                            	$time_gold = $user->homeplanet->goldmine->upgrating_time;
@@ -178,12 +178,12 @@
 							@if((($user->homeplanet->gold < $user->homeplanet->metalmine->cost_gold) ||
     							($user->homeplanet->metal < $user->homeplanet->metalmine->cost_metal) ||
     							($user->homeplanet->energy < $user->homeplanet->metalmine->cost_energy)) &&
-    							($user->homeplanet->metalmine->upgrating_time == null))
+    							($user->homeplanet->metalmine->upgrating_time == '0001-01-01 00:00:00'))
 
     							<div class="alert alert-danger">
   									You haven't got enough resources to upgrade
 								</div>
-							@elseif ($user->homeplanet->metalmine->upgrating_time != null)
+							@elseif ($user->homeplanet->metalmine->upgrating_time != '0001-01-01 00:00:00')
 	                            <?php 
 
 	                            	$time_metal = $user->homeplanet->metalmine->upgrating_time;
@@ -260,14 +260,14 @@
 							@if((($user->homeplanet->gold < $user->homeplanet->powerplant->cost_gold) ||
     							($user->homeplanet->metal < $user->homeplanet->powerplant->cost_metal) ||
     							($user->homeplanet->energy < $user->homeplanet->powerplant->cost_energy)) &&
-    							($user->homeplanet->powerplant->upgrating_time == null))
+    							($user->homeplanet->powerplant->upgrating_time == '0001-01-01 00:00:00'))
 
     							<div class="alert alert-danger">
   									You haven't got enough resources to upgrade
 								</div>
 
 
-							@elseif ($user->homeplanet->powerplant->upgrating_time != null)
+							@elseif ($user->homeplanet->powerplant->upgrating_time != '0001-01-01 00:00:00')
 	                            
 	                            <?php 
 

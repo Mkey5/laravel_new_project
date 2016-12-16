@@ -45,7 +45,7 @@
 		                <div class="panel-body">
 		                    <p>Level of development: <b>{{ $user->level }}</b></p>
 		                    <p>Coordinates: X:<b>{{ $user->x }}</b> Y:<b>{{ $user->y }}</b></p>
-		                    <a class="btn btn-md btn-danger pull-right" href="/battlestation/{{ $user->id }}">Scan Planet</a>
+		                    <a class="btn btn-md btn-danger pull-right" href="{{ url('/battlestation') }}/{{ $user->id }}">Scan Planet</a>
 		                </div>
 		            </div>
 		            <?php $evenNum++; ?>
@@ -68,7 +68,7 @@
 		                <div class="panel-body">
 		                    <p>Level of development: <b>{{ $user->level }}</b></p>
 		                    <p>Coordinates: X:<b>{{ $user->x }}</b> Y:<b>{{ $user->y }}</b></p>
-		                    <a class="btn btn-md btn-danger pull-right" href="/battlestation/{{ $user->id }}">Scan Planet</a>
+		                    <a class="btn btn-md btn-danger pull-right" href="{{ url('/battlestation') }}/{{ $user->id }}">Scan Planet</a>
 		                </div>
 		            </div>
 

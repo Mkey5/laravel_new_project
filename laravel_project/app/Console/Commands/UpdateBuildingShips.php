@@ -42,7 +42,7 @@ class UpdateBuildingShips extends Command
         $allShipyards = DB::table('shipyards')->get();
 
         foreach ($allShipyards as $shipyard) {
-            if($shipyard->frigate_time != null){
+            if($shipyard->frigate_time != '0001-01-01 00:00:00'){
                 date_default_timezone_set('Europe/Bucharest');
                 $timeDB = $shipyard->frigate_time;
                 $timeNow = \Carbon\Carbon::now();
@@ -67,13 +67,13 @@ class UpdateBuildingShips extends Command
                         ]);
 
                     \App\Shipyard::where('id' , '=' , $shipyard->id)->update([
-                        'frigate_time' => null
+                        'frigate_time' => '0001-01-01 00:00:00'
                         ]);
 
                 }
             }
 
-            if($shipyard->corvette_time != null){
+            if($shipyard->corvette_time != '0001-01-01 00:00:00'){
                 date_default_timezone_set('Europe/Bucharest');
                 $timeDB = $shipyard->corvette_time;
                 $timeNow = \Carbon\Carbon::now();
@@ -98,13 +98,13 @@ class UpdateBuildingShips extends Command
                         ]);
 
                     \App\Shipyard::where('id' , '=' , $shipyard->id)->update([
-                        'corvette_time' => null
+                        'corvette_time' => '0001-01-01 00:00:00'
                         ]);
 
                 }
             }
 
-            if($shipyard->destroyer_time != null){
+            if($shipyard->destroyer_time != '0001-01-01 00:00:00'){
                 date_default_timezone_set('Europe/Bucharest');
                 $timeDB = $shipyard->destroyer_time;
                 $timeNow = \Carbon\Carbon::now();
@@ -129,13 +129,13 @@ class UpdateBuildingShips extends Command
                         ]);
 
                     \App\Shipyard::where('id' , '=' , $shipyard->id)->update([
-                        'destroyer_time' => null
+                        'destroyer_time' => '0001-01-01 00:00:00'
                         ]);
 
                 }
             }
 
-            if($shipyard->assaultcarrier_time != null){
+            if($shipyard->assaultcarrier_time != '0001-01-01 00:00:00'){
                 date_default_timezone_set('Europe/Bucharest');
                 $timeDB = $shipyard->assaultcarrier_time;
                 $timeNow = \Carbon\Carbon::now();
@@ -160,7 +160,7 @@ class UpdateBuildingShips extends Command
                         ]);
 
                     \App\Shipyard::where('id' , '=' , $shipyard->id)->update([
-                        'assaultcarrier_time' => null
+                        'assaultcarrier_time' => '0001-01-01 00:00:00'
                         ]);
 
                 }

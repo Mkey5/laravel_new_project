@@ -10,7 +10,7 @@
         
             <h2>Hello ,{{ $user->name }} ! Let's config few things more :</h2>
             <br>
-            <form class="form-horizontal " role="form" action="/register-step-2" method="POST">
+            <form class="form-horizontal " role="form" action="{{ url('/register-step-2') }}" method="POST">
 
                 {{ csrf_field() }}
 

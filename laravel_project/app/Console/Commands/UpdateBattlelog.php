@@ -142,7 +142,7 @@ class UpdateBattlelog extends Command
             'metal' => $metalWon ,
             'energy' => $energyWon ,
             'ships_losses' => $percent ,
-            'battle_time' => null
+            'battle_time' => '0001-01-01 00:00:00'
             ]);
 
 
@@ -157,7 +157,7 @@ class UpdateBattlelog extends Command
     public function handle()
     {
         $allBattlesInProgress = DB::table('battles')
-            ->where('return_time','!=',null)
+            ->where('return_time','!=','0001-01-01 00:00:00')
             ->get();
            
 
@@ -177,7 +177,7 @@ class UpdateBattlelog extends Command
                 ->first();
              
             // updating and calculating battle 
-            if($battle->battle_time != null){
+            if($battle->battle_time != '0001-01-01 00:00:00'){
                 date_default_timezone_set('Europe/Bucharest');
                 $timeDB = $battle->battle_time;
                 $timeNow = \Carbon\Carbon::now();
@@ -325,8 +325,8 @@ class UpdateBattlelog extends Command
                             'metal' => 0 ,
                             'energy' => 0 ,
                             'ships_losses' => $percentDefenderShips ,
-                            'battle_time' => null,
-                            'return_time' => null
+                            'battle_time' => '0001-01-01 00:00:00',
+                            'return_time' => '0001-01-01 00:00:00'
                             ]);
 
 
@@ -405,8 +405,8 @@ class UpdateBattlelog extends Command
                             'metal' => 0 ,
                             'energy' => 0 ,
                             'ships_losses' => 1 ,// 100% ships destroyed
-                            'battle_time' => null,
-                            'return_time' => null
+                            'battle_time' => '0001-01-01 00:00:00',
+                            'return_time' => '0001-01-01 00:00:00'
                             ]);
                     }
 
@@ -414,7 +414,7 @@ class UpdateBattlelog extends Command
             }
 
             // if attacker won - updating and calculating battle 
-            if($battle->battle_time == null && $battle->return_time != null ){
+            if($battle->battle_time == '0001-01-01 00:00:00' && $battle->return_time != '0001-01-01 00:00:00' ){
                 date_default_timezone_set('Europe/Bucharest');
                 $timeDB = $battle->return_time;
                 $timeNow = \Carbon\Carbon::now();
@@ -459,7 +459,7 @@ class UpdateBattlelog extends Command
                
 
                     \App\Battle::where('id' , '=' , $battle->id)->update([
-                            'return_time' => null
+                            'return_time' => '0001-01-01 00:00:00'
                             ]);
 
                 }

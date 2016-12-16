@@ -28,18 +28,18 @@ class HomeController extends Controller
         date_default_timezone_set('Europe/Bucharest');
 
         $defenceInProgress = $currentUser->battles
-        ->where('battle_time','!=' ,null)
+        ->where('battle_time','!=' , '0001-01-01 00:00:00')
         ->where('defender', '=' , $currentUser->id)
         ->first() ? true : false;
 
         $attackInProgress = $currentUser->battles
-        ->where('battle_time','!=' ,null)
+        ->where('battle_time','!=' , '0001-01-01 00:00:00')
         ->where('attacker', '=' , $currentUser->id)
         ->first() ? true : false;
 
         $returnInProgress = $currentUser->battles
-        ->where('return_time','!=' ,null)
-        ->where('battle_time','=' ,null)
+        ->where('return_time','!=' , '0001-01-01 00:00:00')
+        ->where('battle_time','=' , '0001-01-01 00:00:00')
         ->where('attacker', '=' , $currentUser->id)
         ->first() ? true : false;
 
@@ -68,8 +68,8 @@ class HomeController extends Controller
             if($defenceInProgress == true && $returnInProgress == true){
                 $battle_attack = $currentUser->battles
                 ->where('winner' , '=' , $currentUser->id)
-                ->where('battle_time','=' ,null)
-                ->where('return_time','!=' ,null)
+                ->where('battle_time','=' , '0001-01-01 00:00:00')
+                ->where('return_time','!=' , '0001-01-01 00:00:00')
                 ->where('attacker', '=' , $currentUser->id)
                 ->first();
 
@@ -104,7 +104,7 @@ class HomeController extends Controller
             }
 
             $battle_attack = $currentUser->battles
-            ->where('battle_time','!=' ,null)
+            ->where('battle_time','!=' , '0001-01-01 00:00:00')
             ->where('attacker', '=' , $currentUser->id)
             ->first();
 
@@ -158,7 +158,7 @@ class HomeController extends Controller
 
         }elseif ($defenceInProgress == true) {
             $battle = $currentUser->battles
-            ->where('battle_time','!=' ,null)
+            ->where('battle_time','!=' , '0001-01-01 00:00:00')
             ->where('defender', '=' , $currentUser->id)
             ->first();
 
@@ -190,14 +190,14 @@ class HomeController extends Controller
 
         }elseif($attackInProgress == true || $returnInProgress == true){
             $battle = $currentUser->battles
-            ->where('battle_time','!=' ,null)
+            ->where('battle_time','!=' , '0001-01-01 00:00:00')
             ->where('attacker', '=' , $currentUser->id)
             ->first();
 
            if($returnInProgress == true){
                 $battle = $currentUser->battles
-                ->where('battle_time','=' ,null)
-                ->where('return_time','!=' ,null)
+                ->where('battle_time','=' , '0001-01-01 00:00:00')
+                ->where('return_time','!=' , '0001-01-01 00:00:00')
                 ->where('attacker', '=' , $currentUser->id)
                 ->first();
 

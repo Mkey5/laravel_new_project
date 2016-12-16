@@ -71,7 +71,7 @@ class UpdateUpgratingOfBuildings extends Command
 
             foreach ($allPlanetsBuildings as $planetBuildings) {
 
-                if($planetBuildings->gold_upgrating_time != null){
+                if($planetBuildings->gold_upgrating_time != '0001-01-01 00:00:00'){
                     date_default_timezone_set('Europe/Bucharest');
                     $timeDB = $planetBuildings->gold_upgrating_time;
                     $timeNow = \Carbon\Carbon::now();
@@ -90,14 +90,14 @@ class UpdateUpgratingOfBuildings extends Command
                             'cost_gold' => $newCostGold,
                             'cost_metal' => $newCostMetal,
                             'cost_energy' => $newCostEnergy,
-                            'upgrating_time' => null
+                            'upgrating_time' => '0001-01-01 00:00:00'
                             ]);
 
 
                     }
                 }
 
-                if($planetBuildings->metal_upgrating_time != null){
+                if($planetBuildings->metal_upgrating_time != '0001-01-01 00:00:00'){
                     date_default_timezone_set('Europe/Bucharest');
                     $timeDB = $planetBuildings->metal_upgrating_time;
                     $timeNow = \Carbon\Carbon::now();
@@ -116,14 +116,14 @@ class UpdateUpgratingOfBuildings extends Command
                             'cost_gold' => $newCostGold,
                             'cost_metal' => $newCostMetal,
                             'cost_energy' => $newCostEnergy,
-                            'upgrating_time' => null
+                            'upgrating_time' => '0001-01-01 00:00:00'
                             ]);
                     }
 
 
             }
 
-            if($planetBuildings->energy_upgrating_time != null){
+            if($planetBuildings->energy_upgrating_time != '0001-01-01 00:00:00'){
                     date_default_timezone_set('Europe/Bucharest');
                     $timeDB = $planetBuildings->energy_upgrating_time;
                     $timeNow = \Carbon\Carbon::now();
@@ -142,7 +142,7 @@ class UpdateUpgratingOfBuildings extends Command
                             'cost_gold' => $newCostGold,
                             'cost_metal' => $newCostMetal,
                             'cost_energy' => $newCostEnergy,
-                            'upgrating_time' => null
+                            'upgrating_time' => '0001-01-01 00:00:00'
                             ]);
                     }
 
@@ -156,7 +156,7 @@ class UpdateUpgratingOfBuildings extends Command
         $allShipyards = DB::table('shipyards')->get();
 
         foreach ($allShipyards as $shipyard) {
-            if($shipyard->upgrating_time != null){
+            if($shipyard->upgrating_time != '0001-01-01 00:00:00'){
                 date_default_timezone_set('Europe/Bucharest');
                 $timeDB = $shipyard->upgrating_time;
                 $timeNow = \Carbon\Carbon::now();
@@ -172,7 +172,7 @@ class UpdateUpgratingOfBuildings extends Command
                         'cost_gold' => $newCostGold ,
                         'cost_metal' => $newCostMetal ,
                         'cost_energy' => $newCostEnergy ,
-                        'upgrating_time' => null
+                        'upgrating_time' => '0001-01-01 00:00:00'
 
                         ]);
                 }

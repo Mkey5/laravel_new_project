@@ -16,7 +16,7 @@ class BattleInProgressController extends Controller
     	$currentUser = Auth::user();
 
     	$battleInProgress = $currentUser->battles
-    	->where('battle_time','!=' ,null)
+    	->where('battle_time','!=' , '0001-01-01 00:00:00')
     	->where('attacker', '=' , $currentUser->id)
     	->first();
 

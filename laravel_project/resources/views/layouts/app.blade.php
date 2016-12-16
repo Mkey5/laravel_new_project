@@ -126,22 +126,22 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="/home">
+                                        <a href="{{ url('/home') }}">
                                             <i class="glyphicon glyphicon-home"></i>&nbsp;Home
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/homeplanet">
+                                        <a href="{{ url('/homeplanet') }}">
                                             <i class="glyphicon glyphicon-globe"></i>&nbsp;Planet
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/orbitalbase">
+                                        <a href="{{ url('/orbitalbase') }}">
                                             <i class="glyphicon glyphicon-map-marker"></i>&nbsp;Orbital Base
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/radar">
+                                        <a href="{{ url('/radar') }}">
                                             <i class="glyphicon glyphicon-search"></i>&nbsp;Radar
                                         </a>
                                     </li>

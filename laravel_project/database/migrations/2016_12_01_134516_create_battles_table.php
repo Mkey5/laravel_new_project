@@ -15,16 +15,16 @@ class CreateBattlesTable extends Migration
     {
         Schema::create('battles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('attacker')->nullable();
-            $table->integer('defender')->nullable();
-            $table->string('winner')->nullable();
-            $table->string('loser')->nullable();
-            $table->integer('gold')->nullable();
-            $table->integer('metal')->nullable();
-            $table->integer('energy')->nullable();
-            $table->double('ships_losses')->nullable();
-            $table->dateTime('battle_time')->nullable();
-            $table->dateTime('return_time')->nullable();
+            $table->integer('attacker')->default(0);
+            $table->integer('defender')->default(0);
+            $table->integer('winner')->default(0);
+            $table->integer('loser')->default(0);
+            $table->integer('gold')->default(0);
+            $table->integer('metal')->default(0);
+            $table->integer('energy')->default(0);
+            $table->double('ships_losses')->default(0.0);
+            $table->dateTime('battle_time');
+            $table->dateTime('return_time');
             $table->timestamps();
             
             // something else :?

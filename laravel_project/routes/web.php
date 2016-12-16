@@ -61,36 +61,7 @@ Route::group(['middleware' => ['registersteptwo']],function(){
 
 
 Route::get('/test_3' , function(){
-	$allUsers = DB::table('users')
-                ->join('goldmines','users.id','=','goldmines.homeplanet_id')
-                ->join('powerplants','users.id' , '=','powerplants.homeplanet_id')
-                ->join('metalmines','users.id' , '=','metalmines.homeplanet_id')
-                ->join('shipyards','users.id', '=' , 'shipyards.orbitalbase_id')
-                ->select('users.id','users.level as user_level','goldmines.level as goldmine_level','metalmines.level as metalmine_level','powerplants.level as energy_level')
-                ->get();
 
-
-
-            foreach ($allUsers as $user) {
-                $check = true;
-                $user_level = $user->user_level;
-                $goldmine_level = $user->goldmine_level;
-                $metalmine_level = $user->metalmine_level;
-                $energy_level = $user->energy_level;
-
-                while ($check) {
-	            	if(goldmine_level > $user_level && $metalmine_level > $user_level && $energy_level > $user_level){
-	            		$user_level++;
-	            	}else{
-	            		$check = false;
-	            	}
-	            }
-
-	            \App\User::where('id',$user->id)->update([
-                    'level' => $user_level
-                    ]);
-
-            }
 
             
 });
@@ -105,77 +76,14 @@ Route::get('/test_2' , function(){
 	$mytime = Carbon\Carbon::now();
 	echo $mytime->toDateTimeString('H');
 
-	$curentUser = Auth::user();
-	$curentUser->homeplanet->goldmine->upgrating_time = Carbon\Carbon::now();
-	$curentUser->save();
-
-	$timeInDB = $curentUser->homeplanet->goldmine->upgrating_time;
-	echo "<br><br>Time saved in DB : " .$timeInDB;
-
-
-
-	
-	App\Goldmine::where('homeplanet_id','=',Auth::id())->update([
-		// 'upgrating_time' => Carbon\Carbon::now()->addMinutes(60)
-		'upgrating_time' => null
-		]);
-	App\Metalmine::where('homeplanet_id','=',Auth::id())->update([
-		// 'upgrating_time' => Carbon\Carbon::now()->addMinutes(60)
-		'upgrating_time' => null
-		]);
-	App\Powerplant::where('homeplanet_id','=',Auth::id())->update([
-		// 'upgrating_time' => Carbon\Carbon::now()->addMinutes(60)
-		'upgrating_time' => null
-		]);
-
-
-	App\Shipyard::where('orbitalbase_id','=',Auth::id())->update([
-				 'upgrating_time' => null
-				]);
-
-	App\Shipyard::where('orbitalbase_id','=',Auth::id())->update([
-				 'frigate_time' => null
-				]);	
-
-
-// play with date and time more 
-
-	// $time_n = date('H:i');
-	// echo "<br>" . $time_n;
-
-	// var_dump($time_n);
-
-
-
-
-	// echo "<br> <br> POST MAX SIZE " . ini_get('post_max_size');
-	// echo "<br> <br> Upload MAX SIZE " . ini_get('upload_max_filesize' ."mb");
-	// echo "<br> <br>";
-
-
-		// $allhomeplanets = DB::table('homeplanets')
-  //               ->join('goldmines','homeplanets.id','=','goldmines.homeplanet_id')
-  //               ->join('powerplants','homeplanets.id' , '=','powerplants.homeplanet_id')
-  //               ->join('metalmines','homeplanets.id' , '=','metalmines.homeplanet_id')
-  //               ->select('homeplanets.id','homeplanets.gold','homeplanets.metal','homeplanets.energy','goldmines.income as gold_income','metalmines.income as metal_income','powerplants.income as energy_income','goldmines.level as goldmines_level','metalmines.level as metalmines_level','powerplants.level as energy_level')
-  //               ->get();
-
-  //           // var_dump($allhomeplanets);
-  //           foreach ($allhomeplanets as $homeplanet) {
-  //               $homeplanet->gold += ($homeplanet->gold_income) * $homeplanet->goldmines_level;
-  //               $homeplanet->metal += ($homeplanet->metal_income) * $homeplanet->metalmines_level;
-  //               $homeplanet->energy += ($homeplanet->energy_income) * $homeplanet->energy_level;
-
-  //               App\Homeplanet::where('id',$homeplanet->id)->update([
-  //                   'gold' => $homeplanet->gold,
-  //                   'metal' => $homeplanet->metal,
-  //                   'energy' => $homeplanet->energy
-  //                   ]);
-  //           }
-
-	
-
-        
+	var_dump($mytime);
+	// 0000-00-00 00:00:00.000000
+	// 0000-00-00 00:00:00
+	$currentUser = Auth::user();
+    $goldmine = new App\Goldmine;
+    $goldmine->homeplanet_id = $currentUser->id;
+    $goldmine->upgrating_time = '0001-01-01 00:00:00';
+    $goldmine->save();
 	
 });
 

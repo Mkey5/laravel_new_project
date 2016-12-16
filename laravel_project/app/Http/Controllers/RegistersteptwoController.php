@@ -130,18 +130,27 @@ class RegistersteptwoController extends Controller
 
     			$goldmine = new Goldmine;
     			$goldmine->homeplanet_id = $homeplanet->id;
+                $goldmine->upgrating_time = '0001-01-01 00:00:00';
     			$goldmine->save();
 
     			$metalmine = new Metalmine;
     			$metalmine->homeplanet_id = $homeplanet->id;
+                $metalmine->upgrating_time = '0001-01-01 00:00:00';
     			$metalmine->save();
 
     			$powerplant = new Powerplant;
     			$powerplant->homeplanet_id = $homeplanet->id;
+                $powerplant->upgrating_time = '0001-01-01 00:00:00';
     			$powerplant->save();
 
     			$shipyard = new Shipyard;
     			$shipyard->orbitalbase_id = $orbitalbase->id;
+                $shipyard->upgrating_time = '0001-01-01 00:00:00';
+                $shipyard->frigate_time = '0001-01-01 00:00:00';
+                $shipyard->corvette_time = '0001-01-01 00:00:00';
+                $shipyard->destroyer_time = '0001-01-01 00:00:00';
+                $shipyard->assaultcarrier_time = '0001-01-01 00:00:00';
+
     			$shipyard->save();
 
     			// DISABLE THE ACCESS FOR THIS PAGE :

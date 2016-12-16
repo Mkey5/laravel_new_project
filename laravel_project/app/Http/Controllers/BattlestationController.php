@@ -19,7 +19,7 @@ class BattlestationController extends Controller
     	$defender = User::where('id','=', $user_id)->first();
 
     	$battleInProgress = $currentUser->battles
-    	->where('battle_time','!=' ,null)
+    	->where('battle_time','!=' , '0001-01-01 00:00:00')
     	->where('attacker', '=' , $currentUser->id)
     	->first() ? true : false;
 

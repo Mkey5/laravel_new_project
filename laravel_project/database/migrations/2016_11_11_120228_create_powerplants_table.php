@@ -16,12 +16,12 @@ class CreatePowerplantsTable extends Migration
         Schema::create('powerplants', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('homeplanet_id');
-            $table->integer('income')->default(50);
-            $table->integer('cost_gold')->default(180);
-            $table->integer('cost_metal')->default(200);
-            $table->integer('cost_energy')->default(300);
+            $table->integer('income')->default(20);
+            $table->integer('cost_gold')->default(380);
+            $table->integer('cost_metal')->default(500);
+            $table->integer('cost_energy')->default(400);
             $table->integer('level')->default(1);
-            $table->dateTime('upgrating_time')->nullable();
+            $table->dateTime('upgrating_time');
             
             // something else :?
 

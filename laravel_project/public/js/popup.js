@@ -1,5 +1,5 @@
 var texts = new Array();
-texts[0] = "To evolve as a <b>Solar Dominator</b> you need to take care of yor fleet!";
+texts[0] = "To evolve as a <b>Solar Dominator</b> you need to take care of your fleet!";
 texts[1] = "Be shure to check <b>regularly</b> your home page for attack messages !";
 texts[2] = "Just a friendly reminder: <b>You are awesome!</b>";
 texts[3] = "Be careful when attacking with <b>all your ships</b> , you may be attack too.";
