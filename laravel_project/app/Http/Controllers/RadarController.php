@@ -14,6 +14,9 @@ class RadarController extends Controller
     			'user' => Auth::user(),
     			'allUsers' => DB::table('users')
     				->where('users.id', '!=' , Auth::id())
+    				->where('users.step2' , '=' , 1) // if someone didn't reg correct
+                    //->inRandomOrder() // for random order !
+                    ->orderBy('id', 'desc')
     				->join('homeplanets','users.id','=','homeplanets.user_id')
     				->select('users.id' , 'users.name' , 'users.nickname' , 'users.avatar' , 'users.level',
     					'users.battles_won' , 'users.battles_lost', 'homeplanets.name as homeplanet_name' ,

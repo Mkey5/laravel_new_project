@@ -82,7 +82,7 @@ class OrbitalbaseController extends Controller
     			($currentUser->homeplanet->metal >= $currentUser->orbitalbase->shipyard->cost_metal) &&
     			($currentUser->homeplanet->energy >= $currentUser->orbitalbase->shipyard->cost_energy)){ // check if user has enough money to upgrade
 
-    			\App\Shipyard::where('orbitalbase_id','=',Auth::id())->update([
+    			\App\Shipyard::where('orbitalbase_id','=',$currentUser->orbitalbase->id)->update([
 				 'upgrating_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
 				]);	// updating 'upgrating_time' to DB
 
@@ -122,7 +122,7 @@ class OrbitalbaseController extends Controller
     			($currentUser->homeplanet->energy >= ($frigateEnergy * $numberOfShips)) &&
     			($currentShipyardLevel >= $frigateLevelneeded) ){ // check if user has enough money to build or level
 
-    			\App\Shipyard::where('orbitalbase_id','=',Auth::id())->update([
+    			\App\Shipyard::where('orbitalbase_id','=',$currentUser->orbitalbase->id)->update([
 				 'frigate_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
 				]);	// updating 'upgrating_time' to DB
 
@@ -171,7 +171,7 @@ class OrbitalbaseController extends Controller
     			($currentUser->homeplanet->energy >= ($CorvetteEnergy * $numberOfShips)) &&
     			($currentShipyardLevel >= $CorvetteLevelneeded) ){ // check if user has enough money to build or level
 
-    			\App\Shipyard::where('orbitalbase_id','=',Auth::id())->update([
+    			\App\Shipyard::where('orbitalbase_id','=',$currentUser->orbitalbase->id)->update([
 				 'corvette_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
 				]);	// updating 'upgrating_time' to DB
 
@@ -217,7 +217,7 @@ class OrbitalbaseController extends Controller
     			($currentUser->homeplanet->energy >= ($DestroyerEnergy * $numberOfShips)) &&
     			($currentShipyardLevel >= $DestroyerLevelneeded) ){ // check if user has enough money to build or level
 
-    			\App\Shipyard::where('orbitalbase_id','=',Auth::id())->update([
+    			\App\Shipyard::where('orbitalbase_id','=',$currentUser->orbitalbase->id)->update([
 				 'destroyer_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
 				]);	// updating 'upgrating_time' to DB
 
@@ -262,7 +262,7 @@ class OrbitalbaseController extends Controller
     			($currentUser->homeplanet->energy >= ($AssaultcarrierEnergy * $numberOfShips)) &&
     			($currentShipyardLevel >= $AssaultcarrierLevelneeded) ){ // check if user has enough money to build or level
 
-    			\App\Shipyard::where('orbitalbase_id','=',Auth::id())->update([
+    			\App\Shipyard::where('orbitalbase_id','=',$currentUser->orbitalbase->id)->update([
 				 'assaultcarrier_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
 				]);	// updating 'upgrating_time' to DB
 

@@ -17,9 +17,9 @@ class CreatePowerplantsTable extends Migration
             $table->increments('id');
             $table->integer('homeplanet_id');
             $table->integer('income')->default(20);
-            $table->integer('cost_gold')->default(380);
-            $table->integer('cost_metal')->default(500);
-            $table->integer('cost_energy')->default(400);
+            $table->integer('cost_gold')->default(920);
+            $table->integer('cost_metal')->default(1100);
+            $table->integer('cost_energy')->default(800);
             $table->integer('level')->default(1);
             $table->dateTime('upgrating_time');
             

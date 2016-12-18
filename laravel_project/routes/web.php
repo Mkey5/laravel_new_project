@@ -54,36 +54,23 @@ Route::group(['middleware' => ['registersteptwo']],function(){
 
 // TODO-MAK real 2D load map
 
-// TODO-MAK battles reports many to many relationship 
 
 
 
 
 
-Route::get('/test_3' , function(){
 
-
+Route::get('/testmak_3' , function(){
+	$currentUser = Auth::user();
+	$metalLevel = $currentUser->homeplanet->powerplant->level;
+	echo "Power Level : ".$metalLevel;
+            
             
 });
 
 
 // for testing
-Route::get('/test_2' , function(){
+Route::get('/testmak_2' , function(){
 
-	echo date_default_timezone_get().'<br>';
-	 date_default_timezone_set('Europe/Bucharest');
-	 echo date_default_timezone_get().'<br>';
-	$mytime = Carbon\Carbon::now();
-	echo $mytime->toDateTimeString('H');
-
-	var_dump($mytime);
-	// 0000-00-00 00:00:00.000000
-	// 0000-00-00 00:00:00
-	$currentUser = Auth::user();
-    $goldmine = new App\Goldmine;
-    $goldmine->homeplanet_id = $currentUser->id;
-    $goldmine->upgrating_time = '0001-01-01 00:00:00';
-    $goldmine->save();
-	
 });
 

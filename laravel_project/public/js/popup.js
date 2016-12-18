@@ -10,6 +10,11 @@ texts[7] = "You can check your <b>Battle Logs</b>, they are in your Home Page. T
 texts[8] = "Upgrade buildings , create ships , attack , evolve - you're gonna be the <b>Solar Dominator</b>";
 texts[9] = "If you lose some battles , <b>don't worry</b> , after all this is just a game. ";
 texts[10] = "Go to Radar and find your next <b>victim</b>.";
+texts[11] = "<b>Offence</b> is the best <b>defence</b>. Strike them first !";
+texts[12] = "If you want to be the <b>best</b> just be the best !";
+texts[13] = "Daaamn , you have <b>lovely</b> eyes. . .";
+texts[14] = "I've heard that the assault carriers are the <b>best</b>, but you need <b>level 5</b> Shipyard . . .";
+
 
 
 var catchText3;
@@ -94,6 +99,6 @@ setInterval(
 		insertText(); // adding new message
 		showBoxTime(12, 0.05); // poping-up
 
-}, 60000); // every minute
+}, 30000); // every 30 sec
 
 

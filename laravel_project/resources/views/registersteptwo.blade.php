@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-2">
-            <img src="/uploads/avatars/{{ $user->avatar }}" style="width: 150px; height: 150px; border-radius: 50%; float: left; margin-right: 25px; margin-bottom: 20px;">
+            <img src="/solardomination/public/uploads/avatars/{{ $user->avatar }}" style="width: 150px; height: 150px; border-radius: 50%; float: left; margin-right: 25px; margin-bottom: 20px;">
         </div>
         <div class="col-md-8 col-md-offset-1">
         

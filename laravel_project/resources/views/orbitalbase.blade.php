@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	<script src="/js/jquery-3.1.1.min.js"></script>
-	<script src="/js/jquery.countdown.js"></script>
+	<script src="/solardomination/public/js/jquery-3.1.1.min.js"></script>
+	<script src="/solardomination/public/js/jquery.countdown.js"></script>
 	
 	<style type="text/css">
 		
@@ -13,7 +13,7 @@
 	    body{
 	        height: 100%;
 	        width: 100%;
-	        background: url('/images/orbitalbase_back.jpg') no-repeat scroll center center / cover;
+	        background:#000000 url('/solardomination/public/images/orbitalbase_back.jpg') no-repeat scroll center center / cover;
 	        background-attachment: fixed;
 	        color: white;
 	    }
@@ -42,6 +42,19 @@
 			font-weight: bold;
 			font-size: 15px;
 		}
+		.img-responsive{
+			display: none;
+		}
+
+		@media screen and (max-width: 790px) {
+	        table {
+	            margin-left: -12px;
+	        }
+	        .img-responsive{
+	        	display: block;
+	        }
+	    }
+
 	</style>
 	
 	<div class="container transp-back">
@@ -59,16 +72,16 @@
                 <tbody>
                     <tr>
                         <td style="position: relative;">
-                            <img src="/images/homeplanet.png" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                            <img src="/solardomination/public/images/homeplanet.png" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
                         </td>
                         <td>
-                            <img src="/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->gold }}</b>
+                            <img src="/solardomination/public/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->gold }}</b>
                         </td>
                         <td>
-                            <img src="/images/metal.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->metal }}</b>
+                            <img src="/solardomination/public/images/metal.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->metal }}</b>
                         </td>
                         <td>
-                            <img src="/images/energy.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->energy }}</b>
+                            <img src="/solardomination/public/images/energy.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->energy }}</b>
                         </td>
                        
                     </tr>
@@ -101,7 +114,7 @@
                 <tbody>
                     <tr>
                         <td style="position: relative; width: 130px;">
-                            <img src="/images/orbitalbase.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                            <img src="/solardomination/public/images/orbitalbase.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
                         </td>
                         <td><b>{{ $user->orbitalbase->frigates }}</b></td>
                         <td><b>{{ $user->orbitalbase->corvettes }}</b></td>
@@ -129,7 +142,7 @@
                 <tbody>
                     <tr>
                         <td style="position: relative; width: 130px;">
-                            <img src="/images/fleet.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                            <img src="/solardomination/public/images/fleet.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
                         </td>
                         <td>{{ $user->fleet->frigate }}</td>
                         <td>{{ $user->fleet->corvette }}</td>
@@ -145,7 +158,7 @@
 			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-9">
-						<img src="/images/frigate.jpg" class="img-responsive" style="border-radius: 10px">
+						<img src="/solardomination/public/images/frigate.jpg" class="img-responsive" style="border-radius: 10px">
 						<h3>Frigate</h3>
 					</div>
 					<div class="col-md-3">
@@ -167,13 +180,7 @@
 								<div class="alert alert-danger" style="text-align: center;">
   									Level {{ $ships['frigate']['levelneeded'] }} Shipyard needed
 								</div>
-							@elseif((($user->homeplanet->gold < $ships['frigate']['cost_gold']) ||
-    							($user->homeplanet->metal < $ships['frigate']['cost_metal'] ) ||
-    							($user->homeplanet->energy < $ships['frigate']['cost_energy'] )) && ($user->orbitalbase->shipyard->frigate_time == '0001-01-01 00:00:00'))
-
-    							<div class="alert alert-danger" style="text-align: center;">
-  									Not enough resources
-								</div>
+							
 							@elseif ($user->orbitalbase->shipyard->frigate_time != '0001-01-01 00:00:00')
 	                            <?php 
 
@@ -203,7 +210,7 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('The ships are ready!')
+										  $(this).html('The ships are ready! Click to refresh page.')
 										    .parent().addClass('disabled').on('click', function(event){
 										    	location.reload();
 										    });
@@ -212,7 +219,13 @@
 
 								</script>
 
+							@elseif((($user->homeplanet->gold < $ships['frigate']['cost_gold']) ||
+    							($user->homeplanet->metal < $ships['frigate']['cost_metal'] ) ||
+    							($user->homeplanet->energy < $ships['frigate']['cost_energy'] )) && ($user->orbitalbase->shipyard->frigate_time == '0001-01-01 00:00:00'))
 
+    							<div class="alert alert-danger" style="text-align: center;">
+  									Not enough resources
+								</div>
 	                        @else
 	                        	<br>
 	                        	<button type="submit" class="btn btn-primary" style="width: 70px;">Build</button>
@@ -230,7 +243,7 @@
 			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-9">
-						<img src="/images/corvette.jpg" class="img-responsive" style="border-radius: 10px">
+						<img src="/solardomination/public/images/corvette.jpg" class="img-responsive" style="border-radius: 10px">
 						<h3>Corvette</h3>
 					</div>
 					<div class="col-md-3">
@@ -251,13 +264,6 @@
 							@if($ships['corvette']['levelneeded'] > $user->orbitalbase->shipyard->level)
 								<div class="alert alert-danger" style="text-align: center;">
   									Level {{ $ships['corvette']['levelneeded'] }} Shipyard needed
-								</div>
-							@elseif((($user->homeplanet->gold < $ships['corvette']['cost_gold']) ||
-    							($user->homeplanet->metal < $ships['corvette']['cost_metal'] ) ||
-    							($user->homeplanet->energy < $ships['corvette']['cost_energy'] )) && ($user->orbitalbase->shipyard->corvette_time == '0001-01-01 00:00:00'))
-
-    							<div class="alert alert-danger" style="text-align: center;">
-  									Not enough resources
 								</div>
 							@elseif ($user->orbitalbase->shipyard->corvette_time != '0001-01-01 00:00:00')
 	                            <?php 
@@ -288,7 +294,7 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('The ships are ready!')
+										  $(this).html('The ships are ready! Click to refresh page.')
 										    .parent().addClass('disabled').on('click', function(event){
 										    	location.reload();
 										    });
@@ -297,7 +303,13 @@
 
 								</script>
 
+							@elseif((($user->homeplanet->gold < $ships['corvette']['cost_gold']) ||
+    							($user->homeplanet->metal < $ships['corvette']['cost_metal'] ) ||
+    							($user->homeplanet->energy < $ships['corvette']['cost_energy'] )) && ($user->orbitalbase->shipyard->corvette_time == '0001-01-01 00:00:00'))
 
+    							<div class="alert alert-danger" style="text-align: center;">
+  									Not enough resources
+								</div>
 	                        @else
 	                        	<br>
 	                        	<button type="submit" class="btn btn-primary" style="width: 70px;">Build</button>
@@ -322,7 +334,7 @@
 			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-9">
-						<img src="/images/destroyer.jpg" class="img-responsive" style="border-radius: 10px">
+						<img src="/solardomination/public/images/destroyer.jpg" class="img-responsive" style="border-radius: 10px">
 						<h3>Destroyer</h3>
 					</div>
 					<div class="col-md-3">
@@ -343,13 +355,6 @@
 							@if($ships['destroyer']['levelneeded'] > $user->orbitalbase->shipyard->level)
 								<div class="alert alert-danger" style="text-align: center;">
   									Level {{ $ships['destroyer']['levelneeded'] }} Shipyard needed
-								</div>
-							@elseif((($user->homeplanet->gold < $ships['destroyer']['cost_gold']) ||
-    							($user->homeplanet->metal < $ships['destroyer']['cost_metal'] ) ||
-    							($user->homeplanet->energy < $ships['destroyer']['cost_energy'] )) && ($user->orbitalbase->shipyard->destroyer_time == '0001-01-01 00:00:00'))
-
-    							<div class="alert alert-danger" style="text-align: center;">
-  									Not enough resources
 								</div>
 							@elseif ($user->orbitalbase->shipyard->destroyer_time != '0001-01-01 00:00:00')
 	                            <?php 
@@ -380,7 +385,7 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('The ships are ready!')
+										  $(this).html('The ships are ready! Click to refresh page.')
 										    .parent().addClass('disabled').on('click', function(event){
 										    	location.reload();
 										    });
@@ -389,7 +394,13 @@
 
 								</script>
 
+							@elseif((($user->homeplanet->gold < $ships['destroyer']['cost_gold']) ||
+    							($user->homeplanet->metal < $ships['destroyer']['cost_metal'] ) ||
+    							($user->homeplanet->energy < $ships['destroyer']['cost_energy'] )) && ($user->orbitalbase->shipyard->destroyer_time == '0001-01-01 00:00:00'))
 
+    							<div class="alert alert-danger" style="text-align: center;">
+  									Not enough resources
+								</div>
 	                        @else
 	                        	<br>
 	                        	<button type="submit" class="btn btn-primary" style="width: 70px;">Build</button>
@@ -407,7 +418,7 @@
 			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-9">
-						<img src="/images/assaultcarrier.jpg" class="img-responsive" style="border-radius: 10px">
+						<img src="/solardomination/public/images/assaultcarrier.jpg" class="img-responsive" style="border-radius: 10px">
 						<h3>Assault Carrier</h3>
 					</div>
 					<div class="col-md-3">
@@ -428,13 +439,6 @@
 							@if($ships['assaultcarrier']['levelneeded'] > $user->orbitalbase->shipyard->level)
 								<div class="alert alert-danger" style="text-align: center;">
   									Level {{ $ships['assaultcarrier']['levelneeded'] }} Shipyard needed
-								</div>
-							@elseif((($user->homeplanet->gold < $ships['assaultcarrier']['cost_gold']) ||
-    							($user->homeplanet->metal < $ships['assaultcarrier']['cost_metal'] ) ||
-    							($user->homeplanet->energy < $ships['assaultcarrier']['cost_energy'] )) && ($user->orbitalbase->shipyard->assaultcarrier_time == '0001-01-01 00:00:00'))
-
-    							<div class="alert alert-danger" style="text-align: center;">
-  									Not enough resources
 								</div>
 							@elseif ($user->orbitalbase->shipyard->assaultcarrier_time != '0001-01-01 00:00:00')
 	                            <?php 
@@ -465,7 +469,7 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('The ships are ready!')
+										  $(this).html('The ships are ready! Click to refresh page.')
 										    .parent().addClass('disabled').on('click', function(event){
 										    	location.reload();
 										    });
@@ -474,6 +478,13 @@
 
 								</script>
 
+							@elseif((($user->homeplanet->gold < $ships['assaultcarrier']['cost_gold']) ||
+    							($user->homeplanet->metal < $ships['assaultcarrier']['cost_metal'] ) ||
+    							($user->homeplanet->energy < $ships['assaultcarrier']['cost_energy'] )) && ($user->orbitalbase->shipyard->assaultcarrier_time == '0001-01-01 00:00:00'))
+
+    							<div class="alert alert-danger" style="text-align: center;">
+  									Not enough resources
+								</div>
 
 	                        @else
 	                        	<br>
@@ -504,7 +515,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h2 >Shipyard :</h2>
-						<img src="/images/shipyard.jpg" class="img-responsive" style="border-radius: 20px">
+						<img src="/solardomination/public/images/shipyard.jpg" class="img-responsive" style="border-radius: 20px">
 					</div>
 				</div>
 				<div class="row">
@@ -519,14 +530,8 @@
 							
 							<input id="shipyard_upgrating" type="hidden" class="" name="shipyard_upgrating" value="shipyard_upgrating">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							@if((($user->homeplanet->gold < $user->orbitalbase->shipyard->cost_gold) ||
-    							($user->homeplanet->metal < $user->orbitalbase->shipyard->cost_metal) ||
-    							($user->homeplanet->energy < $user->orbitalbase->shipyard->cost_energy)) && ($user->orbitalbase->shipyard->upgrating_time == '0001-01-01 00:00:00'))
-
-    							<div class="alert alert-danger" style="text-align: center;">
-  									You haven't got enough resources to upgrade
-								</div>
-							@elseif ($user->orbitalbase->shipyard->upgrating_time != '0001-01-01 00:00:00')
+							
+							@if ($user->orbitalbase->shipyard->upgrating_time != '0001-01-01 00:00:00')
 	                            <?php 
 
 	                            	$time_shipyard = $user->orbitalbase->shipyard->upgrating_time;
@@ -555,7 +560,7 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('The building is upgrated!')
+										  $(this).html('The building is upgrated! Click to refresh page.')
 										    .parent().addClass('disabled').on('click', function(event){
 										    	location.reload();
 										    });
@@ -564,7 +569,14 @@
 
 								</script>
 
+							@elseif((($user->homeplanet->gold < $user->orbitalbase->shipyard->cost_gold) ||
+    							($user->homeplanet->metal < $user->orbitalbase->shipyard->cost_metal) ||
+    							($user->homeplanet->energy < $user->orbitalbase->shipyard->cost_energy)) && ($user->orbitalbase->shipyard->upgrating_time == '0001-01-01 00:00:00'))
 
+    							<div class="alert alert-danger" style="text-align: center;">
+  									You haven't got enough resources to upgrade
+								</div>
+								
 	                        @else
 	                        	<button type="submit" class="btn btn-primary">Upgrade</button>
 	                        @endif
@@ -608,7 +620,19 @@
 
 						 // console.log(this.value);
 					});
+
+
+					var w = window.innerWidth
+                    || document.documentElement.clientWidth
+                    || document.body.clientWidth;
+
+	                if( w >= 790){
+	                  $('.img-responsive').show(2000);
+	                }
+					
+
 				});
+
 
 	</script>
 

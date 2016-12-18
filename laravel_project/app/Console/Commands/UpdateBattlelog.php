@@ -117,7 +117,8 @@ class UpdateBattlelog extends Command
         $percentResources = 1 - $percent;
 
         $defender_homeplanet = DB::table('homeplanets')
-                ->where('user_id','=',$defender->id)
+                // ->where('user_id','=',$defender->id)
+                ->where('user_id','=',$battle->defender)
                 ->first();
 
         $goldWon = round(($defender_homeplanet->gold * $percentResources), 0, PHP_ROUND_HALF_DOWN);
@@ -145,6 +146,16 @@ class UpdateBattlelog extends Command
             'battle_time' => '0001-01-01 00:00:00'
             ]);
 
+        $attackerBattlesWon = $attacker->battles_won + 1;
+        $defenderBattlesLost = $defender->battles_lost + 1;
+
+        \App\User::where('id' , '=' , $attacker->id)->update([
+            'battles_won' => $attackerBattlesWon
+            ]);
+
+        \App\User::where('id' , '=' , $defender->id)->update([
+            'battles_lost' => $defenderBattlesLost
+            ]);
 
         return true;
     }
@@ -329,6 +340,21 @@ class UpdateBattlelog extends Command
                             'return_time' => '0001-01-01 00:00:00'
                             ]);
 
+                        
+                        $attackerBattlesLost = $attacker->battles_lost + 1;
+
+                        $defenderBattlesWon = $defender->battles_won + 1;
+                        
+
+                        \App\User::where('id' , '=' , $defender->id)->update([
+                            'battles_won' => $defenderBattlesWon
+                            ]);
+
+                        \App\User::where('id' , '=' , $attacker->id)->update([
+                            'battles_lost' => $attackerBattlesLost
+                            ]);
+
+
 
                         $defender_frigates_left = $this->calcShips($defender_frigates ,$percentDefenderShips , "F");  
                         
@@ -408,6 +434,17 @@ class UpdateBattlelog extends Command
                             'battle_time' => '0001-01-01 00:00:00',
                             'return_time' => '0001-01-01 00:00:00'
                             ]);
+
+                        $attackerBattlesLost = $attacker->battles_lost + 1;
+                        $defenderBattlesWon = $defender->battles_won + 1;
+
+                        \App\User::where('id' , '=' , $defender->id)->update([
+                            'battles_won' => $defenderBattlesWon
+                            ]);
+
+                        \App\User::where('id' , '=' , $attacker->id)->update([
+                            'battles_lost' => $attackerBattlesLost
+                            ]);
                     }
 
                 }
@@ -424,11 +461,16 @@ class UpdateBattlelog extends Command
                     //left ships from fleet - update to orbitalbase , state == orbiting
                     //battle table - update $battle->return_time == null
 
+                    $attackerFrigDocking = $attacker->frigate + $attacker->frigates;
+                    $attackerCorvDocking = $attacker->corvette + $attacker->corvettes;
+                    $attackerDestDocking = $attacker->destroyer + $attacker->destroyers;
+                    $attackerCarrDocking = $attacker->assault_carrier + $attacker->assaultcarriers;
+
                     \App\Orbitalbase::where('user_id','=',$attacker->id)->update([
-                             'frigates' => $attacker->frigate ,
-                             'corvettes' => $attacker->corvette ,
-                             'destroyers' => $attacker->destroyer ,
-                             'assaultcarriers' => $attacker->assault_carrier
+                             'frigates' => $attackerFrigDocking ,
+                             'corvettes' => $attackerCorvDocking ,
+                             'destroyers' => $attackerDestDocking ,
+                             'assaultcarriers' => $attackerCarrDocking
                             ]);
 
                     \App\Fleet::where('user_id','=',$attacker->id)->update([
@@ -443,7 +485,8 @@ class UpdateBattlelog extends Command
 
                     
                     $homeplanetDefender = DB::table('homeplanets')
-                        ->where('user_id','=',$attacker->id)
+                        // ->where('user_id','=',$attacker->id)  this was a biiig deaaal if there was broken user (one that has not went trough reg step 2 and did't have homeplanet . . . )
+                        ->where('user_id','=',$battle->attacker)
                         ->first();
 
 

@@ -1,10 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<style type="text/css">
+    @media screen and (max-width: 790px) {
+        table , .hidesmall {
+            display: none;
+        }
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-        <img src="/uploads/avatars/{{ $user->avatar }}" style="width: 150px; height: 150px; border-radius: 50%; float: left; margin-right: 25px;">
+        <img src="/solardomination/public/uploads/avatars/{{ $user->avatar }}" style="width: 150px; height: 150px; border-radius: 50%; float: left; margin-right: 25px;">
             <h2>{{ $user->name }}'s profile</h2>
             <form enctype="multipart/form-data" action="{{ url('/profile') }}" method="POST">
                 <label>Update Profile picture /2mb max/</label>
@@ -52,7 +59,7 @@
     <br>
     <div class="row">
         <div class="col-md-8">
-            <h2>Your stats:</h2>
+            <h2 class="hidesmall">Your stats:</h2>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -67,7 +74,7 @@
                 <tbody>
                     <tr>
                         <td style="position: relative;">
-                            <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                            <img src="/solardomination/public/uploads/avatars/{{ Auth::user()->avatar }}" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
                         </td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->nickname }}</td>
@@ -99,7 +106,7 @@
                 <tbody>
                     <tr>
                         <td style="position: relative;">
-                            <img src="/images/homeplanet.png" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                            <img src="/solardomination/public/images/homeplanet.png" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
                         </td>
                         <td>{{ $user->homeplanet->name }}</td>
                         <td>{{ $user->homeplanet->gold }}</td>
@@ -109,7 +116,7 @@
                         <td>{{ $user->homeplanet->y }}</td>
                         <td>{{ $user->homeplanet->galaxy }}</td>
                         <td style="position: relative;">
-                            <img src="/images/orbitalbase.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                            <img src="/solardomination/public/images/orbitalbase.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
                         </td>
                         <td>{{ $user->orbitalbase->name }}</td>
                     </tr>
@@ -135,7 +142,7 @@
                 <tbody>
                     <tr>
                         <td style="position: relative;">
-                            <img src="/images/fleet.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                            <img src="/solardomination/public/images/fleet.jpg" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
                         </td>
                         <td>{{ $user->fleet->name }}</td>
                         <td>{{ $user->fleet->frigate }}</td>

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="/js/jquery-3.1.1.min.js"></script>
-<script src="/js/jquery.countdown.js"></script>
+<script src="/solardomination/public/js/jquery-3.1.1.min.js"></script>
+<script src="/solardomination/public/js/jquery.countdown.js"></script>
 @if(!isset($user->homeplanet->name)) 
     <script type="text/javascript">
         document.getElementById('logout-form').submit();
@@ -17,13 +17,14 @@
     body{
         height: 100%;
         width: 100%;
-        background: url('/images/home.jpg') no-repeat scroll center center / cover;
+        background: #000000 url('/solardomination/public/images/home.jpg') no-repeat scroll center center / cover;
         background-attachment: fixed;
     }
 
     .big{
         text-transform: capitalize;
         font-weight: bold;
+        font-size: 18px;
     }
 
     .panel-warning .panel-heading{
@@ -68,7 +69,16 @@
         border-color: #ddd;
     }
 
+    .panel{
+        display: none;
+    }
 
+    @media screen and (max-width: 790px) {
+
+            .panel{
+                display: block;
+            }
+        }
 </style>
 
 <div class="container">
@@ -97,7 +107,7 @@
                                 $(this).html(event.strftime(format));
                         })
                         .on('finish.countdown', function(event) {
-                                $(this).html('The Battle is over !')
+                                $(this).html('The Battle is over ! Click to refresh page.')
                                         .parent().addClass('disabled').on('click', function(event){
                                             location.reload();
                                         });
@@ -132,7 +142,7 @@
                                 $(this).html(event.strftime(format));
                         })
                         .on('finish.countdown', function(event) {
-                                $(this).html('The Battle is over !')
+                                $(this).html('The Battle is over ! Click to refresh page.')
                                         .parent().addClass('disabled').on('click', function(event){
                                             location.reload();
                                         });
@@ -166,7 +176,7 @@
                                 $(this).html(event.strftime(format));
                         })
                         .on('finish.countdown', function(event) {
-                                $(this).html('The Battle is over !')
+                                $(this).html('The Battle is over ! Click to refresh page.')
                                         .parent().addClass('disabled').on('click', function(event){
                                             location.reload();
                                         });
@@ -179,10 +189,30 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-info">
+                <div class="panel-heading"><span class="big">News:</span> </div>
+
+                <div class="panel-body">
+                    <p>Guys , after the lounch yesterday I've encountered <b>some bugs</b> in the game ,but they have been taken care of <i class="glyphicon glyphicon-ok"></i>&nbsp;. <b>Sorry for that !</b> If you encounter some other bugs , please don't be shy to inform me. / solardomination@gmail.com | <a href="http://www.marekradkov.com/contacts.html" target="_blank">www.marekradkov.com/contacts.html</a> / </p>
+                    <p><b>- Solar Domination Team -</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-info">
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    <p>Hi , <span class="big">{{ $user->nickname }}</span> ! At this page you will recieve information for updates of the game, system messages and so on. . .</p>
+                    <p> - Hi , <span class="big">{{ $user->nickname }}</span> ! At this page you will recieve information for updates of the game, system messages and so on. . .</p>
+                    <p> - You can change your profile picture from the <b>Profile</b> page. When choosing a picture, look for image less than 2mb of size and preferably with a square shape. </p>
+                    <p>
+                        - When battle takes place , a window will pop-up at the top of this page. After the countdown you will see <b>"The Battle is over ! Click to refresh page."</b> . Don't rush to click it right the way , it may take up to 50sec for the updating of the battle log. Please be patient.
+                    </p>
+                    <p>
+                        - New things on their way : <b>Ranking Page</b>. Soon after that : <i><u>Planet defence systems</u></i> , <i><u>New ships</u></i> and <i><u>New Buildings</u></i>.
+                    </p>
                 </div>
             </div>
         </div>
@@ -207,6 +237,18 @@
 
                 <div class="panel-body">
                     <p>As you can see , at the upper right corner of the window there is a drop-down menu with your name on it. This menu will be visable from all layers of the game. There you will find path to your <b>Home</b> , <b>Planet</b> , <b>Orbital Base</b> , <b>Radar</b> , <b>Profile</b> and of course a <b>Logout</b> button. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-success">
+                <div class="panel-heading">Feedback</div>
+
+                <div class="panel-body">
+                    <p>Your <b>Feedback</b> is very important for me , so if you need more info , encounter some bugs or just want to say Hi please send me a email to <b><i>solardomination@gmail.com</i></b> or use the simplest form in <a href="http://www.marekradkov.com/contacts.html" target="_blank">www.marekradkov.com/contacts.html</a>. Enjoy !</p>
                 </div>
             </div>
         </div>
@@ -262,36 +304,36 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <img src="/uploads/avatars/{{ $attacker_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/uploads/avatars/{{ $attacker_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $attacker_log->nickname}}</p>
                                             </td>
                                             <td>
-                                                <img src="/uploads/avatars/{{ $defender_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/uploads/avatars/{{ $defender_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $defender_log->nickname}}</p>
                                             </td>
                                             <td>
-                                                <img src="/uploads/avatars/{{ $winner_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/uploads/avatars/{{ $winner_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $winner_log->nickname}}</p>
                                             </td>
                                             <td>
-                                                <img src="/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p><b>{{ $battle->ships_losses * 100 }}% - lost</b></p>
                                             </td>
                                             <td>
-                                                <img src="/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p><b>100% - lost</b></p>
 
                                             </td>
                                             <td>
-                                                <img src="/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $battle->gold }}</p>
                                             </td>
                                             <td>
-                                                <img src="/images/metal.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/images/metal.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $battle->metal }}</p>
                                             </td>
                                             <td>
-                                                <img src="/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $battle->energy }}</p>
                                             </td>
                                             <td>
@@ -347,36 +389,36 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <img src="/uploads/avatars/{{ $attacker_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/uploads/avatars/{{ $attacker_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $attacker_log->nickname}}</p>
                                             </td>
                                             <td>
-                                                <img src="/uploads/avatars/{{ $defender_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/uploads/avatars/{{ $defender_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $defender_log->nickname}}</p>
                                             </td>
                                             <td>
-                                                <img src="/uploads/avatars/{{ $winner_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/uploads/avatars/{{ $winner_log->avatar }}" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $winner_log->nickname}}</p>
                                             </td>
                                             <td>
-                                                <img src="/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p><b>{{ $battle->ships_losses * 100 }}% - lost</b></p>
                                             </td>
                                             <td>
-                                                <img src="/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p><b>100% - lost</b></p>
 
                                             </td>
                                             <td>
-                                                <img src="/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $battle->gold }}</p>
                                             </td>
                                             <td>
-                                                <img src="/images/metal.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/images/metal.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $battle->metal }}</p>
                                             </td>
                                             <td>
-                                                <img src="/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
+                                                <img src="/solardomination/public/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> 
                                                 <p>{{ $battle->energy }}</p>
                                             </td>
                                             <td>
@@ -401,7 +443,14 @@
         $("#display_log").click(function(){
             $('.ships_losses').toggle(1000);
         });
-       
+
+       var w = window.innerWidth
+                    || document.documentElement.clientWidth
+                    || document.body.clientWidth;
+
+        if( w >= 790){
+           $('.panel').slideDown(2000);
+        }
     });
 
 </script>

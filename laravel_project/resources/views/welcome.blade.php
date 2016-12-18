@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <script src="/solardomination/public/js/jquery-3.1.1.min.js"></script>
         <title>Solar Domination</title>
 
         <!-- Fonts -->
@@ -19,7 +19,7 @@
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
-                background: url("/images/solardomination.jpg") no-repeat scroll center center / cover;
+                background: url("/solardomination/public/images/solardomination.jpg") no-repeat scroll center center / cover;
             }
 
             .full-height {
@@ -67,6 +67,11 @@
                 margin-bottom: 30px;
             }
             
+            #title{
+                display: none;
+                text-shadow: 3px 3px 3px #A81C1C;
+            }
+
         </style>
     </head>
     <body>
@@ -83,12 +88,27 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <div id="title" class="title m-b-md">
                     Solar Domination
                 </div>
 
 
             </div>
         </div>
+        <script type="text/javascript">
+
+            $(function(){
+                var w = window.innerWidth
+                    || document.documentElement.clientWidth
+                    || document.body.clientWidth;
+
+                if( w < 800){
+                  $( "#title" ).fadeIn(2000).animate({fontSize: '3em' , fontWeight: '700'}, 1000);
+                }else{
+                  $( "#title" ).fadeIn(2000).animate({fontSize: '9em' , fontWeight: '700'}, 1000);  
+                }
+
+            });
+        </script>
     </body>
 </html>

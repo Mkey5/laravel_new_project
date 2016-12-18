@@ -18,7 +18,13 @@
             position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #F1F1F1; z-index:9999;
         }
 
+        body{
+            background-color: black;
+        }
 
+        .countdown span{
+            cursor: pointer;
+        }
         /*/-------------- POPUP -------------------/*/
             #popWindow{
                 position:fixed;
@@ -26,7 +32,7 @@
                 bottom: 10px;
                 max-width: 300px;
                 padding: 16px;
-                background:url('/images/pop-up.jpg');
+                background:url('/solardomination/public/images/pop-up.jpg');
                 font-size: 14px;
                 border:1px solid rgb(129, 129, 129);
                 box-shadow:1px 1px 5px rgb(129, 129, 129);
@@ -66,11 +72,11 @@
 
     </style>
     <!-- <link href="/css/app.css" rel="stylesheet"> -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/solardomination/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/solardomination/public/css/bootstrap-theme.min.css" rel="stylesheet">
     
     <!-- <script type="text/javascript" href="/js/bootstrap.min.js"></script> -->
-    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/solardomination/public/js/jquery-3.1.1.min.js"></script>
 
     <!-- Scripts -->
     <script>
@@ -79,13 +85,15 @@
         ]); ?>
 
         $(window).bind("load", function () {
-                    $("#coverAll").hide();
+                    setTimeout(function(){
+                        $("#coverAll").hide();
+                    },1000); 
                 });
 
     </script>
 </head>
 <body>
-<div id="coverAll"><img src="/images/tits.gif" style="display: block; margin: 0 auto;"></div>
+<div id="coverAll"><img src="/solardomination/public/images/tits.gif" class="img img-responsive" style="display: block; margin: 0 auto;"></div>
     <div id="app">
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
@@ -119,7 +127,7 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li class="dropdown" style="position: relative; padding-left: 50px;">
-                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="height:32px; width: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;">
+                                <img src="/solardomination/public/uploads/avatars/{{ Auth::user()->avatar }}" style="height:32px; width: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -177,8 +185,8 @@
 
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
-    <script src="/js/popup.js"></script>
+    <script src="/solardomination/public/js/app.js"></script>
+    <script src="/solardomination/public/js/popup.js"></script>
     <script type="text/javascript">
         $(function(){
             $('#popWindow').click(function(){

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	<script src="/js/jquery-3.1.1.min.js"></script>
-	<script src="/js/jquery.countdown.js"></script>
+	<script src="/solardomination/public/js/jquery-3.1.1.min.js"></script>
+	<script src="/solardomination/public/js/jquery.countdown.js"></script>
 	<style type="text/css">
 		html{
 	        height: 100%;
@@ -11,7 +11,7 @@
 	    body{
 	        height: 100%;
 	        width: 100%;
-	        background: url('/images/battle.jpg') no-repeat scroll center center / cover;
+	        background:#000000 url('/solardomination/public/images/battle.jpg') no-repeat scroll center center / cover;
 	        background-attachment: fixed;
 	    }
 
@@ -76,11 +76,11 @@
 		<br>
 		<div class="row">
 			<div class="col-md-6">
-				<img src="/images/fleetleave.gif" class="img-responsive" style=" border-radius: 10px">
+				<img src="/solardomination/public/images/fleetleave.gif" class="img-responsive" style=" border-radius: 10px">
 			</div>
 			
 			<div class="col-md-6">
-				<img src="/images/fleetbattle.gif" class="img-responsive" style=" border-radius: 10px">
+				<img src="/solardomination/public/images/fleetbattle.gif" class="img-responsive" style=" border-radius: 10px">
 			</div>
 		</div>
 		<div class="row">

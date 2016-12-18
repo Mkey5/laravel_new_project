@@ -29,7 +29,7 @@ class HomeplanetController extends Controller
     			($currentUser->homeplanet->metal >= $currentUser->homeplanet->goldmine->cost_metal) &&
     			($currentUser->homeplanet->energy >= $currentUser->homeplanet->goldmine->cost_energy)){ // check if user has enough money to upgrade
 
-    			\App\Goldmine::where('homeplanet_id','=',Auth::id())->update([
+    			\App\Goldmine::where('homeplanet_id','=',$currentUser->homeplanet->id)->update([
 				 'upgrating_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
 				]);	// updating 'upgrating_time' to DB
 
@@ -48,7 +48,7 @@ class HomeplanetController extends Controller
     		
     	}else if($request->input('metal_upgrating')){
     		$currentMetalLevel = $currentUser->homeplanet->metalmine->level; // mine level
-    		$timeToUpgrade = 1 * $currentMetalLevel;	// time to upgrade
+    		$timeToUpgrade = 60 * $currentMetalLevel;	// time to upgrade
 
 			
 
@@ -56,7 +56,7 @@ class HomeplanetController extends Controller
     			($currentUser->homeplanet->metal >= $currentUser->homeplanet->metalmine->cost_metal) &&
     			($currentUser->homeplanet->energy >= $currentUser->homeplanet->metalmine->cost_energy)){ // check if user has enough money to upgrade
 
-    			\App\Metalmine::where('homeplanet_id','=',Auth::id())->update([
+    			\App\Metalmine::where('homeplanet_id','=', $currentUser->homeplanet->id)->update([
 				 'upgrating_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
 				]);	// updating 'upgrating_time' to DB
 
@@ -74,14 +74,14 @@ class HomeplanetController extends Controller
 
     	}else if($request->input('energy_upgrating')){
     		$currentEnergyLevel = $currentUser->homeplanet->powerplant->level; // mine level
-    		$timeToUpgrade = 1 * $currentEnergyLevel;	// time to upgrade
+    		$timeToUpgrade = 60 * $currentEnergyLevel;	// time to upgrade
 
 			
 			if( ($currentUser->homeplanet->gold >= $currentUser->homeplanet->powerplant->cost_gold) &&
     			($currentUser->homeplanet->metal >= $currentUser->homeplanet->powerplant->cost_metal) &&
     			($currentUser->homeplanet->energy >= $currentUser->homeplanet->powerplant->cost_energy)){ // check if user has enough money to upgrade
 
-    			\App\Powerplant::where('homeplanet_id','=',Auth::id())->update([
+    			\App\Powerplant::where('homeplanet_id','=', $currentUser->homeplanet->id)->update([
 				 'upgrating_time' => \Carbon\Carbon::now()->addMinutes($timeToUpgrade)
 				]);	// updating 'upgrating_time' to DB
 

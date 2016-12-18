@@ -16,10 +16,20 @@
 	body{
 		height: 100%;
 		width: 100%;
-		background: url('/images/radar_bg.jpg') no-repeat scroll center center / cover;
+		background:#000000 url('/solardomination/public/images/radar_bg.jpg') no-repeat scroll center center / cover;
 		background-attachment: fixed;
 	}
+	.panel{
+		display: none;
+	}
+
+	@media screen and (max-width: 790px) {
+	        .panel{
+	        	display: block;
+	        }
+	    }
 </style>
+
 <div class="container">
 	
 	<div class="row">
@@ -31,7 +41,7 @@
 		                <div class="panel-heading">
 		                	<div class="row">
 		                		<div class="col-md-5">
-		                			<img src="/uploads/avatars/{{ $user->avatar }}" style="height:80px; width: 80px;  top: 10px; left: 10px; border-radius: 50%;">
+		                			<img src="/solardomination/public/uploads/avatars/{{ $user->avatar }}" style="height:80px; width: 80px;  top: 10px; left: 10px; border-radius: 50%;">
 		                		</div>
 		                		<div class="col-md-7">
 		                			<h2 class="panel-title pull-right"><b>{{ $user->nickname }}</b></h3>
@@ -54,7 +64,7 @@
 		                <div class="panel-heading">
 		                	<div class="row">
 		                		<div class="col-md-5">
-		                			<img src="/uploads/avatars/{{ $user->avatar }}" style="height:80px; width: 80px;  top: 10px; left: 10px; border-radius: 50%;">
+		                			<img src="/solardomination/public/uploads/avatars/{{ $user->avatar }}" style="height:80px; width: 80px;  top: 10px; left: 10px; border-radius: 50%;">
 		                		</div>
 		                		<div class="col-md-7">
 		                			<h2 class="panel-title pull-right"><b>{{ $user->nickname }}</b></h3>
@@ -84,6 +94,18 @@
 	</div>
 		
 </div>
+
+<script type="text/javascript">
+	$(function(){
+       var w = window.innerWidth
+                    || document.documentElement.clientWidth
+                    || document.body.clientWidth;
+
+	    if( w >= 790){
+	       $('.panel').slideDown(2000);
+	    }
+    });
+</script>
 
 
 @endsection

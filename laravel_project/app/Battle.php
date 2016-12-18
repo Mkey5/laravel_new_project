@@ -12,4 +12,7 @@ class Battle extends Model
     {
         return $this->belongsToMany('App\User' , 'battle_user');
     }
+
+
+    
 }

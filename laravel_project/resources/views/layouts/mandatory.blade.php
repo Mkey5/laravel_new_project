@@ -12,7 +12,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="/solardomination/public/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -44,7 +44,7 @@
                         <!-- Authentication Links -->
                        
                             <li class="" style="position: relative; padding-left: 50px;">
-                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="height:32px; width: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;">
+                                <img src="/solardomination/public/uploads/avatars/{{ Auth::user()->avatar }}" style="height:32px; width: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} 
                                 </a>
@@ -60,6 +60,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="/solardomination/public/js/app.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-		
+	<link rel="icon" href="/solardomination/public/favicon.ico">
 	<style type="text/css">
 		html{
 	        height: 100%;
@@ -10,7 +10,7 @@
 	    body{
 	        height: 100%;
 	        width: 100%;
-	        background: url('/images/battlestation.jpg') no-repeat scroll center center / cover;
+	        background:#000000 url('/solardomination/public/images/battlestation.jpg') no-repeat scroll center center / cover;
 	        background-attachment: fixed;
 	    }
 
@@ -42,7 +42,17 @@
 
 		.planet{
 			margin-top: 10px;
+			display: none;
 		}
+
+		@media screen and (max-width: 790px) {
+	        table {
+	            margin-left: -12px;
+	        }
+	        .attack{
+	        	margin-bottom: 10px;
+	        }
+	    }
 
 	</style>
 
@@ -56,13 +66,13 @@
 		<div class="row">
 			<div class="col-md-6">
 				@if($defender->homeplanet->x <= 10)
-				<img src="/images/defenderplanet1.png" class="img-responsive planet">
+				<img src="/solardomination/public/images/defenderplanet1.png" class="img-responsive planet">
 				@elseif ($defender->homeplanet->x <= 20)
-				<img src="/images/defenderplanet2.png" class="img-responsive planet">
+				<img src="/solardomination/public/images/defenderplanet2.png" class="img-responsive planet">
 				@elseif ($defender->homeplanet->x <= 30)
-				<img src="/images/defenderplanet3.png" class="img-responsive planet">
+				<img src="/solardomination/public/images/defenderplanet3.png" class="img-responsive planet">
 				@else
-				<img src="/images/defenderplanet4.png" class="img-responsive planet">
+				<img src="/solardomination/public/images/defenderplanet4.png" class="img-responsive planet">
 				@endif
 			</div>
 			<div class="col-md-6 back">
@@ -96,19 +106,19 @@
 			                <tbody>
 			                    <tr>
 			                        <td>
-			                            <img src="/images/orbitalbase.jpg" style="height:32px; width: 32px; border-radius: 50%;">
+			                            <img src="/solardomination/public/images/orbitalbase.jpg" style="height:32px; width: 32px; border-radius: 50%;">
 			                        </td>
 			                        <td>
-			                            <img src="/images/frigate.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->orbitalbase->frigates }}</b>
+			                            <img src="/solardomination/public/images/frigate.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->orbitalbase->frigates }}</b>
 			                        </td>
 			                        <td>
-			                            <img src="/images/corvette.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->orbitalbase->corvettes }}</b>
+			                            <img src="/solardomination/public/images/corvette.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->orbitalbase->corvettes }}</b>
 			                        </td>
 			                        <td>
-			                            <img src="/images/destroyer.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->orbitalbase->destroyers }}</b>
+			                            <img src="/solardomination/public/images/destroyer.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->orbitalbase->destroyers }}</b>
 			                        </td>
 			                       	<td>
-			                            <img src="/images/assaultcarrier.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->orbitalbase->assaultcarriers }}</b>
+			                            <img src="/solardomination/public/images/assaultcarrier.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->orbitalbase->assaultcarriers }}</b>
 			                        </td>
 			                    </tr>
 			                </tbody>
@@ -135,7 +145,7 @@
 					                <tbody>
 					                    <tr>
 					                        <td>
-					                            <img src="/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;">
+					                            <img src="/solardomination/public/images/fleet.jpg" style="height:32px; width: 32px; border-radius: 50%;">
 					                        </td>
 					                        <td>
 					                             <b>{{ $user->fleet->attack }}</b>
@@ -219,7 +229,7 @@
 							
     							<br>
 								<br>
-	                        	<button type="submit" class="btn btn-danger">Attack &nbsp;<i class="glyphicon glyphicon-fire"></i></button>
+	                        	<button type="submit" class="btn btn-danger attack">Attack &nbsp;<i class="glyphicon glyphicon-fire"></i></button>
 	                        
 							<br>
 						</form>
@@ -240,10 +250,17 @@
 		session_start();
 	?>
 
+	@if($_SESSION["fleet"] != 0)
 	<script type="text/javascript">
 		if({{ $_SESSION["fleet"] }} == 1 && {{ $_SESSION["radar"] }} == 1){
 			     $("#abort_form").submit();
 		}
+	</script>
+	@endif
+	<script type="text/javascript">
+		$(function(){
+	       $('.planet').fadeIn(3000);
+	    });
 	</script>
 	
 

@@ -17,9 +17,9 @@ class CreateGoldminesTable extends Migration
             $table->increments('id');
             $table->integer('homeplanet_id');
             $table->integer('income')->default(10);
-            $table->integer('cost_gold')->default(300);
-            $table->integer('cost_metal')->default(290);
-            $table->integer('cost_energy')->default(370);
+            $table->integer('cost_gold')->default(900);
+            $table->integer('cost_metal')->default(890);
+            $table->integer('cost_energy')->default(1170);
             $table->integer('level')->default(1);
             $table->dateTime('upgrating_time');
             

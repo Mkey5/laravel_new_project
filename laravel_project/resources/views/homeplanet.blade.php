@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	<script src="/js/jquery-3.1.1.min.js"></script>
-	<script src="/js/jquery.countdown.js"></script>
+	<script src="/solardomination/public/js/jquery-3.1.1.min.js"></script>
+	<script src="/solardomination/public/js/jquery.countdown.js"></script>
 	<style type="text/css">
 		html{
 	        height: 100%;
@@ -11,7 +11,7 @@
 	    body{
 	        height: 100%;
 	        width: 100%;
-	        background: url('/images/homeplanet.jpg') no-repeat scroll center center / cover;
+	        background:#000000 url('/solardomination/public/images/homeplanet.jpg') no-repeat scroll center center / cover;
 	        background-attachment: fixed;
 	    }
 
@@ -25,6 +25,9 @@
 		.back{
 			background-color: rgba(242, 242, 242, 0.9);
 			padding-top: 10px;
+		}
+		.img-responsive{
+			display: none;
 		}
 	</style>
 
@@ -43,16 +46,16 @@
                 <tbody>
                     <tr>
                         <td style="position: relative;">
-                            <img src="/images/homeplanet.png" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
+                            <img src="/solardomination/public/images/homeplanet.png" style="height:32px; width: 32px; position: absolute; top: 3px; left: 10px; border-radius: 50%;">
                         </td>
                         <td>
-                            <img src="/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->gold }}</b>
+                            <img src="/solardomination/public/images/gold.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->gold }}</b>
                         </td>
                         <td>
-                            <img src="/images/metal.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->metal }}</b>
+                            <img src="/solardomination/public/images/metal.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->metal }}</b>
                         </td>
                         <td>
-                            <img src="/images/energy.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->energy }}</b>
+                            <img src="/solardomination/public/images/energy.jpg" style="height:32px; width: 32px; border-radius: 50%;"> <b>{{ $user->homeplanet->energy }}</b>
                         </td>
                        
                     </tr>
@@ -63,7 +66,7 @@
 		<br>
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<img src="/images/homeplanet_big.png" class="img-responsive" style="height:300px; width: 300px; border-radius: 50%;">
+				<img src="/solardomination/public/images/homeplanet_big.png" class="img-responsive" style="height:300px; width: 300px; border-radius: 50%;">
 			</div>
 		</div>
 		<br>
@@ -71,7 +74,7 @@
 			<div class="col-md-4">
 				<div class="row">
 					<div class="col-md-4">
-						<img src="/images/gold.jpg" style=" width: 100px; height: 100px; border-radius: 10%">
+						<img src="/solardomination/public/images/gold.jpg" style=" width: 100px; height: 100px; border-radius: 10%">
 						
 					</div>
 					<div class="col-md-8">
@@ -92,14 +95,7 @@
 							
 							<input id="gold_upgrating" type="hidden" class="" name="gold_upgrating" value="gold_upgrating">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							@if((($user->homeplanet->gold < $user->homeplanet->goldmine->cost_gold) ||
-    							($user->homeplanet->metal < $user->homeplanet->goldmine->cost_metal) ||
-    							($user->homeplanet->energy < $user->homeplanet->goldmine->cost_energy)) && ($user->homeplanet->goldmine->upgrating_time == '0001-01-01 00:00:00'))
-
-    							<div class="alert alert-danger">
-  									You haven't got enough resources to upgrade
-								</div>
-							@elseif ($user->homeplanet->goldmine->upgrating_time != '0001-01-01 00:00:00')
+							@if ($user->homeplanet->goldmine->upgrating_time != '0001-01-01 00:00:00')
 	                            <?php 
 
 	                            	$time_gold = $user->homeplanet->goldmine->upgrating_time;
@@ -128,7 +124,7 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('The building is upgrated!')
+										  $(this).html('The building is upgrated! Click to refresh page.')
 										    .parent().addClass('disabled').on('click', function(event){
 										    	location.reload();
 										    });
@@ -137,7 +133,13 @@
 
 								</script>
 
+							@elseif((($user->homeplanet->gold < $user->homeplanet->goldmine->cost_gold) ||
+    							($user->homeplanet->metal < $user->homeplanet->goldmine->cost_metal) ||
+    							($user->homeplanet->energy < $user->homeplanet->goldmine->cost_energy)) && ($user->homeplanet->goldmine->upgrating_time == '0001-01-01 00:00:00'))
 
+    							<div class="alert alert-danger">
+  									You haven't got enough resources to upgrade
+								</div>
 	                        @else
 	                        	<button type="submit" class="btn btn-primary">Upgrade</button>
 	                        @endif
@@ -154,7 +156,7 @@
 			<div class="col-md-4">
 				<div class="row">
 					<div class="col-md-4">
-						<img src="/images/metal.jpg" style=" width: 100px; height: 100px; border-radius: 10%">
+						<img src="/solardomination/public/images/metal.jpg" style=" width: 100px; height: 100px; border-radius: 10%">
 						
 					</div>
 					<div class="col-md-8">
@@ -175,15 +177,8 @@
 							
 							<input id="metal_upgrating" type="hidden" class="" name="metal_upgrating" value="metal_upgrating">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							@if((($user->homeplanet->gold < $user->homeplanet->metalmine->cost_gold) ||
-    							($user->homeplanet->metal < $user->homeplanet->metalmine->cost_metal) ||
-    							($user->homeplanet->energy < $user->homeplanet->metalmine->cost_energy)) &&
-    							($user->homeplanet->metalmine->upgrating_time == '0001-01-01 00:00:00'))
-
-    							<div class="alert alert-danger">
-  									You haven't got enough resources to upgrade
-								</div>
-							@elseif ($user->homeplanet->metalmine->upgrating_time != '0001-01-01 00:00:00')
+						
+							@if ($user->homeplanet->metalmine->upgrating_time != '0001-01-01 00:00:00')
 	                            <?php 
 
 	                            	$time_metal = $user->homeplanet->metalmine->upgrating_time;
@@ -212,14 +207,21 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('The building is upgrated!')
+										  $(this).html('The building is upgrated! Click to refresh page.')
 										    .parent().addClass('disabled').on('click', function(event){
 										    	location.reload();
 										    });
 										});
 
 								</script>
+							@elseif((($user->homeplanet->gold < $user->homeplanet->metalmine->cost_gold) ||
+    							($user->homeplanet->metal < $user->homeplanet->metalmine->cost_metal) ||
+    							($user->homeplanet->energy < $user->homeplanet->metalmine->cost_energy)) &&
+    							($user->homeplanet->metalmine->upgrating_time == '0001-01-01 00:00:00'))
 
+    							<div class="alert alert-danger">
+  									You haven't got enough resources to upgrade
+								</div>
 	                        @else
 	                        	<button type="submit" class="btn btn-primary">Upgrade</button>
 	                        @endif
@@ -236,7 +238,7 @@
 			<div class="col-md-4">
 				<div class="row">
 					<div class="col-md-4">
-						<img src="/images/energy.jpg" style=" width: 100px; height: 100px; border-radius: 10%">
+						<img src="/solardomination/public/images/energy.jpg" style=" width: 100px; height: 100px; border-radius: 10%">
 						
 					</div>
 					<div class="col-md-8">
@@ -257,17 +259,9 @@
 							
 							<input id="energy_upgrating" type="hidden" class="" name="energy_upgrating" value="energy_upgrating">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							@if((($user->homeplanet->gold < $user->homeplanet->powerplant->cost_gold) ||
-    							($user->homeplanet->metal < $user->homeplanet->powerplant->cost_metal) ||
-    							($user->homeplanet->energy < $user->homeplanet->powerplant->cost_energy)) &&
-    							($user->homeplanet->powerplant->upgrating_time == '0001-01-01 00:00:00'))
+							
 
-    							<div class="alert alert-danger">
-  									You haven't got enough resources to upgrade
-								</div>
-
-
-							@elseif ($user->homeplanet->powerplant->upgrating_time != '0001-01-01 00:00:00')
+							@if ($user->homeplanet->powerplant->upgrating_time != '0001-01-01 00:00:00')
 	                            
 	                            <?php 
 
@@ -297,7 +291,7 @@
 										  $(this).html(event.strftime(format));
 										})
 										.on('finish.countdown', function(event) {
-										  $(this).html('The building is upgrated!')
+										  $(this).html('The building is upgrated! Click to refresh page.')
 										    .parent().addClass('disabled').on('click', function(event){
 										    	location.reload();
 										    });
@@ -305,7 +299,15 @@
 										});
 
 								</script>
-								
+							@elseif((($user->homeplanet->gold < $user->homeplanet->powerplant->cost_gold) ||
+    							($user->homeplanet->metal < $user->homeplanet->powerplant->cost_metal) ||
+    							($user->homeplanet->energy < $user->homeplanet->powerplant->cost_energy)) &&
+    							($user->homeplanet->powerplant->upgrating_time == '0001-01-01 00:00:00'))
+
+    							<div class="alert alert-danger">
+  									You haven't got enough resources to upgrade
+								</div>
+	
 	                        @else
 	                        	<button type="submit" class="btn btn-primary">Upgrade</button>
 	                        @endif
@@ -324,5 +326,9 @@
 		<br>
 	</div>
 
-
+	<script type="text/javascript">
+		$(function(){
+	       $('.img-responsive').fadeIn(4000);
+	    });
+	</script>
 @endsection

@@ -16,9 +16,9 @@ class CreateShipyardsTable extends Migration
         Schema::create('shipyards', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('orbitalbase_id');
-            $table->integer('cost_gold')->default(500);
-            $table->integer('cost_metal')->default(400);
-            $table->integer('cost_energy')->default(480);
+            $table->integer('cost_gold')->default(1200);
+            $table->integer('cost_metal')->default(1580);
+            $table->integer('cost_energy')->default(1800);
             $table->integer('level')->default(1);
             $table->dateTime('upgrating_time');
             $table->dateTime('frigate_time');

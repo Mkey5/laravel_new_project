@@ -17,9 +17,9 @@ class CreateMetalminesTable extends Migration
             $table->increments('id');
             $table->integer('homeplanet_id');
             $table->integer('income')->default(15);
-            $table->integer('cost_gold')->default(350);
-            $table->integer('cost_metal')->default(330);
-            $table->integer('cost_energy')->default(290);
+            $table->integer('cost_gold')->default(1000);
+            $table->integer('cost_metal')->default(590);
+            $table->integer('cost_energy')->default(1000);
             $table->integer('level')->default(1);
             $table->dateTime('upgrating_time');
             
