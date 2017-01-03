@@ -1,4 +1,4 @@
-<p align="center"><a href="http://www.marekradkov.com/solardomination/public/" target="_blank"><img width="150"src="http://www.marekradkov.com/solardomination/public/images/solarphoto.jpg"></a></p>
+<p align="center"><a href="http://www.marekradkov.com/solardomination/public/" target="_blank"><img width="500"src="http://www.marekradkov.com/solardomination/public/images/solarphoto.jpg"></a></p>
 
 
 ## About Solar Domination
