@@ -10,4 +10,4 @@ Technologies used for the game:
 - PHP 7 with Laravel 5.3
 - JavaScript with jQuery
 - HTML 5
-- CSS 3
+- CSS 3 + Bootstrap
