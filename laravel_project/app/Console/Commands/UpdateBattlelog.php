@@ -175,18 +175,33 @@ class UpdateBattlelog extends Command
 
         foreach ($allBattlesInProgress as $battle) {
             
-            $attacker = DB::table('users')
+             
+        		$attacker = DB::table('users')
                 ->where('users.id','=',$battle->attacker)
                 ->join('orbitalbases','users.id' , '=' , 'orbitalbases.user_id')
                 ->join('fleets' , 'users.id' , '=' , 'fleets.user_id')
-                ->first();     
+                ->select('users.id as id' , 'users.name as name' , 'users.nickname',
+                    'users.email' ,'users.avatar', 'users.level' , 'users.battles_won' ,
+                    'users.battles_lost' , 'orbitalbases.frigates',
+                    'orbitalbases.corvettes', 'orbitalbases.destroyers',
+                    'orbitalbases.assaultcarriers', 'fleets.frigate' ,
+                    'fleets.corvette' , 'fleets.destroyer' , 'fleets.assault_carrier',
+                    'fleets.attack' , 'fleets.defence' , 'fleets.state')
+                ->first();
 
-            $defender = DB::table('users')
+                $defender = DB::table('users')
                 ->where('users.id','=',$battle->defender)
                 ->join('orbitalbases','users.id' , '=' , 'orbitalbases.user_id')
                 ->join('fleets' , 'users.id' , '=' , 'fleets.user_id')
+                ->select('users.id as id' , 'users.name as name' , 'users.nickname',
+                    'users.email' ,'users.avatar', 'users.level' , 'users.battles_won' ,
+                    'users.battles_lost' , 'orbitalbases.frigates',
+                    'orbitalbases.corvettes', 'orbitalbases.destroyers',
+                    'orbitalbases.assaultcarriers', 'fleets.frigate' ,
+                    'fleets.corvette' , 'fleets.destroyer' , 'fleets.assault_carrier',
+                    'fleets.attack' , 'fleets.defence' , 'fleets.state')
                 ->first();
-             
+
             // updating and calculating battle 
             if($battle->battle_time != '0001-01-01 00:00:00'){
                 date_default_timezone_set('Europe/Bucharest');
@@ -493,6 +508,18 @@ class UpdateBattlelog extends Command
                     $goldNew = $homeplanetDefender->gold + $battle->gold;
                     $metalNew = $homeplanetDefender->metal + $battle->metal;
                     $energyNew = $homeplanetDefender->energy + $battle->energy;
+
+                    if($goldNew >  2147483646){
+                        $goldNew = 2147483646;
+                    }
+                    if($metalNew > 2147483646){
+                        $metalNew = 2147483646;
+                    }
+
+                    if($energyNew > 2147483646){
+                        $energyNew = 2147483646;
+                    }
+
 
                     \App\Homeplanet::where('user_id','=',$attacker->id)->update([
                             'gold' => $goldNew ,
